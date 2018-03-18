@@ -33,7 +33,8 @@ export class AppDto {
 
 export class CreateAppDto {
     constructor(
-        public readonly name: string
+        public readonly name: string,
+        public readonly template?: string
     ) {
     }
 }
@@ -85,5 +86,15 @@ export class AppsService {
                     this.analytics.trackEvent('App', 'Created', dto.name);
                 })
                 .pretifyError('Failed to create app. Please reload.');
+    }
+
+    public deleteApp(appName: string): Observable<any> {
+        const url = this.apiUrl.buildUrl(`api/apps/${appName}`);
+
+        return this.http.delete(url)
+                .do(() => {
+                    this.analytics.trackEvent('App', 'Archived', appName);
+                })
+                .pretifyError('Failed to archive app. Please reload.');
     }
 }

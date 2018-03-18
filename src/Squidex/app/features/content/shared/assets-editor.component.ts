@@ -68,7 +68,7 @@ export class AssetsEditorComponent implements ControlValueAccessor, OnDestroy, O
         if (Types.isArrayOfString(value) && value.length > 0) {
             const assetIds: string[] = value;
 
-            this.assetsService.getAssets(this.ctx.appName, 10000, 0, undefined, undefined, value)
+            this.assetsService.getAssets(this.ctx.appName, 0, 0, undefined, value)
                 .subscribe(dtos => {
                     this.oldAssets = ImmutableArray.of(assetIds.map(id => dtos.items.find(x => x.id === id)).filter(a => !!a).map(a => a!));
                 });
@@ -97,7 +97,7 @@ export class AssetsEditorComponent implements ControlValueAccessor, OnDestroy, O
         const component = this;
 
         return (dragData: any) => {
-            return dragData instanceof AssetDto && !component.oldAssets.find(a => a.id === dragData.id);
+            return !component.isDisabled && dragData instanceof AssetDto && !component.oldAssets.find(a => a.id === dragData.id);
         };
     }
 

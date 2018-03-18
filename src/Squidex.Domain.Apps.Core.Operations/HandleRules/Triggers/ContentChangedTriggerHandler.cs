@@ -17,6 +17,11 @@ namespace Squidex.Domain.Apps.Core.HandleRules.Triggers
     {
         protected override bool Triggers(Envelope<AppEvent> @event, ContentChangedTrigger trigger)
         {
+            if (trigger.HandleAll && @event.Payload is ContentEvent)
+            {
+                return true;
+            }
+
             if (trigger.Schemas != null && @event.Payload is SchemaEvent schemaEvent)
             {
                 foreach (var schema in trigger.Schemas)

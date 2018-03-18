@@ -14,10 +14,8 @@ namespace Squidex.Infrastructure.EventSourcing
 {
     public sealed class PollingSubscription : IEventSubscription
     {
-        private readonly IEventNotifier eventNotifier;
         private readonly IEventStore eventStore;
         private readonly IEventSubscriber eventSubscriber;
-        private readonly IDisposable notification;
         private readonly CompletionTimer timer;
         private readonly Regex streamRegex;
         private readonly string streamFilter;
@@ -25,17 +23,14 @@ namespace Squidex.Infrastructure.EventSourcing
 
         public PollingSubscription(
             IEventStore eventStore,
-            IEventNotifier eventNotifier,
             IEventSubscriber eventSubscriber,
             string streamFilter,
             string position)
         {
             Guard.NotNull(eventStore, nameof(eventStore));
-            Guard.NotNull(eventNotifier, nameof(eventNotifier));
             Guard.NotNull(eventSubscriber, nameof(eventSubscriber));
 
             this.position = position;
-            this.eventNotifier = eventNotifier;
             this.eventStore = eventStore;
             this.eventSubscriber = eventSubscriber;
             this.streamFilter = streamFilter;
@@ -46,7 +41,7 @@ namespace Squidex.Infrastructure.EventSourcing
             {
                 try
                 {
-                    await eventStore.GetEventsAsync(async storedEvent =>
+                    await eventStore.QueryAsync(async storedEvent =>
                     {
                         await eventSubscriber.OnEventAsync(this, storedEvent);
 
@@ -61,20 +56,15 @@ namespace Squidex.Infrastructure.EventSourcing
                     }
                 }
             });
+        }
 
-            notification = eventNotifier.Subscribe(streamName =>
-            {
-                if (streamRegex.IsMatch(streamName))
-                {
-                    timer.SkipCurrentDelay();
-                }
-            });
+        public void WakeUp()
+        {
+            timer.SkipCurrentDelay();
         }
 
         public Task StopAsync()
         {
-            notification?.Dispose();
-
             return timer.StopAsync();
         }
     }

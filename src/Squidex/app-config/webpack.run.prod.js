@@ -86,6 +86,7 @@ module.exports = webpackMerge(runConfig, {
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin({ 'process.env': { 'ENV': JSON.stringify(ENV) } }),
+        new webpack.optimize.ModuleConcatenationPlugin(),
 
         /*
          * Puts each bundle into a file and appends the hash of the file to the path.
@@ -93,7 +94,7 @@ module.exports = webpackMerge(runConfig, {
          * See: https://github.com/webpack/extract-text-webpack-plugin
          */
         new ExtractTextPlugin('[name].css'),
-
+        
         new webpack.optimize.UglifyJsPlugin({
             beautify: false,
             mangle: {

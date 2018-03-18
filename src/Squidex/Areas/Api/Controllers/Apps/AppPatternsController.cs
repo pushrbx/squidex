@@ -78,7 +78,7 @@ namespace Squidex.Areas.Api.Controllers.Apps
 
             var response = SimpleMapper.Map(request, new AppPatternDto { PatternId = command.PatternId });
 
-            return CreatedAtAction(nameof(GetPatterns), new { app }, request);
+            return CreatedAtAction(nameof(GetPatterns), new { app }, response);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Squidex.Areas.Api.Controllers.Apps
         }
 
         /// <summary>
-        /// Revoke an app client
+        /// Revoke an app client.
         /// </summary>
         /// <param name="app">The name of the app.</param>
         /// <param name="id">The id of the pattern to be deleted.</param>

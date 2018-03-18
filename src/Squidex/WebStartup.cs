@@ -6,7 +6,6 @@
 // ==========================================================================
 
 using System;
-using Ben.Diagnostics;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -14,8 +13,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Squidex.Areas.Api;
 using Squidex.Areas.Frontend;
 using Squidex.Areas.IdentityServer;
+using Squidex.Areas.OrleansDashboard;
 using Squidex.Areas.Portal;
 using Squidex.Config.Domain;
+using Squidex.Config.Orleans;
 using Squidex.Config.Web;
 
 namespace Squidex
@@ -31,6 +32,8 @@ namespace Squidex
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.AddOrleansSilo();
+            services.AddOrleansClient();
             services.AddAppServices(configuration);
 
             return services.BuildServiceProvider();
@@ -49,8 +52,8 @@ namespace Squidex
 
             app.ConfigureApi();
             app.ConfigurePortal();
+            app.ConfigureOrleansDashboard();
             app.ConfigureIdentityServer();
-
             app.ConfigureFrontend();
         }
     }

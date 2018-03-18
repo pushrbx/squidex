@@ -17,6 +17,7 @@ import {
     ApiUrlConfig,
     DateTime,
     HTTP,
+    StringHelper,
     ValidatorsEx,
     Version,
     Versioned
@@ -34,18 +35,20 @@ export const fieldTypes: string[] = [
     'Tags'
 ];
 
+export const fieldInvariant = 'iv';
+
 export function createProperties(fieldType: string, values: Object | null = null): FieldPropertiesDto {
     let properties: FieldPropertiesDto;
 
     switch (fieldType) {
         case 'Number':
-            properties = new NumberFieldPropertiesDto(null, null, null, false, false, 'Input');
+            properties = new NumberFieldPropertiesDto(null, null, null, false, false, false, 'Input');
             break;
         case 'String':
-            properties = new StringFieldPropertiesDto(null, null, null, false, false, 'Input');
+            properties = new StringFieldPropertiesDto(null, null, null, false, false, false, 'Input');
             break;
         case 'Boolean':
-            properties = new BooleanFieldPropertiesDto(null, null, null, false, false, 'Checkbox');
+            properties = new BooleanFieldPropertiesDto(null, null, null, false, false, false, 'Checkbox');
             break;
         case 'DateTime':
             properties = new DateTimeFieldPropertiesDto(null, null, null, false, false, 'DateTime');
@@ -77,6 +80,8 @@ export function createProperties(fieldType: string, values: Object | null = null
 }
 
 export class SchemaDto {
+    public readonly displayName = StringHelper.firstNonEmpty(this.properties.label, this.name);
+
     constructor(
         public readonly id: string,
         public readonly name: string,
@@ -274,6 +279,11 @@ export class SchemaDetailsDto extends SchemaDto {
 }
 
 export class FieldDto {
+    public readonly displayName = StringHelper.firstNonEmpty(this.properties.label, this.name);
+    public readonly displayPlaceholder = this.properties.placeholder || '';
+
+    public readonly isLocalizable = this.partitioning !== 'invariant';
+
     constructor(
         public readonly fieldId: number,
         public readonly name: string,
@@ -346,6 +356,7 @@ export class StringFieldPropertiesDto extends FieldPropertiesDto {
     constructor(label: string | null, hints: string | null, placeholder: string | null,
         isRequired: boolean,
         isListField: boolean,
+        public readonly inlineEditable: boolean,
         public readonly editor: string,
         public readonly defaultValue?: string,
         public readonly pattern?: string,
@@ -406,6 +417,7 @@ export class NumberFieldPropertiesDto extends FieldPropertiesDto {
     constructor(label: string | null, hints: string | null, placeholder: string | null,
         isRequired: boolean,
         isListField: boolean,
+        public readonly inlineEditable: boolean,
         public readonly editor: string,
         public readonly defaultValue?: number,
         public readonly maxValue?: number,
@@ -514,6 +526,7 @@ export class BooleanFieldPropertiesDto extends FieldPropertiesDto {
     constructor(label: string | null, hints: string | null, placeholder: string | null,
         isRequired: boolean,
         isListField: boolean,
+        public readonly inlineEditable: boolean,
         public readonly editor: string,
         public readonly defaultValue?: boolean
     ) {
@@ -525,7 +538,7 @@ export class BooleanFieldPropertiesDto extends FieldPropertiesDto {
             return '';
         }
 
-        return value ? '✔' : '-';
+        return value ? 'Yes' : 'No';
     }
 
     public createValidators(isOptional: boolean): ValidatorFn[] {

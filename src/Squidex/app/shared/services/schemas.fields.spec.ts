@@ -117,7 +117,7 @@ describe('TagsField', () => {
 });
 
 describe('BooleanField', () => {
-    const field = createField(new BooleanFieldPropertiesDto(null, null, null, true, false, 'Checkbox'));
+    const field = createField(new BooleanFieldPropertiesDto(null, null, null, true, false, false, 'Checkbox'));
 
     it('should create validators', () => {
         expect(field.createValidators(false).length).toBe(1);
@@ -127,12 +127,12 @@ describe('BooleanField', () => {
         expect(field.formatValue(null)).toBe('');
     });
 
-    it('should format to checkmark if true', () => {
-        expect(field.formatValue(true)).toBe('✔');
+    it('should format to Yes if true', () => {
+        expect(field.formatValue(true)).toBe('Yes');
     });
 
-    it('should format to minus if false', () => {
-        expect(field.formatValue(false)).toBe('-');
+    it('should format to No if false', () => {
+        expect(field.formatValue(false)).toBe('No');
     });
 
     it('should return default value for default properties', () => {
@@ -230,7 +230,7 @@ describe('JsonField', () => {
 });
 
 describe('NumberField', () => {
-    const field = createField(new NumberFieldPropertiesDto(null, null, null, true, false, 'Input', undefined, 3, 1, [1, 2, 3]));
+    const field = createField(new NumberFieldPropertiesDto(null, null, null, true, false, false, 'Input', undefined, 3, 1, [1, 2, 3]));
 
     it('should create validators', () => {
         expect(field.createValidators(false).length).toBe(4);
@@ -276,7 +276,7 @@ describe('ReferencesField', () => {
 });
 
 describe('StringField', () => {
-    const field = createField(new StringFieldPropertiesDto(null, null, null, true, false, 'Input', undefined, 'pattern', undefined, 3, 1, ['1', '2']));
+    const field = createField(new StringFieldPropertiesDto(null, null, null, true, false, false, 'Input', undefined, 'pattern', undefined, 3, 1, ['1', '2']));
 
     it('should create validators', () => {
         expect(field.createValidators(false).length).toBe(5);
