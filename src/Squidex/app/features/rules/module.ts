@@ -12,7 +12,7 @@ import {
     HelpComponent,
     SqxFrameworkModule,
     SqxSharedModule
-} from 'shared';
+} from '@app/shared';
 
 import {
     AlgoliaActionComponent,
@@ -21,6 +21,7 @@ import {
     ContentChangedTriggerComponent,
     ElasticSearchActionComponent,
     FastlyActionComponent,
+    RuleEventBadgeClassPipe,
     RuleEventsPageComponent,
     RulesPageComponent,
     RuleWizardComponent,
@@ -61,6 +62,7 @@ const routes: Routes = [
         ContentChangedTriggerComponent,
         ElasticSearchActionComponent,
         FastlyActionComponent,
+        RuleEventBadgeClassPipe,
         RuleEventsPageComponent,
         RulesPageComponent,
         RuleWizardComponent,

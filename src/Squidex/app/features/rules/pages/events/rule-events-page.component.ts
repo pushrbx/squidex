@@ -13,7 +13,7 @@ import {
     Pager,
     RuleEventDto,
     RulesService
-} from 'shared';
+} from '@app/shared';
 
 @Component({
     selector: 'sqx-rule-events-page',
@@ -38,13 +38,13 @@ export class RuleEventsPageComponent implements OnInit {
         this.load();
     }
 
-    public load(showInfo = false) {
+    public load(notifyLoad = false) {
         this.rulesService.getEvents(this.ctx.appName, this.eventsPager.pageSize, this.eventsPager.skip)
             .subscribe(dtos => {
                 this.eventsItems = ImmutableArray.of(dtos.items);
                 this.eventsPager = this.eventsPager.setCount(dtos.total);
 
-                if (showInfo) {
+                if (notifyLoad) {
                     this.ctx.notifyInfo('Events reloaded.');
                 }
             }, error => {
@@ -75,18 +75,6 @@ export class RuleEventsPageComponent implements OnInit {
         this.eventsPager = this.eventsPager.goPrev();
 
         this.load();
-    }
-
-    public getBadgeClass(status: string) {
-        if (status === 'Retry') {
-            return 'warning';
-        } else if (status === 'Failed') {
-            return 'danger';
-        } else if (status === 'Pending') {
-            return 'secondary';
-        } else {
-            return status.toLowerCase();
-        }
     }
 }
 

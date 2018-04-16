@@ -13,10 +13,10 @@ import {
     CanDeactivateGuard,
     ResolveAppLanguagesGuard,
     ResolveContentGuard,
-    ResolvePublishedSchemaGuard,
+    SchemaMustExistPublishedGuard,
     SqxFrameworkModule,
     SqxSharedModule
-} from 'shared';
+} from '@app/shared';
 
 import {
     AssetsEditorComponent,
@@ -25,6 +25,7 @@ import {
     ContentPageComponent,
     ContentItemComponent,
     ContentsPageComponent,
+    ContentsSelectorComponent,
     ReferencesEditorComponent,
     SchemasPageComponent,
     SearchFormComponent
@@ -40,31 +41,20 @@ const routes: Routes = [
             },
             {
                 path: ':schemaName',
-                component: ContentsPageComponent,
+                canActivate: [SchemaMustExistPublishedGuard],
                 resolve: {
-                    schema: ResolvePublishedSchemaGuard, appLanguages: ResolveAppLanguagesGuard
+                    appLanguages: ResolveAppLanguagesGuard
                 },
                 children: [
                     {
+                        path: '',
+                        component: ContentsPageComponent,
+                        canDeactivate: [CanDeactivateGuard]
+                    },
+                    {
                         path: 'new',
                         component: ContentPageComponent,
-                        canDeactivate: [CanDeactivateGuard],
-                        children: [
-                            {
-                                path: 'assets',
-                                loadChildren: './../assets/module#SqxFeatureAssetsModule'
-                            },
-                            {
-                                path: 'references/:schemaName/:language',
-                                component: ContentsPageComponent,
-                                data: {
-                                    isReadOnly: true
-                                },
-                                resolve: {
-                                    schema: ResolvePublishedSchemaGuard
-                                }
-                            }
-                        ]
+                        canDeactivate: [CanDeactivateGuard]
                     },
                     {
                         path: ':contentId',
@@ -80,20 +70,6 @@ const routes: Routes = [
                                 data: {
                                     channel: 'contents.{contentId}'
                                 }
-                            },
-                            {
-                                path: 'references/:schemaName/:language',
-                                component: ContentsPageComponent,
-                                data: {
-                                    isReadOnly: true
-                                },
-                                resolve: {
-                                    schema: ResolvePublishedSchemaGuard
-                                }
-                            },
-                            {
-                                path: 'assets',
-                                loadChildren: './../assets/module#SqxFeatureAssetsModule'
                             }
                         ]
                     }
@@ -116,6 +92,7 @@ const routes: Routes = [
         ContentItemComponent,
         ContentPageComponent,
         ContentsPageComponent,
+        ContentsSelectorComponent,
         ReferencesEditorComponent,
         SchemasPageComponent,
         SearchFormComponent

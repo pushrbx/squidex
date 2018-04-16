@@ -11,17 +11,16 @@ import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import {
-    AppContext,
     AppLanguageDto,
+    AppsState,
     ContentDto,
     ContentsService,
-    FieldDto,
     ImmutableArray,
     MathHelper,
     SchemaDetailsDto,
     SchemasService,
     Types
-} from 'shared';
+} from '@app/shared';
 
 export const SQX_REFERENCES_EDITOR_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ReferencesEditorComponent), multi: true
@@ -32,7 +31,6 @@ export const SQX_REFERENCES_EDITOR_CONTROL_VALUE_ACCESSOR: any = {
     styleUrls: ['./references-editor.component.scss'],
     templateUrl: './references-editor.component.html',
     providers: [
-        AppContext,
         SQX_REFERENCES_EDITOR_CONTROL_VALUE_ACCESSOR
     ]
 })
@@ -46,15 +44,17 @@ export class ReferencesEditorComponent implements ControlValueAccessor, OnInit {
     @Input()
     public language: AppLanguageDto;
 
+    public isModalVisibible = false;
+
     public schema: SchemaDetailsDto;
 
     public contentItems = ImmutableArray.empty<ContentDto>();
-    public contentFields: FieldDto[];
 
     public isDisabled = false;
     public isInvalidSchema = false;
 
-    constructor(public readonly ctx: AppContext,
+    constructor(
+        private readonly appsState: AppsState,
         private readonly contentsService: ContentsService,
         private readonly schemasService: SchemasService
     ) {
@@ -65,11 +65,9 @@ export class ReferencesEditorComponent implements ControlValueAccessor, OnInit {
             return;
         }
 
-        this.schemasService.getSchema(this.ctx.appName, this.schemaId)
+        this.schemasService.getSchema(this.appsState.appName, this.schemaId)
             .subscribe(dto => {
                 this.schema = dto;
-
-                this.loadFields();
             }, error => {
                 this.isInvalidSchema = true;
             });
@@ -81,7 +79,7 @@ export class ReferencesEditorComponent implements ControlValueAccessor, OnInit {
         if (Types.isArrayOfString(value) && value.length > 0) {
             const contentIds: string[] = value;
 
-            this.contentsService.getContents(this.ctx.appName, this.schemaId, 10000, 0, undefined, contentIds)
+            this.contentsService.getContents(this.appsState.appName, this.schemaId, 10000, 0, undefined, contentIds)
                 .subscribe(dtos => {
                     this.contentItems = ImmutableArray.of(contentIds.map(id => dtos.items.find(c => c.id === id)).filter(r => !!r).map(r => r!));
                 });
@@ -100,20 +98,24 @@ export class ReferencesEditorComponent implements ControlValueAccessor, OnInit {
         this.callTouched = fn;
     }
 
-    public canDrop() {
-        const component = this;
-
-        return (dragData: any) => {
-            return dragData.content instanceof ContentDto && dragData.schemaId === component.schemaId && !component.contentItems.find(c => c.id === dragData.content.id);
-        };
+    public showModal() {
+        this.isModalVisibible = true;
     }
 
-    public onContentDropped(content: ContentDto) {
-        if (content) {
-            this.contentItems = this.contentItems.pushFront(content);
+    public hideModal() {
+        this.isModalVisibible = false;
+    }
 
+    public onContentsSelected(contents: ContentDto[]) {
+        for (let content of contents) {
+            this.contentItems = this.contentItems.push(content);
+        }
+
+        if (contents.length > 0) {
             this.updateValue();
         }
+
+        this.hideModal();
     }
 
     public onContentRemoving(content: ContentDto) {
@@ -141,17 +143,5 @@ export class ReferencesEditorComponent implements ControlValueAccessor, OnInit {
 
         this.callTouched();
         this.callChange(ids);
-    }
-
-    private loadFields() {
-        this.contentFields = this.schema.fields.filter(x => x.properties.isListField);
-
-        if (this.contentFields.length === 0 && this.schema.fields.length > 0) {
-            this.contentFields = [this.schema.fields[0]];
-        }
-
-        if (this.contentFields.length === 0) {
-            this.contentFields = [<any>{}];
-        }
     }
 }

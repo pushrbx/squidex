@@ -6,10 +6,10 @@
  */
 
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { allParams } from 'framework';
+import { allParams } from '@app/framework';
 
 import { ContentDto, ContentsService } from './../services/contents.service';
 
@@ -21,26 +21,12 @@ export class ResolveContentGuard implements Resolve<ContentDto | null> {
     ) {
     }
 
-    public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ContentDto | null> {
+    public resolve(route: ActivatedRouteSnapshot): Observable<ContentDto | null> {
         const params = allParams(route);
 
         const appName = params['appName'];
-
-        if (!appName) {
-            throw 'Route must contain app name.';
-        }
-
-        const schemaName = params['schemaName'];
-
-        if (!schemaName) {
-            throw 'Route must contain schema name.';
-        }
-
         const contentId = params['contentId'];
-
-        if (!contentId) {
-            throw 'Route must contain content id.';
-        }
+        const schemaName = params['schemaName'];
 
         const result =
             this.contentsService.getContent(appName, schemaName, contentId)

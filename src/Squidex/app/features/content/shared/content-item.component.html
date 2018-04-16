@@ -1,11 +1,11 @@
-<td class="cell-select" *ngIf="!isReadOnly" (click)="shouldStop($event)">
+<td class="cell-select" *ngIf="!isReference" (click)="shouldStop($event)">
     <input type="checkbox" class="form-control"
         [ngModel]="selected" 
         (ngModelChange)="selectedChange.emit($event);"
         (click)="$event.stopPropagation()" />
 </td>
 
-<td class="cell-auto" *ngFor="let field of schemaFields; let i = index" (click)="shouldStop($event)">
+<td class="cell-auto" *ngFor="let field of schema.listFields; let i = index" (click)="shouldStop($event)">
     <div *ngIf="field.properties.inlineEditable && !isReadOnly" [formGroup]="form" (click)="$event.stopPropagation()">
         <div [ngSwitch]="field.properties.fieldType">
             <div *ngSwitchCase="'Number'">
@@ -56,21 +56,21 @@
     </div>
 </td>
 <td class="cell-time" (click)="shouldStop($event)">
-    <span *ngIf="!content.scheduledTo">
+    <ng-container *ngIf="!content.scheduledTo">
         <span class="content-status content-status-{{content.status | lowercase}}" #statusIcon>
             <i class="icon-circle"></i>
         </span>
     
         <sqx-tooltip [target]="statusIcon">{{content.status}}</sqx-tooltip>
-    </span>
+    </ng-container>
 
-    <span *ngIf="content.scheduledTo">
+    <ng-container *ngIf="content.scheduledTo">
         <span class="content-status content-status-{{content.scheduledTo | lowercase}}" #statusIcon>
             <i class="icon-clock"></i>
         </span>
     
         <sqx-tooltip [target]="statusIcon">Will be set to '{{content.scheduledTo}}' at {{content.scheduledAt | sqxFullDateTime}}</sqx-tooltip>
-    </span>
+    </ng-container>
     
     <small class="item-modified">{{content.lastModified | sqxFromNow}}</small>
 </td>
