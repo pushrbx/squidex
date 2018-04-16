@@ -1,0 +1,930 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1a983a50-ac66-4e25-a5af-ffaea1f5002a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/Squidex.sln.DotSettings" afterPath="$PROJECT_DIR$/Squidex.sln.DotSettings" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="WebhookAction.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/Actions/WebhookAction.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding>
+                <marker date="1517745151124" expanded="true" signature="0:365" ph="/* ========================================================================== ... */" />
+                <marker date="1517745151124" expanded="false" signature="373:410" ph="..." />
+                <marker date="1517745151124" expanded="true" signature="460:780" ph="{...}" />
+                <marker date="1517745151124" expanded="true" signature="551:778" ph="{...}" />
+                <marker date="1517745151124" expanded="true" signature="712:772" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApiAuthorizeAttribute.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Squidex/Pipeline/ApiAuthorizeAttribute.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="12" column="59" lean-forward="false" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
+              <folding>
+                <marker date="1516463824585" expanded="true" signature="0:365" ph="/* ========================================================================== ... */" />
+                <marker date="1516463824585" expanded="false" signature="373:453" ph="..." />
+                <marker date="1516463824585" expanded="true" signature="481:711" ph="{...}" />
+                <marker date="1516463824585" expanded="true" signature="543:709" ph="{...}" />
+                <marker date="1516463824585" expanded="true" signature="588:703" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>IRuleActionHandler</find>
+      <find>rule-element-Web</find>
+      <find>icon-action-Web</find>
+      <find>icon-action</find>
+      <find>RuleActionVali</find>
+      <find>rule-element</find>
+      <find>&quot;</find>
+      <find>RuleActionDto</find>
+      <find>RuleTests</find>
+      <find>RuleServiceTests</find>
+      <find>CreateRuleDto</find>
+      <find>WebhookActi</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>'</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/Actions/AzureQueueAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Entities/obj/Debug/netstandard2.0/Squidex.Domain.Apps.Entities.AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/Models/Actions/WebhookActionDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/Models/Actions/ElasticSearchActionDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C8BCFD18-E7FF-4EBE-AE59-6EB2C23B4A8E/63/cbea010c/Dictionary`2.cs" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex/Config/Options.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/Models/Converters/RuleActionDtoFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/Models/Converters/RuleConverter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Infrastructure/EventSourcing/Envelope{T}.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex/Config/Domain/ReadServices.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Entities/Contents/ContentEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/Squidex.Domain.Apps.Core.Tests/Model/Rules/RuleTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Entities/Contents/IContentEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DF7CC359-2DD4-46A4-BC74-E6636EF3F081/32/1f3e95af/AssertionExtensions.cs" root0="SKIP_INSPECTION" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/75DCB0D4-205E-42AD-8496-24FEE29EEC94/e5/8994c891/IdentityServerAuthenticationDefaults.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/Squidex.Domain.Apps.Core.Tests/Operations/HandleRules/RuleServiceTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Operations/HandleRules/RuleActionHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/Squidex.Infrastructure.Tests/MongoDb/BsonConverterTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Infrastructure/Json/TypeNameSerializationBinder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Infrastructure/SearchEngines/ISearchEngine.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Contents/ContentData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Operations/HandleRules/IRuleActionHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/Squidex.Domain.Apps.Entities.Tests/Rules/RuleEnqueuerTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Infrastructure/TypeNameRegistry.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Operations/HandleRules/Actions/WebhookActionHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Operations/HandleRules/Actions/ElasticSearchActionHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Infrastructure/CollectionExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Entities/IAppProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/ApiController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Entities/Rules/Guards/RuleActionValidator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex/Pipeline/AppApiFilter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Entities/Rules/Guards/GuardRule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Infrastructure.ElasticSearch/DefaultElasticClientFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Entities/Rules/Commands/RuleEditCommand.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5D29DFC5-DB26-48B3-885B-2CF13195E357/9e/d10a4286/ElasticLowLevelClient.cs" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Infrastructure.ElasticSearch/ElasticSearchClient.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Infrastructure.ElasticSearch/IElasticLowLevelClientFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Entities/Rules/Commands/DisableRule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex/Pipeline/ApiAuthorizeAttribute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Entities/Rules/Repositories/IRuleRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex/Pipeline/ApiExceptionFilterAttribute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Events/SquidexEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Events/AppEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/Squidex.Domain.Apps.Entities.Tests/TestHelpers/AssertHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C8BCFD18-E7FF-4EBE-AE59-6EB2C23B4A8E/d7/910c2360/AsyncTaskMethodBuilder`1.cs" root0="SKIP_INSPECTION" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C8BCFD18-E7FF-4EBE-AE59-6EB2C23B4A8E/5a/763ba187/Thread.cs" root0="SKIP_INSPECTION" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C8BCFD18-E7FF-4EBE-AE59-6EB2C23B4A8E/d3/efc41a70/ExecutionContext.cs" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/RulesController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Infrastructure/StringExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/Models/CreateRuleDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/Models/RuleActionDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/Actions/WebhookAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/RuleAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/IRuleActionVisitor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/Models/RuleDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/Actions/ElasticSearchAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5D29DFC5-DB26-48B3-885B-2CF13195E357/2a/973abc4d/ConnectionConfiguration.cs" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/Squidex.Domain.Apps.Entities/Rules/Guards/IRuleActionValidator.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/Actions/lRuleActionValidator.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/Actions/WebhookActionValidator.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/Actions/IRuleActionValidator.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex.Infrastructure.SearchEngines/Class1.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/ISearchIndexer.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex.Infrastructure.SearchEngines/ISearchEngine.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex.Infrastructure.ElasticSearch/Class1.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex/app/features/rules/pages/rules/actions/elasticsearch-action.component.ts.html" />
+        <option value="$PROJECT_DIR$/src/Squidex/app/features/rules/pages/rules/actions/elasticsearch-action.component.scss" />
+        <option value="$PROJECT_DIR$/src/Squidex/app/features/rules/declarations.ts" />
+        <option value="$PROJECT_DIR$/src/Squidex/app/theme/icomoon/style.css" />
+        <option value="$PROJECT_DIR$/src/Squidex/app/features/rules/pages/rules/rule-wizard.component.html" />
+        <option value="$PROJECT_DIR$/src/Squidex/appsettings.json" />
+        <option value="$PROJECT_DIR$/src/Squidex/app/features/rules/pages/rules/rule-wizard.component.ts" />
+        <option value="$PROJECT_DIR$/src/Squidex.Infrastructure/SearchEngines/ISearchEngine.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex.Infrastructure.ElasticSearch/IElasticLowLevelClientFactory.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex.Infrastructure.ElasticSearch/DefaultElasticClientFactory.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex/app/features/rules/pages/rules/actions/elasticsearch-action.component.ts" />
+        <option value="$PROJECT_DIR$/src/Squidex.Infrastructure/StringExtensions.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex.Infrastructure.ElasticSearch/ElasticSearchClient.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex/app/features/rules/pages/rules/actions/elasticsearch-action.component.html" />
+        <option value="$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/Models/RuleActionDto.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/Actions/ElasticSearchActionValidator.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex/Config/Domain/ReadServices.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/Models/Actions/ElasticSearchActionDto.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Operations/HandleRules/Actions/ElasticSearchActionHandler.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/RuleAction.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/Actions/WebhookAction.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/IRuleActionVisitor.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/Actions/ElasticSearchAction.cs" />
+        <option value="$PROJECT_DIR$/tests/Squidex.Domain.Apps.Core.Tests/Operations/HandleRules/RuleServiceTests.cs" />
+        <option value="$PROJECT_DIR$/tests/Squidex.Domain.Apps.Core.Tests/Model/Rules/RuleTests.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex/app/theme/_rules.scss" />
+        <option value="$PROJECT_DIR$/src/Squidex/app/features/rules/module.ts" />
+        <option value="$PROJECT_DIR$/src/Squidex/app/shared/services/rules.service.ts" />
+        <option value="$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/Models/Converters/RuleActionDtoFactory.cs" />
+        <option value="$PROJECT_DIR$/src/Squidex.Domain.Apps.Entities/Rules/Guards/RuleActionValidator.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/src/Squidex/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="268" />
+    <option name="y" value="25" />
+    <option name="width" value="1394" />
+    <option name="height" value="997" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>CoffeeScript</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Squidex (23 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Squidex (23 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Squidex" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Squidex (23 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Squidex" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Pipeline" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-file-system" value="false" />
+        <option name="show-all-items" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="settings.editor.selected.configurable" value="CodeInspectionSettingsId" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/src/Squidex/bin/Debug/netcoreapp2.0/Squidex.dll" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/Squidex" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <envs>
+        <env name="ASPNETCORE_ENVIRONMENT" value="Development" />
+        <env name="ASPNETCORE_URLS" value="http://localhost:5000" />
+      </envs>
+      <option name="USE_MONO" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/src/Squidex/Squidex.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.0" />
+      <browser url="http://localhost:5000" />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1a983a50-ac66-4e25-a5af-ffaea1f5002a" name="Default" comment="" />
+      <created>1516464004767</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1516464004767</updated>
+      <workItem from="1516464022707" duration="13405000" />
+      <workItem from="1516549787213" duration="86000" />
+      <workItem from="1516549896225" duration="8865000" />
+      <workItem from="1517051433757" duration="17364000" />
+      <workItem from="1517148769069" duration="6716000" />
+      <workItem from="1517582939132" duration="1577000" />
+      <workItem from="1517667531994" duration="599000" />
+      <workItem from="1517674937557" duration="6968000" />
+      <workItem from="1521380887132" duration="167000" />
+    </task>
+    <task id="LOCAL-00001" summary="added host url to elastic search action handler">
+      <created>1517062319266</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1517062319266</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added support for elastic search basic authentication">
+      <created>1517071076543</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1517071076543</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added replaceable $SCHEMA_NAME placeholder to es action handler">
+      <created>1517076978635</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1517076978635</updated>
+    </task>
+    <task id="LOCAL-00004" summary="cleanup">
+      <created>1517077132854</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1517077132854</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix for swagger">
+      <created>1517077983145</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1517077983145</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fixed errors, added missing bits">
+      <created>1517156938852</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1517156938852</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="55747000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="268" y="25" width="1924" height="1082" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Errors In Solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Unit Tests" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2769477" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978564" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33440515" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added host url to elastic search action handler" />
+    <MESSAGE value="added support for elastic search basic authentication" />
+    <MESSAGE value="added replaceable $SCHEMA_NAME placeholder to es action handler" />
+    <MESSAGE value="cleanup" />
+    <MESSAGE value="fix for swagger" />
+    <MESSAGE value="fixed errors, added missing bits" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed errors, added missing bits" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint type="DotNet Exception Breakpoints">
+          <properties exception="System.NullReferenceException" displayValue="System.NullReferenceException" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
+      </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="20" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>target.DateTime</expression-string>
+        <language-id>C#</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>source.DateTime</expression-string>
+        <language-id>C#</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>target.DateTime == source.DateTime</expression-string>
+        <language-id>C#</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>PostData.Serializable(content)</expression-string>
+        <language-id>C#</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>PostData.Serializable(content).Serializable()</expression-string>
+        <language-id>C#</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>PostData.Serializable(content).ToString()</expression-string>
+        <language-id>C#</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>PostData.Serializable(content).String()</expression-string>
+        <language-id>C#</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>payload[&quot;id&quot;].Value</expression-string>
+        <language-id>C#</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>payload[&quot;id&quot;]</expression-string>
+        <language-id>C#</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5D29DFC5-DB26-48B3-885B-2CF13195E357/2a/973abc4d/ConnectionConfiguration.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-81">
+          <caret line="29" column="11" lean-forward="false" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Infrastructure.ElasticSearch/IElasticLowLevelClientFactory.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" column="85" lean-forward="false" selection-start-line="17" selection-start-column="85" selection-end-line="17" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/app/features/rules/pages/rules/actions/webhook-action.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="53" column="5" lean-forward="false" selection-start-line="45" selection-start-column="4" selection-end-line="53" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/app/features/rules/pages/rules/actions/elasticsearch-action.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="43" column="36" lean-forward="false" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Operations/HandleRules/Actions/WebhookActionHandler.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="23" column="24" lean-forward="false" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Entities/IAppProvider.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/Pipeline/AppApiFilter.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="40" column="47" lean-forward="false" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/ApiController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-90">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Events/SquidexEvent.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Events/AppEvent.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" column="45" lean-forward="false" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/app/features/rules/pages/rules/actions/elasticsearch-action.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="64" column="91" lean-forward="false" selection-start-line="64" selection-start-column="91" selection-end-line="64" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Infrastructure/StringExtensions.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6270">
+          <caret line="422" column="9" lean-forward="false" selection-start-line="422" selection-start-column="9" selection-end-line="422" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Infrastructure.ElasticSearch/DefaultElasticClientFactory.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/Models/Converters/RuleConverter.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="59" column="50" lean-forward="false" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/Models/RuleDto.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-45">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/Models/RuleActionDto.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="17" column="26" lean-forward="false" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/Models/CreateRuleDto.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/Pipeline/ApiExceptionFilterAttribute.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="56" column="105" lean-forward="false" selection-start-line="56" selection-start-column="105" selection-end-line="56" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/Models/Actions/ElasticSearchActionDto.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="32" column="76" lean-forward="false" selection-start-line="32" selection-start-column="76" selection-end-line="32" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C8BCFD18-E7FF-4EBE-AE59-6EB2C23B4A8E/63/cbea010c/Dictionary`2.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="190" column="8" lean-forward="false" selection-start-line="190" selection-start-column="8" selection-end-line="190" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C8BCFD18-E7FF-4EBE-AE59-6EB2C23B4A8E/d7/910c2360/AsyncTaskMethodBuilder`1.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="20" column="6" lean-forward="false" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C8BCFD18-E7FF-4EBE-AE59-6EB2C23B4A8E/d3/efc41a70/ExecutionContext.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="114" column="6" lean-forward="false" selection-start-line="114" selection-start-column="6" selection-end-line="114" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C8BCFD18-E7FF-4EBE-AE59-6EB2C23B4A8E/5a/763ba187/Thread.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="101" column="6" lean-forward="false" selection-start-line="101" selection-start-column="6" selection-end-line="101" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/RulesController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="79" column="61" lean-forward="false" selection-start-line="79" selection-start-column="61" selection-end-line="79" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Infrastructure/SearchEngines/ISearchEngine.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Infrastructure/CollectionExtensions.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="103" column="107" lean-forward="false" selection-start-line="103" selection-start-column="107" selection-end-line="103" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Infrastructure/TypeNameRegistry.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="877">
+          <caret line="121" column="43" lean-forward="false" selection-start-line="121" selection-start-column="43" selection-end-line="121" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Infrastructure/Json/TypeNameSerializationBinder.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Infrastructure.ElasticSearch/ElasticSearchClient.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="18" column="52" lean-forward="false" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/Config/Domain/ReadServices.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="877">
+          <caret line="107" column="94" lean-forward="false" selection-start-line="107" selection-start-column="94" selection-end-line="107" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/Models/Actions/WebhookActionDto.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Operations/HandleRules/RuleActionHandler.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="22" column="128" lean-forward="false" selection-start-line="22" selection-start-column="128" selection-end-line="22" selection-end-column="128" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Operations/HandleRules/Actions/ElasticSearchActionHandler.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="22" column="58" lean-forward="false" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/Actions/AzureQueueAction.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/RuleAction.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="67" lean-forward="false" selection-start-line="11" selection-start-column="67" selection-end-line="11" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/IRuleActionVisitor.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="3" lean-forward="false" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Squidex.Domain.Apps.Core.Tests/Operations/HandleRules/RuleServiceTests.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Squidex.Domain.Apps.Core.Tests/Model/Rules/RuleTests.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/Areas/Api/Controllers/Rules/Models/Converters/RuleActionDtoFactory.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="55" column="9" lean-forward="false" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
+          <folding>
+            <marker date="1517783042473" expanded="true" signature="0:365" ph="/* ========================================================================== ... */" />
+            <marker date="1517783042473" expanded="false" signature="373:549" ph="..." />
+            <marker date="1517783042473" expanded="true" signature="697:1890" ph="{...}" />
+            <marker date="1517783042473" expanded="true" signature="835:855" ph="{...}" />
+            <marker date="1517783042473" expanded="true" signature="922:990" ph="{...}" />
+            <marker date="1517783042473" expanded="true" signature="1048:1137" ph="{...}" />
+            <marker date="1517783042473" expanded="true" signature="1198:1290" ph="{...}" />
+            <marker date="1517783042473" expanded="true" signature="1347:1435" ph="{...}" />
+            <marker date="1517783042473" expanded="true" signature="1491:1578" ph="{...}" />
+            <marker date="1517783042473" expanded="true" signature="1636:1725" ph="{...}" />
+            <marker date="1517783042473" expanded="true" signature="1789:1884" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DF7CC359-2DD4-46A4-BC74-E6636EF3F081/32/1f3e95af/AssertionExtensions.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12675">
+          <caret line="854" column="23" lean-forward="false" selection-start-line="854" selection-start-column="23" selection-end-line="854" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Squidex.Infrastructure.Tests/MongoDb/BsonConverterTests.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1710">
+          <caret line="121" column="9" lean-forward="false" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="9" />
+          <folding>
+            <marker date="1516463824617" expanded="true" signature="0:365" ph="/* ========================================================================== ... */" />
+            <marker date="1516463824617" expanded="false" signature="373:527" ph="..." />
+            <marker date="1516463824617" expanded="true" signature="569:5398" ph="{...}" />
+            <marker date="1516463824617" expanded="true" signature="607:5396" ph="{...}" />
+            <marker date="1516463824617" expanded="true" signature="645:3386" ph="{...}" />
+            <marker date="1516463824617" expanded="true" signature="2241:3376" ph="{...}" />
+            <marker date="1516463824617" expanded="true" signature="2316:3090" ph="{...}" />
+            <marker date="1516463824617" expanded="true" signature="3120:3330" ph="{...}" />
+            <marker date="1516463824617" expanded="true" signature="3637:3801" ph="{...}" />
+            <marker date="1516463824617" expanded="true" signature="3871:4777" ph="{...}" />
+            <marker date="1516463824617" expanded="true" signature="3922:4247" ph="{...}" />
+            <marker date="1516463824617" expanded="true" signature="3964:4010" ph="{...}" />
+            <marker date="1516463824617" expanded="true" signature="4052:4233" ph="{...}" />
+            <marker date="1516463824617" expanded="true" signature="4122:4214" ph="{...}" />
+            <marker date="1516463824617" expanded="true" signature="4377:4491" ph="{...}" />
+            <marker date="1516463824617" expanded="true" signature="4608:4767" ph="{...}" />
+            <marker date="1516463824617" expanded="true" signature="4855:5390" ph="{...}" />
+            <marker date="1516463824617" expanded="true" signature="4993:5108" ph="{...}" />
+            <marker date="1516463824617" expanded="true" signature="5225:5380" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/Actions/WebhookActionValidator.cs" />
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/Actions/ElasticSearchActionValidator.cs" />
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Entities/Rules/Guards/RuleActionValidator.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding>
+            <marker date="1517783933652" expanded="true" signature="0:365" ph="/* ========================================================================== ... */" />
+            <marker date="1517783933652" expanded="true" signature="373:596" ph="..." />
+            <marker date="1517783933652" expanded="true" signature="649:5736" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="752:5734" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="848:1017" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="1096:1821" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="1219:1347" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="1405:1543" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="1605:1736" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="1903:2681" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="2036:2184" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="2242:2367" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="2456:2596" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="2759:3293" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="2882:3010" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="3072:3208" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="3370:3750" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="3514:3665" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="3829:4180" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="3959:4095" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="4265:5728" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="4423:4554" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="4648:4779" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="4839:4968" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="5038:5179" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="5241:5375" ph="{...}" />
+            <marker date="1517783933652" expanded="true" signature="5519:5643" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/Actions/ElasticSearchAction.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="21" column="32" lean-forward="false" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+          <folding>
+            <marker date="1517745501521" expanded="true" signature="0:392" ph="/* ========================================================================== ... */" />
+            <marker date="1517745501521" expanded="false" signature="400:437" ph="..." />
+            <marker date="1517745501521" expanded="true" signature="583:1582" ph="{...}" />
+            <marker date="1517745501521" expanded="true" signature="818:920" ph="/// The url of elastic search. e.g. http://localhost:9200 ... " />
+            <marker date="1517745501521" expanded="true" signature="974:1089" ph="/// The name of the type for the elasticsearch mappings of the schema. ... " />
+            <marker date="1517745501521" expanded="true" signature="1153:1252" ph="/// The name of the index this action will operate on. ... " />
+            <marker date="1517745501521" expanded="true" signature="1516:1576" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/app/shared/services/rules.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="32" column="30" lean-forward="false" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/app/features/rules/module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="718">
+          <caret line="65" column="37" lean-forward="false" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#118#159#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/app/theme/_rules.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="778">
+          <caret line="87" column="27" lean-forward="false" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex.Domain.Apps.Core.Model/Rules/Actions/WebhookAction.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <marker date="1517745151124" expanded="true" signature="0:365" ph="/* ========================================================================== ... */" />
+            <marker date="1517745151124" expanded="false" signature="373:410" ph="..." />
+            <marker date="1517745151124" expanded="true" signature="460:780" ph="{...}" />
+            <marker date="1517745151124" expanded="true" signature="551:778" ph="{...}" />
+            <marker date="1517745151124" expanded="true" signature="712:772" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/75DCB0D4-205E-42AD-8496-24FEE29EEC94/e5/8994c891/IdentityServerAuthenticationDefaults.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="24" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Squidex/Pipeline/ApiAuthorizeAttribute.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" column="59" lean-forward="false" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
+          <folding>
+            <marker date="1516463824585" expanded="true" signature="0:365" ph="/* ========================================================================== ... */" />
+            <marker date="1516463824585" expanded="false" signature="373:453" ph="..." />
+            <marker date="1516463824585" expanded="true" signature="481:711" ph="{...}" />
+            <marker date="1516463824585" expanded="true" signature="543:709" ph="{...}" />
+            <marker date="1516463824585" expanded="true" signature="588:703" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

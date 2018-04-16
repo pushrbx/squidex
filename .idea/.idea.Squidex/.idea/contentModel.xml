@@ -1,0 +1,2487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="Solution Items" t="Include" />
+      <e p="Squidex.sln" t="IncludeFlat" />
+      <e p="domain" t="Include">
+        <e p="apps" t="Include" />
+        <e p="users" t="Include" />
+      </e>
+      <e p="infrastructure" t="Include" />
+      <e p="migrations" t="Include" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="src/Squidex" t="IncludeRecursive">
+        <e p=".sass-lint.yml" t="Include" />
+        <e p="AppConfiguration.cs" t="Include" />
+        <e p="AppServices.cs" t="Include" />
+        <e p="Areas" t="Include">
+          <e p="Api" t="Include">
+            <e p="Config" t="Include">
+              <e p="Swagger" t="Include">
+                <e p="ODataQueryParamsProcessor.cs" t="Include" />
+                <e p="ScopesProcessor.cs" t="Include" />
+                <e p="SwaggerExtensions.cs" t="Include" />
+                <e p="SwaggerServices.cs" t="Include" />
+                <e p="XmlResponseTypesProcessor.cs" t="Include" />
+                <e p="XmlTagProcessor.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Controllers" t="Include">
+              <e p="ApiController.cs" t="Include" />
+              <e p="Apps" t="Include">
+                <e p="AppClientsController.cs" t="Include" />
+                <e p="AppContributorsController.cs" t="Include" />
+                <e p="AppLanguagesController.cs" t="Include" />
+                <e p="AppPatternsController.cs" t="Include" />
+                <e p="AppsController.cs" t="Include" />
+                <e p="Models" t="Include">
+                  <e p="AddAppLanguageDto.cs" t="Include" />
+                  <e p="AppCreatedDto.cs" t="Include" />
+                  <e p="AppDto.cs" t="Include" />
+                  <e p="AppLanguageDto.cs" t="Include" />
+                  <e p="AppPatternDto.cs" t="Include" />
+                  <e p="AssignAppContributorDto.cs" t="Include" />
+                  <e p="ClientDto.cs" t="Include" />
+                  <e p="ContributorDto.cs" t="Include" />
+                  <e p="ContributorsDto.cs" t="Include" />
+                  <e p="CreateAppClientDto.cs" t="Include" />
+                  <e p="CreateAppDto.cs" t="Include" />
+                  <e p="UpdateAppClientDto.cs" t="Include" />
+                  <e p="UpdateAppLanguageDto.cs" t="Include" />
+                  <e p="UpdatePatternDto.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Assets" t="Include">
+                <e p="AssetConfig.cs" t="Include" />
+                <e p="AssetContentController.cs" t="Include" />
+                <e p="AssetsController.cs" t="Include" />
+                <e p="Models" t="Include">
+                  <e p="AssetCreatedDto.cs" t="Include" />
+                  <e p="AssetDto.cs" t="Include" />
+                  <e p="AssetReplacedDto.cs" t="Include" />
+                  <e p="AssetUpdateDto.cs" t="Include" />
+                  <e p="AssetsDto.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Content" t="Include">
+                <e p="ContentSwaggerController.cs" t="Include" />
+                <e p="ContentsController.cs" t="Include" />
+                <e p="Generator" t="Include">
+                  <e p="SchemaSwaggerGenerator.cs" t="Include" />
+                  <e p="SchemasSwaggerGenerator.cs" t="Include" />
+                </e>
+                <e p="Models" t="Include">
+                  <e p="ContentDto.cs" t="Include" />
+                  <e p="ContentsDto.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Docs" t="Include">
+                <e p="DocsController.cs" t="Include" />
+              </e>
+              <e p="DocsVM.cs" t="Include" />
+              <e p="EventConsumers" t="Include">
+                <e p="EventConsumersController.cs" t="Include" />
+                <e p="Models" t="Include">
+                  <e p="EventConsumerDto.cs" t="Include" />
+                </e>
+              </e>
+              <e p="History" t="Include">
+                <e p="HistoryController.cs" t="Include" />
+                <e p="Models" t="Include">
+                  <e p="HistoryEventDto.cs" t="Include" />
+                </e>
+              </e>
+              <e p="JsonInheritanceConverter.cs" t="Include" />
+              <e p="LanguageDto.cs" t="Include" />
+              <e p="Languages" t="Include">
+                <e p="LanguagesController.cs" t="Include" />
+              </e>
+              <e p="Ping" t="Include">
+                <e p="PingController.cs" t="Include" />
+              </e>
+              <e p="Plans" t="Include">
+                <e p="AppPlansController.cs" t="Include" />
+                <e p="Models" t="Include">
+                  <e p="AppPlansDto.cs" t="Include" />
+                  <e p="ChangePlanDto.cs" t="Include" />
+                  <e p="PlanChangedDto.cs" t="Include" />
+                  <e p="PlanDto.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Rules" t="Include">
+                <e p="Models" t="Include">
+                  <e p="Actions" t="Include">
+                    <e p="AlgoliaActionDto.cs" t="Include" />
+                    <e p="AzureQueueActionDto.cs" t="Include" />
+                    <e p="ElasticSearchActionDto.cs" t="Include" />
+                    <e p="FastlyActionDto.cs" t="Include" />
+                    <e p="SlackActionDto.cs" t="Include" />
+                    <e p="WebhookActionDto.cs" t="Include" />
+                  </e>
+                  <e p="Converters" t="Include">
+                    <e p="RuleActionDtoFactory.cs" t="Include" />
+                    <e p="RuleConverter.cs" t="Include" />
+                    <e p="RuleTriggerDtoFactory.cs" t="Include" />
+                  </e>
+                  <e p="CreateRuleDto.cs" t="Include" />
+                  <e p="RuleActionDto.cs" t="Include" />
+                  <e p="RuleDto.cs" t="Include" />
+                  <e p="RuleEventDto.cs" t="Include" />
+                  <e p="RuleEventsDto.cs" t="Include" />
+                  <e p="RuleTriggerDto.cs" t="Include" />
+                  <e p="Triggers" t="Include">
+                    <e p="AssetChangedTriggerDto.cs" t="Include" />
+                    <e p="ContentChangedTriggerDto.cs" t="Include" />
+                    <e p="ContentChangedTriggerSchemaDto.cs" t="Include" />
+                  </e>
+                  <e p="UpdateRuleDto.cs" t="Include" />
+                </e>
+                <e p="RulesController.cs" t="Include" />
+              </e>
+              <e p="Schemas" t="Include">
+                <e p="Models" t="Include">
+                  <e p="AddFieldDto.cs" t="Include" />
+                  <e p="ConfigureScriptsDto.cs" t="Include" />
+                  <e p="Converters" t="Include">
+                    <e p="FieldPropertiesDtoFactory.cs" t="Include" />
+                    <e p="SchemaConverter.cs" t="Include" />
+                  </e>
+                  <e p="CreateSchemaDto.cs" t="Include" />
+                  <e p="CreateSchemaFieldDto.cs" t="Include" />
+                  <e p="FieldDto.cs" t="Include" />
+                  <e p="FieldPropertiesDto.cs" t="Include" />
+                  <e p="Fields" t="Include">
+                    <e p="AssetsFieldPropertiesDto.cs" t="Include" />
+                    <e p="BooleanFieldPropertiesDto.cs" t="Include" />
+                    <e p="DateTimeFieldPropertiesDto.cs" t="Include" />
+                    <e p="GeolocationFieldPropertiesDto.cs" t="Include" />
+                    <e p="JsonFieldPropertiesDto.cs" t="Include" />
+                    <e p="NumberFieldPropertiesDto.cs" t="Include" />
+                    <e p="ReferencesFieldPropertiesDto.cs" t="Include" />
+                    <e p="StringFieldPropertiesDto.cs" t="Include" />
+                    <e p="TagsFieldPropertiesDto.cs" t="Include" />
+                  </e>
+                  <e p="ReorderFieldsDto.cs" t="Include" />
+                  <e p="SchemaDetailsDto.cs" t="Include" />
+                  <e p="SchemaDto.cs" t="Include" />
+                  <e p="SchemaPropertiesDto.cs" t="Include" />
+                  <e p="UpdateFieldDto.cs" t="Include" />
+                  <e p="UpdateSchemaDto.cs" t="Include" />
+                </e>
+                <e p="SchemaFieldsController.cs" t="Include" />
+                <e p="SchemasController.cs" t="Include" />
+              </e>
+              <e p="Statistics" t="Include">
+                <e p="Models" t="Include">
+                  <e p="CallsUsageDto.cs" t="Include" />
+                  <e p="CurrentCallsDto.cs" t="Include" />
+                  <e p="CurrentStorageDto.cs" t="Include" />
+                  <e p="StorageUsageDto.cs" t="Include" />
+                </e>
+                <e p="UsagesController.cs" t="Include" />
+              </e>
+              <e p="UI" t="Include">
+                <e p="Models" t="Include">
+                  <e p="UISettingsDto.cs" t="Include" />
+                </e>
+                <e p="UIController.cs" t="Include" />
+              </e>
+              <e p="Users" t="Include">
+                <e p="Assets" t="Include">
+                  <e p="Avatar.png" t="Include" />
+                </e>
+                <e p="Models" t="Include">
+                  <e p="CreateUserDto.cs" t="Include" />
+                  <e p="UpdateUserDto.cs" t="Include" />
+                  <e p="UserCreatedDto.cs" t="Include" />
+                  <e p="UserDto.cs" t="Include" />
+                  <e p="UsersDto.cs" t="Include" />
+                </e>
+                <e p="UserManagementController.cs" t="Include" />
+                <e p="UsersController.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Startup.cs" t="Include" />
+            <e p="Views" t="Include">
+              <e p="Shared" t="Include">
+                <e p="Docs.cshtml" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Frontend" t="Include">
+            <e p="Middlewares" t="Include">
+              <e p="WebpackMiddleware.cs" t="Include" />
+            </e>
+            <e p="Startup.cs" t="Include" />
+          </e>
+          <e p="IdentityServer" t="Include">
+            <e p="Config" t="Include">
+              <e p="Cert" t="Include">
+                <e p="IdentityCert.pfx" t="Include" />
+                <e p="IdentityCert.snk" t="Include" />
+              </e>
+              <e p="IdentityServerExtensions.cs" t="Include" />
+              <e p="IdentityServerServices.cs" t="Include" />
+              <e p="LazyClientStore.cs" t="Include" />
+            </e>
+            <e p="Controllers" t="Include">
+              <e p="Account" t="Include">
+                <e p="AccountController.cs" t="Include" />
+                <e p="ConsentModel.cs" t="Include" />
+                <e p="ConsentVM.cs" t="Include" />
+                <e p="LoginModel.cs" t="Include" />
+                <e p="LoginVM.cs" t="Include" />
+              </e>
+              <e p="Error" t="Include">
+                <e p="ErrorController.cs" t="Include" />
+              </e>
+              <e p="Extensions.cs" t="Include" />
+              <e p="ExternalProvider.cs" t="Include" />
+              <e p="IdentityServerController.cs" t="Include" />
+              <e p="Profile" t="Include">
+                <e p="ChangePasswordModel.cs" t="Include" />
+                <e p="ChangeProfileModel.cs" t="Include" />
+                <e p="ProfileController.cs" t="Include" />
+                <e p="ProfileVM.cs" t="Include" />
+                <e p="RemoveLoginModel.cs" t="Include" />
+                <e p="SetPasswordModel.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Startup.cs" t="Include" />
+            <e p="Views" t="Include">
+              <e p="Account" t="Include">
+                <e p="AccessDenied.cshtml" t="Include" />
+                <e p="Consent.cshtml" t="Include" />
+                <e p="LockedOut.cshtml" t="Include" />
+                <e p="Login.cshtml" t="Include" />
+                <e p="LogoutCompleted.cshtml" t="Include" />
+              </e>
+              <e p="Error" t="Include">
+                <e p="Error.cshtml" t="Include" />
+              </e>
+              <e p="Profile" t="Include">
+                <e p="Profile.cshtml" t="Include" />
+              </e>
+              <e p="_Layout.cshtml" t="Include" />
+              <e p="_ViewImports.cshtml" t="Include" />
+              <e p="_ViewStart.cshtml" t="Include" />
+            </e>
+          </e>
+          <e p="Portal" t="Include">
+            <e p="Middlewares" t="Include">
+              <e p="PortalDashboardAuthenticationMiddleware.cs" t="Include" />
+              <e p="PortalRedirectMiddleware.cs" t="Include" />
+            </e>
+            <e p="Startup.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Config" t="Include">
+          <e p="Authentication" t="Include">
+            <e p="AuthenticationServices.cs" t="Include" />
+            <e p="GoogleAuthenticationServices.cs" t="Include" />
+            <e p="GoogleHandler.cs" t="Include" />
+            <e p="IdentityServerServices.cs" t="Include" />
+            <e p="MicrosoftAuthenticationServices.cs" t="Include" />
+            <e p="MicrosoftHandler.cs" t="Include" />
+          </e>
+          <e p="Constants.cs" t="Include" />
+          <e p="Domain" t="Include">
+            <e p="AssetServices.cs" t="Include" />
+            <e p="EventPublishersServices.cs" t="Include" />
+            <e p="EventStoreServices.cs" t="Include" />
+            <e p="InfrastructureServices.cs" t="Include" />
+            <e p="LoggingExtensions.cs" t="Include" />
+            <e p="PubSubServices.cs" t="Include" />
+            <e p="ReadServices.cs" t="Include" />
+            <e p="SerializationServices.cs" t="Include" />
+            <e p="StoreServices.cs" t="Include" />
+            <e p="SystemExtensions.cs" t="Include" />
+            <e p="WriteServices.cs" t="Include" />
+          </e>
+          <e p="MyIdentityOptions.cs" t="Include" />
+          <e p="MyUIOptions.cs" t="Include" />
+          <e p="MyUrlsOptions.cs" t="Include" />
+          <e p="MyUsageOptions.cs" t="Include" />
+          <e p="Options.cs" t="Include" />
+          <e p="ServiceExtensions.cs" t="Include" />
+          <e p="Web" t="Include">
+            <e p="WebExtensions.cs" t="Include" />
+            <e p="WebServices.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Dockerfile" t="Include" />
+        <e p="Docs" t="Include">
+          <e p="schemabody.md" t="Include" />
+          <e p="schemaquery.md" t="Include" />
+          <e p="security.md" t="Include" />
+        </e>
+        <e p="Pipeline" t="Include">
+          <e p="ActionContextLogAppender.cs" t="Include" />
+          <e p="ApiAuthorizeAttribute.cs" t="Include" />
+          <e p="ApiCostsAttribute.cs" t="Include" />
+          <e p="ApiCostsFilter.cs" t="Include" />
+          <e p="ApiExceptionFilterAttribute.cs" t="Include" />
+          <e p="AppApiAttribute.cs" t="Include" />
+          <e p="AppApiFilter.cs" t="Include" />
+          <e p="AppPermissionAttribute.cs" t="Include" />
+          <e p="CommandMiddlewares" t="Include">
+            <e p="ETagCommandMiddleware.cs" t="Include" />
+            <e p="EnrichWithActorCommandMiddleware.cs" t="Include" />
+            <e p="EnrichWithAppIdCommandMiddleware.cs" t="Include" />
+            <e p="EnrichWithSchemaIdCommandMiddleware.cs" t="Include" />
+          </e>
+          <e p="EnforceHttpsMiddleware.cs" t="Include" />
+          <e p="EntityCreatedDto.cs" t="Include" />
+          <e p="ErrorDto.cs" t="Include" />
+          <e p="Extensions.cs" t="Include" />
+          <e p="FileCallbackResult.cs" t="Include" />
+          <e p="FileCallbackResultExecutor.cs" t="Include" />
+          <e p="GraphQLUrlGenerator.cs" t="Include" />
+          <e p="IAppFeature.cs" t="Include" />
+          <e p="LogPerformanceMiddleware.cs" t="Include" />
+          <e p="MustBeAdministratorAttribute.cs" t="Include" />
+          <e p="MustBeAppDeveloperAttribute.cs" t="Include" />
+          <e p="MustBeAppEditorAttribute.cs" t="Include" />
+          <e p="MustBeAppOwnerAttribute.cs" t="Include" />
+          <e p="MustBeAppReaderAttribute.cs" t="Include" />
+          <e p="Swagger" t="Include">
+            <e p="SwaggerHelper.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Squidex.csproj" t="IncludeRecursive" />
+        <e p="WebStartup.cs" t="Include" />
+        <e p="app" t="Include">
+          <e p="app.component.html" t="Include" />
+          <e p="app.component.scss" t="Include" />
+          <e p="app.component.ts" t="Include" />
+          <e p="app.module.ts" t="Include" />
+          <e p="app.routes.ts" t="Include" />
+          <e p="app.ts" t="Include" />
+          <e p="features" t="Include">
+            <e p="administration" t="Include">
+              <e p="administration-area.component.html" t="Include" />
+              <e p="administration-area.component.scss" t="Include" />
+              <e p="administration-area.component.ts" t="Include" />
+              <e p="declarations.ts" t="Include" />
+              <e p="module.ts" t="Include" />
+              <e p="pages" t="Include">
+                <e p="event-consumers" t="Include">
+                  <e p="event-consumers-page.component.html" t="Include" />
+                  <e p="event-consumers-page.component.scss" t="Include" />
+                  <e p="event-consumers-page.component.ts" t="Include" />
+                </e>
+                <e p="messages.ts" t="Include" />
+                <e p="users" t="Include">
+                  <e p="user-page.component.html" t="Include" />
+                  <e p="user-page.component.scss" t="Include" />
+                  <e p="user-page.component.ts" t="Include" />
+                  <e p="users-page.component.html" t="Include" />
+                  <e p="users-page.component.scss" t="Include" />
+                  <e p="users-page.component.ts" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="api" t="Include">
+              <e p="api-area.component.html" t="Include" />
+              <e p="api-area.component.scss" t="Include" />
+              <e p="api-area.component.ts" t="Include" />
+              <e p="declarations.ts" t="Include" />
+              <e p="index.ts" t="Include" />
+              <e p="module.ts" t="Include" />
+              <e p="pages" t="Include">
+                <e p="graphql" t="Include">
+                  <e p="graphql-page.component.html" t="Include" />
+                  <e p="graphql-page.component.scss" t="Include" />
+                  <e p="graphql-page.component.ts" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="apps" t="Include">
+              <e p="declarations.ts" t="Include" />
+              <e p="index.ts" t="Include" />
+              <e p="module.ts" t="Include" />
+              <e p="pages" t="Include">
+                <e p="apps-page.component.html" t="Include" />
+                <e p="apps-page.component.scss" t="Include" />
+                <e p="apps-page.component.ts" t="Include" />
+                <e p="onboarding-dialog.component.html" t="Include" />
+                <e p="onboarding-dialog.component.scss" t="Include" />
+                <e p="onboarding-dialog.component.ts" t="Include" />
+              </e>
+            </e>
+            <e p="assets" t="Include">
+              <e p="declarations.ts" t="Include" />
+              <e p="index.ts" t="Include" />
+              <e p="module.ts" t="Include" />
+              <e p="pages" t="Include">
+                <e p="assets-page.component.html" t="Include" />
+                <e p="assets-page.component.scss" t="Include" />
+                <e p="assets-page.component.ts" t="Include" />
+              </e>
+            </e>
+            <e p="content" t="Include">
+              <e p="declarations.ts" t="Include" />
+              <e p="index.ts" t="Include" />
+              <e p="module.ts" t="Include" />
+              <e p="pages" t="Include">
+                <e p="content" t="Include">
+                  <e p="content-field.component.html" t="Include" />
+                  <e p="content-field.component.scss" t="Include" />
+                  <e p="content-field.component.ts" t="Include" />
+                  <e p="content-history.component.html" t="Include" />
+                  <e p="content-history.component.scss" t="Include" />
+                  <e p="content-history.component.ts" t="Include" />
+                  <e p="content-page.component.html" t="Include" />
+                  <e p="content-page.component.scss" t="Include" />
+                  <e p="content-page.component.ts" t="Include" />
+                </e>
+                <e p="contents" t="Include">
+                  <e p="contents-page.component.html" t="Include" />
+                  <e p="contents-page.component.scss" t="Include" />
+                  <e p="contents-page.component.ts" t="Include" />
+                  <e p="search-form.component.html" t="Include" />
+                  <e p="search-form.component.scss" t="Include" />
+                  <e p="search-form.component.ts" t="Include" />
+                </e>
+                <e p="messages.ts" t="Include" />
+                <e p="schemas" t="Include">
+                  <e p="schemas-page.component.html" t="Include" />
+                  <e p="schemas-page.component.scss" t="Include" />
+                  <e p="schemas-page.component.ts" t="Include" />
+                </e>
+              </e>
+              <e p="shared" t="Include">
+                <e p="assets-editor.component.html" t="Include" />
+                <e p="assets-editor.component.scss" t="Include" />
+                <e p="assets-editor.component.ts" t="Include" />
+                <e p="content-item.component.html" t="Include" />
+                <e p="content-item.component.scss" t="Include" />
+                <e p="content-item.component.ts" t="Include" />
+                <e p="references-editor.component.html" t="Include" />
+                <e p="references-editor.component.scss" t="Include" />
+                <e p="references-editor.component.ts" t="Include" />
+              </e>
+            </e>
+            <e p="dashboard" t="Include">
+              <e p="declarations.ts" t="Include" />
+              <e p="index.ts" t="Include" />
+              <e p="module.ts" t="Include" />
+              <e p="pages" t="Include">
+                <e p="dashboard-page.component.html" t="Include" />
+                <e p="dashboard-page.component.scss" t="Include" />
+                <e p="dashboard-page.component.ts" t="Include" />
+              </e>
+            </e>
+            <e p="rules" t="Include">
+              <e p="declarations.ts" t="Include" />
+              <e p="index.ts" t="Include" />
+              <e p="module.ts" t="Include" />
+              <e p="pages" t="Include">
+                <e p="events" t="Include">
+                  <e p="rule-events-page.component.html" t="Include" />
+                  <e p="rule-events-page.component.scss" t="Include" />
+                  <e p="rule-events-page.component.ts" t="Include" />
+                </e>
+                <e p="rules" t="Include">
+                  <e p="actions" t="Include">
+                    <e p="algolia-action.component.html" t="Include" />
+                    <e p="algolia-action.component.scss" t="Include" />
+                    <e p="algolia-action.component.ts" t="Include" />
+                    <e p="azure-queue-action.component.html" t="Include" />
+                    <e p="azure-queue-action.component.scss" t="Include" />
+                    <e p="azure-queue-action.component.ts" t="Include" />
+                    <e p="elasticsearch-action.component.html" t="Include" />
+                    <e p="elasticsearch-action.component.scss" t="Include" />
+                    <e p="elasticsearch-action.component.ts" t="Include" />
+                    <e p="fastly-action.component.html" t="Include" />
+                    <e p="fastly-action.component.scss" t="Include" />
+                    <e p="fastly-action.component.ts" t="Include" />
+                    <e p="slack-action.component.html" t="Include" />
+                    <e p="slack-action.component.scss" t="Include" />
+                    <e p="slack-action.component.ts" t="Include" />
+                    <e p="webhook-action.component.html" t="Include" />
+                    <e p="webhook-action.component.scss" t="Include" />
+                    <e p="webhook-action.component.ts" t="Include" />
+                  </e>
+                  <e p="rule-wizard.component.html" t="Include" />
+                  <e p="rule-wizard.component.scss" t="Include" />
+                  <e p="rule-wizard.component.ts" t="Include" />
+                  <e p="rules-page.component.html" t="Include" />
+                  <e p="rules-page.component.scss" t="Include" />
+                  <e p="rules-page.component.ts" t="Include" />
+                  <e p="triggers" t="Include">
+                    <e p="asset-changed-trigger.component.html" t="Include" />
+                    <e p="asset-changed-trigger.component.scss" t="Include" />
+                    <e p="asset-changed-trigger.component.ts" t="Include" />
+                    <e p="content-changed-trigger.component.html" t="Include" />
+                    <e p="content-changed-trigger.component.scss" t="Include" />
+                    <e p="content-changed-trigger.component.ts" t="Include" />
+                  </e>
+                </e>
+              </e>
+            </e>
+            <e p="schemas" t="Include">
+              <e p="declarations.ts" t="Include" />
+              <e p="index.ts" t="Include" />
+              <e p="module.ts" t="Include" />
+              <e p="pages" t="Include">
+                <e p="messages.ts" t="Include" />
+                <e p="schema" t="Include">
+                  <e p="field.component.html" t="Include" />
+                  <e p="field.component.scss" t="Include" />
+                  <e p="field.component.ts" t="Include" />
+                  <e p="schema-edit-form.component.html" t="Include" />
+                  <e p="schema-edit-form.component.scss" t="Include" />
+                  <e p="schema-edit-form.component.ts" t="Include" />
+                  <e p="schema-page.component.html" t="Include" />
+                  <e p="schema-page.component.scss" t="Include" />
+                  <e p="schema-page.component.ts" t="Include" />
+                  <e p="schema-scripts-form.component.html" t="Include" />
+                  <e p="schema-scripts-form.component.scss" t="Include" />
+                  <e p="schema-scripts-form.component.ts" t="Include" />
+                  <e p="types" t="Include">
+                    <e p="assets-ui.component.html" t="Include" />
+                    <e p="assets-ui.component.scss" t="Include" />
+                    <e p="assets-ui.component.ts" t="Include" />
+                    <e p="assets-validation.component.html" t="Include" />
+                    <e p="assets-validation.component.scss" t="Include" />
+                    <e p="assets-validation.component.ts" t="Include" />
+                    <e p="boolean-ui.component.html" t="Include" />
+                    <e p="boolean-ui.component.scss" t="Include" />
+                    <e p="boolean-ui.component.ts" t="Include" />
+                    <e p="boolean-validation.component.html" t="Include" />
+                    <e p="boolean-validation.component.scss" t="Include" />
+                    <e p="boolean-validation.component.ts" t="Include" />
+                    <e p="date-time-ui.component.html" t="Include" />
+                    <e p="date-time-ui.component.scss" t="Include" />
+                    <e p="date-time-ui.component.ts" t="Include" />
+                    <e p="date-time-validation.component.html" t="Include" />
+                    <e p="date-time-validation.component.scss" t="Include" />
+                    <e p="date-time-validation.component.ts" t="Include" />
+                    <e p="geolocation-ui.component.html" t="Include" />
+                    <e p="geolocation-ui.component.scss" t="Include" />
+                    <e p="geolocation-ui.component.ts" t="Include" />
+                    <e p="geolocation-validation.component.html" t="Include" />
+                    <e p="geolocation-validation.component.scss" t="Include" />
+                    <e p="geolocation-validation.component.ts" t="Include" />
+                    <e p="json-ui.component.html" t="Include" />
+                    <e p="json-ui.component.scss" t="Include" />
+                    <e p="json-ui.component.ts" t="Include" />
+                    <e p="json-validation.component.html" t="Include" />
+                    <e p="json-validation.component.scss" t="Include" />
+                    <e p="json-validation.component.ts" t="Include" />
+                    <e p="number-ui.component.html" t="Include" />
+                    <e p="number-ui.component.scss" t="Include" />
+                    <e p="number-ui.component.ts" t="Include" />
+                    <e p="number-validation.component.html" t="Include" />
+                    <e p="number-validation.component.scss" t="Include" />
+                    <e p="number-validation.component.ts" t="Include" />
+                    <e p="references-ui.component.html" t="Include" />
+                    <e p="references-ui.component.scss" t="Include" />
+                    <e p="references-ui.component.ts" t="Include" />
+                    <e p="references-validation.component.html" t="Include" />
+                    <e p="references-validation.component.scss" t="Include" />
+                    <e p="references-validation.component.ts" t="Include" />
+                    <e p="string-ui.component.html" t="Include" />
+                    <e p="string-ui.component.scss" t="Include" />
+                    <e p="string-ui.component.ts" t="Include" />
+                    <e p="string-validation.component.html" t="Include" />
+                    <e p="string-validation.component.scss" t="Include" />
+                    <e p="string-validation.component.ts" t="Include" />
+                    <e p="tags-ui.component.html" t="Include" />
+                    <e p="tags-ui.component.scss" t="Include" />
+                    <e p="tags-ui.component.ts" t="Include" />
+                    <e p="tags-validation.component.html" t="Include" />
+                    <e p="tags-validation.component.scss" t="Include" />
+                    <e p="tags-validation.component.ts" t="Include" />
+                  </e>
+                </e>
+                <e p="schemas" t="Include">
+                  <e p="schema-form.component.html" t="Include" />
+                  <e p="schema-form.component.scss" t="Include" />
+                  <e p="schema-form.component.ts" t="Include" />
+                  <e p="schemas-page.component.html" t="Include" />
+                  <e p="schemas-page.component.scss" t="Include" />
+                  <e p="schemas-page.component.ts" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="settings" t="Include">
+              <e p="declarations.ts" t="Include" />
+              <e p="index.ts" t="Include" />
+              <e p="module.ts" t="Include" />
+              <e p="pages" t="Include">
+                <e p="clients" t="Include">
+                  <e p="client.component.html" t="Include" />
+                  <e p="client.component.scss" t="Include" />
+                  <e p="client.component.ts" t="Include" />
+                  <e p="clients-page.component.html" t="Include" />
+                  <e p="clients-page.component.scss" t="Include" />
+                  <e p="clients-page.component.ts" t="Include" />
+                </e>
+                <e p="contributors" t="Include">
+                  <e p="contributors-page.component.html" t="Include" />
+                  <e p="contributors-page.component.scss" t="Include" />
+                  <e p="contributors-page.component.ts" t="Include" />
+                </e>
+                <e p="languages" t="Include">
+                  <e p="language.component.html" t="Include" />
+                  <e p="language.component.scss" t="Include" />
+                  <e p="language.component.ts" t="Include" />
+                  <e p="languages-page.component.html" t="Include" />
+                  <e p="languages-page.component.scss" t="Include" />
+                  <e p="languages-page.component.ts" t="Include" />
+                </e>
+                <e p="patterns" t="Include">
+                  <e p="pattern.component.html" t="Include" />
+                  <e p="pattern.component.scss" t="Include" />
+                  <e p="pattern.component.ts" t="Include" />
+                  <e p="patterns-page.component.html" t="Include" />
+                  <e p="patterns-page.component.scss" t="Include" />
+                  <e p="patterns-page.component.ts" t="Include" />
+                </e>
+                <e p="plans" t="Include">
+                  <e p="plans-page.component.html" t="Include" />
+                  <e p="plans-page.component.scss" t="Include" />
+                  <e p="plans-page.component.ts" t="Include" />
+                </e>
+              </e>
+              <e p="settings-area.component.html" t="Include" />
+              <e p="settings-area.component.scss" t="Include" />
+              <e p="settings-area.component.ts" t="Include" />
+            </e>
+          </e>
+          <e p="framework" t="Include">
+            <e p="angular" t="Include">
+              <e p="animations.ts" t="Include" />
+              <e p="autocomplete.component.html" t="Include" />
+              <e p="autocomplete.component.scss" t="Include" />
+              <e p="autocomplete.component.ts" t="Include" />
+              <e p="can-deactivate.guard.spec.ts" t="Include" />
+              <e p="can-deactivate.guard.ts" t="Include" />
+              <e p="confirm-click.directive.ts" t="Include" />
+              <e p="control-errors.component.html" t="Include" />
+              <e p="control-errors.component.scss" t="Include" />
+              <e p="control-errors.component.ts" t="Include" />
+              <e p="copy.directive.ts" t="Include" />
+              <e p="date-time-editor.component.html" t="Include" />
+              <e p="date-time-editor.component.scss" t="Include" />
+              <e p="date-time-editor.component.ts" t="Include" />
+              <e p="date-time.pipes.spec.ts" t="Include" />
+              <e p="date-time.pipes.ts" t="Include" />
+              <e p="dialog-renderer.component.html" t="Include" />
+              <e p="dialog-renderer.component.scss" t="Include" />
+              <e p="dialog-renderer.component.ts" t="Include" />
+              <e p="dropdown.component.html" t="Include" />
+              <e p="dropdown.component.scss" t="Include" />
+              <e p="dropdown.component.ts" t="Include" />
+              <e p="file-drop.directive.ts" t="Include" />
+              <e p="focus-on-init.directive.spec.ts" t="Include" />
+              <e p="focus-on-init.directive.ts" t="Include" />
+              <e p="http-extensions-impl.spec.ts" t="Include" />
+              <e p="http-extensions-impl.ts" t="Include" />
+              <e p="http-extensions.ts" t="Include" />
+              <e p="ignore-scrollbar.directive.ts" t="Include" />
+              <e p="image-source.directive.ts" t="Include" />
+              <e p="indeterminate-value.directive.ts" t="Include" />
+              <e p="jscript-editor.component.html" t="Include" />
+              <e p="jscript-editor.component.scss" t="Include" />
+              <e p="jscript-editor.component.ts" t="Include" />
+              <e p="json-editor.component.html" t="Include" />
+              <e p="json-editor.component.scss" t="Include" />
+              <e p="json-editor.component.ts" t="Include" />
+              <e p="keys.pipe.spec.ts" t="Include" />
+              <e p="keys.pipe.ts" t="Include" />
+              <e p="lowercase-input.directive.ts" t="Include" />
+              <e p="modal-target.directive.ts" t="Include" />
+              <e p="modal-view.directive.ts" t="Include" />
+              <e p="money.pipe.spec.ts" t="Include" />
+              <e p="money.pipe.ts" t="Include" />
+              <e p="name.pipe.spec.ts" t="Include" />
+              <e p="name.pipe.ts" t="Include" />
+              <e p="numbers.pipes.spec.ts" t="Include" />
+              <e p="numbers.pipes.ts" t="Include" />
+              <e p="onboarding-tooltip.component.html" t="Include" />
+              <e p="onboarding-tooltip.component.scss" t="Include" />
+              <e p="onboarding-tooltip.component.ts" t="Include" />
+              <e p="panel-container.directive.ts" t="Include" />
+              <e p="panel.component.ts" t="Include" />
+              <e p="parent-link.directive.ts" t="Include" />
+              <e p="popup-link.directive.ts" t="Include" />
+              <e p="progress-bar.component.ts" t="Include" />
+              <e p="root-view.directive.spec.ts" t="Include" />
+              <e p="root-view.directive.ts" t="Include" />
+              <e p="router-utils.spec.ts" t="Include" />
+              <e p="router-utils.ts" t="Include" />
+              <e p="scroll-active.directive.ts" t="Include" />
+              <e p="shortcut.component.spec.ts" t="Include" />
+              <e p="shortcut.component.ts" t="Include" />
+              <e p="slider.component.html" t="Include" />
+              <e p="slider.component.scss" t="Include" />
+              <e p="slider.component.ts" t="Include" />
+              <e p="slugify-input.directive.ts" t="Include" />
+              <e p="sorted.directive.ts" t="Include" />
+              <e p="stars.component.html" t="Include" />
+              <e p="stars.component.scss" t="Include" />
+              <e p="stars.component.ts" t="Include" />
+              <e p="tag-editor.component.html" t="Include" />
+              <e p="tag-editor.component.scss" t="Include" />
+              <e p="tag-editor.component.ts" t="Include" />
+              <e p="template-wrapper.directive.ts" t="Include" />
+              <e p="title.component.ts" t="Include" />
+              <e p="toggle.component.html" t="Include" />
+              <e p="toggle.component.scss" t="Include" />
+              <e p="toggle.component.ts" t="Include" />
+              <e p="user-report.component.ts" t="Include" />
+              <e p="validators.spec.ts" t="Include" />
+              <e p="validators.ts" t="Include" />
+            </e>
+            <e p="configurations.ts" t="Include" />
+            <e p="declarations.ts" t="Include" />
+            <e p="index.ts" t="Include" />
+            <e p="module.ts" t="Include" />
+            <e p="services" t="Include">
+              <e p="analytics.service.ts" t="Include" />
+              <e p="clipboard.service.spec.ts" t="Include" />
+              <e p="clipboard.service.ts" t="Include" />
+              <e p="dialog.service.spec.ts" t="Include" />
+              <e p="dialog.service.ts" t="Include" />
+              <e p="local-store.service.spec.ts" t="Include" />
+              <e p="local-store.service.ts" t="Include" />
+              <e p="message-bus.service.spec.ts" t="Include" />
+              <e p="message-bus.service.ts" t="Include" />
+              <e p="onboarding.service.spec.ts" t="Include" />
+              <e p="onboarding.service.ts" t="Include" />
+              <e p="resource-loader.service.ts" t="Include" />
+              <e p="root-view.service.spec.ts" t="Include" />
+              <e p="root-view.service.ts" t="Include" />
+              <e p="shortcut.service.spec.ts" t="Include" />
+              <e p="shortcut.service.ts" t="Include" />
+              <e p="title.service.spec.ts" t="Include" />
+              <e p="title.service.ts" t="Include" />
+            </e>
+            <e p="utils" t="Include">
+              <e p="date-helper.spec.ts" t="Include" />
+              <e p="date-helper.ts" t="Include" />
+              <e p="date-time.spec.ts" t="Include" />
+              <e p="date-time.ts" t="Include" />
+              <e p="duration.spec.ts" t="Include" />
+              <e p="duration.ts" t="Include" />
+              <e p="immutable-array.spec.ts" t="Include" />
+              <e p="immutable-array.ts" t="Include" />
+              <e p="math-helper.spec.ts" t="Include" />
+              <e p="math-helper.ts" t="Include" />
+              <e p="modal-view.spec.ts" t="Include" />
+              <e p="modal-view.ts" t="Include" />
+              <e p="pager.spec.ts" t="Include" />
+              <e p="pager.ts" t="Include" />
+              <e p="string-helper.spec.ts" t="Include" />
+              <e p="string-helper.ts" t="Include" />
+              <e p="types.spec.ts" t="Include" />
+              <e p="types.ts" t="Include" />
+              <e p="version.spec.ts" t="Include" />
+              <e p="version.ts" t="Include" />
+            </e>
+          </e>
+          <e p="shared" t="Include">
+            <e p="components" t="Include">
+              <e p="app-context.ts" t="Include" />
+              <e p="app-form.component.html" t="Include" />
+              <e p="app-form.component.scss" t="Include" />
+              <e p="app-form.component.ts" t="Include" />
+              <e p="asset.component.html" t="Include" />
+              <e p="asset.component.scss" t="Include" />
+              <e p="asset.component.ts" t="Include" />
+              <e p="geolocation-editor.component.html" t="Include" />
+              <e p="geolocation-editor.component.scss" t="Include" />
+              <e p="geolocation-editor.component.ts" t="Include" />
+              <e p="help.component.html" t="Include" />
+              <e p="help.component.scss" t="Include" />
+              <e p="help.component.ts" t="Include" />
+              <e p="history.component.html" t="Include" />
+              <e p="history.component.scss" t="Include" />
+              <e p="history.component.ts" t="Include" />
+              <e p="language-selector.component.html" t="Include" />
+              <e p="language-selector.component.scss" t="Include" />
+              <e p="language-selector.component.ts" t="Include" />
+              <e p="markdown-editor.component.html" t="Include" />
+              <e p="markdown-editor.component.scss" t="Include" />
+              <e p="markdown-editor.component.ts" t="Include" />
+              <e p="pipes.ts" t="Include" />
+              <e p="rich-editor.component.html" t="Include" />
+              <e p="rich-editor.component.scss" t="Include" />
+              <e p="rich-editor.component.ts" t="Include" />
+            </e>
+            <e p="declarations-base.ts" t="Include" />
+            <e p="declarations.ts" t="Include" />
+            <e p="guards" t="Include">
+              <e p="app-must-exist.guard.spec.ts" t="Include" />
+              <e p="app-must-exist.guard.ts" t="Include" />
+              <e p="must-be-authenticated.guard.spec.ts" t="Include" />
+              <e p="must-be-authenticated.guard.ts" t="Include" />
+              <e p="must-be-not-authenticated.guard.spec.ts" t="Include" />
+              <e p="must-be-not-authenticated.guard.ts" t="Include" />
+              <e p="resolve-app-languages.guard.spec.ts" t="Include" />
+              <e p="resolve-app-languages.guard.ts" t="Include" />
+              <e p="resolve-content.guard.spec.ts" t="Include" />
+              <e p="resolve-content.guard.ts" t="Include" />
+              <e p="resolve-published-schema.guard.spec.ts" t="Include" />
+              <e p="resolve-published-schema.guard.ts" t="Include" />
+              <e p="resolve-schema.guard.spec.ts" t="Include" />
+              <e p="resolve-schema.guard.ts" t="Include" />
+              <e p="resolve-user.guard.spec.ts" t="Include" />
+              <e p="resolve-user.guard.ts" t="Include" />
+              <e p="router-mockup.ts" t="Include" />
+              <e p="unset-app.guard.spec.ts" t="Include" />
+              <e p="unset-app.guard.ts" t="Include" />
+            </e>
+            <e p="index.ts" t="Include" />
+            <e p="interceptors" t="Include">
+              <e p="auth.interceptor.spec.ts" t="Include" />
+              <e p="auth.interceptor.ts" t="Include" />
+            </e>
+            <e p="module.ts" t="Include" />
+            <e p="services" t="Include">
+              <e p="app-clients.service.spec.ts" t="Include" />
+              <e p="app-clients.service.ts" t="Include" />
+              <e p="app-contributors.service.spec.ts" t="Include" />
+              <e p="app-contributors.service.ts" t="Include" />
+              <e p="app-languages.service.spec.ts" t="Include" />
+              <e p="app-languages.service.ts" t="Include" />
+              <e p="app-patterns.service.spec.ts" t="Include" />
+              <e p="app-patterns.service.ts" t="Include" />
+              <e p="apps-store.service.spec.ts" t="Include" />
+              <e p="apps-store.service.ts" t="Include" />
+              <e p="apps.service.spec.ts" t="Include" />
+              <e p="apps.service.ts" t="Include" />
+              <e p="assets.service.spec.ts" t="Include" />
+              <e p="assets.service.ts" t="Include" />
+              <e p="auth.service.ts" t="Include" />
+              <e p="contents.service.spec.ts" t="Include" />
+              <e p="contents.service.ts" t="Include" />
+              <e p="event-consumers.service.spec.ts" t="Include" />
+              <e p="event-consumers.service.ts" t="Include" />
+              <e p="graphql.service.spec.ts" t="Include" />
+              <e p="graphql.service.ts" t="Include" />
+              <e p="help.service.spec.ts" t="Include" />
+              <e p="help.service.ts" t="Include" />
+              <e p="history.service.spec.ts" t="Include" />
+              <e p="history.service.ts" t="Include" />
+              <e p="languages.service.spec.ts" t="Include" />
+              <e p="languages.service.ts" t="Include" />
+              <e p="plans.service.spec.ts" t="Include" />
+              <e p="plans.service.ts" t="Include" />
+              <e p="rules.service.spec.ts" t="Include" />
+              <e p="rules.service.ts" t="Include" />
+              <e p="schemas.fields.spec.ts" t="Include" />
+              <e p="schemas.service.spec.ts" t="Include" />
+              <e p="schemas.service.ts" t="Include" />
+              <e p="ui.service.spec.ts" t="Include" />
+              <e p="ui.service.ts" t="Include" />
+              <e p="usages.service.spec.ts" t="Include" />
+              <e p="usages.service.ts" t="Include" />
+              <e p="users-provider.service.spec.ts" t="Include" />
+              <e p="users-provider.service.ts" t="Include" />
+              <e p="users.service.spec.ts" t="Include" />
+              <e p="users.service.ts" t="Include" />
+            </e>
+            <e p="utils" t="Include">
+              <e p="messages.ts" t="Include" />
+            </e>
+          </e>
+          <e p="shell" t="Include">
+            <e p="declarations.ts" t="Include" />
+            <e p="index.ts" t="Include" />
+            <e p="module.ts" t="Include" />
+            <e p="pages" t="Include">
+              <e p="app" t="Include">
+                <e p="app-area.component.html" t="Include" />
+                <e p="app-area.component.scss" t="Include" />
+                <e p="app-area.component.ts" t="Include" />
+                <e p="left-menu.component.html" t="Include" />
+                <e p="left-menu.component.scss" t="Include" />
+                <e p="left-menu.component.ts" t="Include" />
+              </e>
+              <e p="home" t="Include">
+                <e p="home-page.component.html" t="Include" />
+                <e p="home-page.component.scss" t="Include" />
+                <e p="home-page.component.ts" t="Include" />
+              </e>
+              <e p="internal" t="Include">
+                <e p="apps-menu.component.html" t="Include" />
+                <e p="apps-menu.component.scss" t="Include" />
+                <e p="apps-menu.component.ts" t="Include" />
+                <e p="internal-area.component.html" t="Include" />
+                <e p="internal-area.component.scss" t="Include" />
+                <e p="internal-area.component.ts" t="Include" />
+                <e p="profile-menu.component.html" t="Include" />
+                <e p="profile-menu.component.scss" t="Include" />
+                <e p="profile-menu.component.ts" t="Include" />
+              </e>
+              <e p="login" t="Include">
+                <e p="login-page.component.ts" t="Include" />
+              </e>
+              <e p="logout" t="Include">
+                <e p="logout-page.component.ts" t="Include" />
+              </e>
+              <e p="not-found" t="Include">
+                <e p="not-found-page.component.html" t="Include" />
+                <e p="not-found-page.component.scss" t="Include" />
+                <e p="not-found-page.component.ts" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="shims.ts" t="Include" />
+          <e p="theme" t="Include">
+            <e p="_bootstrap-vars.scss" t="Include" />
+            <e p="_bootstrap.scss" t="Include" />
+            <e p="_common.scss" t="Include" />
+            <e p="_forms.scss" t="Include" />
+            <e p="_lists.scss" t="Include" />
+            <e p="_mixins.scss" t="Include" />
+            <e p="_panels.scss" t="Include" />
+            <e p="_rules.scss" t="Include" />
+            <e p="_static.scss" t="Include" />
+            <e p="_vars.scss" t="Include" />
+            <e p="icomoon" t="Include">
+              <e p="demo-files" t="Include">
+                <e p="demo.css" t="Include" />
+                <e p="demo.js" t="Include" />
+              </e>
+              <e p="demo.html" t="Include" />
+              <e p="fonts" t="Include">
+                <e p="icomoon.eot" t="Include" />
+                <e p="icomoon.svg" t="Include" />
+                <e p="icomoon.ttf" t="Include" />
+                <e p="icomoon.woff" t="Include" />
+              </e>
+              <e p="icons" t="Include">
+                <e p="action-Algolia.svg" t="Include" />
+                <e p="action-Fastly.svg" t="Include" />
+                <e p="activity.svg" t="Include" />
+                <e p="add-app.svg" t="Include" />
+                <e p="add.svg" t="Include" />
+                <e p="api.svg" t="Include" />
+                <e p="assets.svg" t="Include" />
+                <e p="check-circle-filled.svg" t="Include" />
+                <e p="check-circle.svg" t="Include" />
+                <e p="client.svg" t="Include" />
+                <e p="close.svg" t="Include" />
+                <e p="contents.svg" t="Include" />
+                <e p="control-Checkbox.svg" t="Include" />
+                <e p="control-Date.svg" t="Include" />
+                <e p="control-DateTime.svg" t="Include" />
+                <e p="control-Dropdown.svg" t="Include" />
+                <e p="control-Input.svg" t="Include" />
+                <e p="control-Markdown.svg" t="Include" />
+                <e p="control-Radio.svg" t="Include" />
+                <e p="control-RichText.svg" t="Include" />
+                <e p="control-Slug.svg" t="Include" />
+                <e p="control-TextArea.svg" t="Include" />
+                <e p="control-Toggle.svg" t="Include" />
+                <e p="copy.svg" t="Include" />
+                <e p="dashboard-api.svg" t="Include" />
+                <e p="dashboard-feedback.svg" t="Include" />
+                <e p="dashboard-github.svg" t="Include" />
+                <e p="dashboard-schema.svg" t="Include" />
+                <e p="dashboard.svg" t="Include" />
+                <e p="delete-filled.svg" t="Include" />
+                <e p="delete.svg" t="Include" />
+                <e p="document-delete.svg" t="Include" />
+                <e p="document-disable.svg" t="Include" />
+                <e p="document-lock.svg" t="Include" />
+                <e p="document-publish.svg" t="Include" />
+                <e p="document-unpublish.svg" t="Include" />
+                <e p="drag.svg" t="Include" />
+                <e p="fastly.svg" t="Include" />
+                <e p="filter.svg" t="Include" />
+                <e p="help.svg" t="Include" />
+                <e p="json.svg" t="Include" />
+                <e p="location.svg" t="Include" />
+                <e p="logo.svg" t="Include" />
+                <e p="media.svg" t="Include" />
+                <e p="more.svg" t="Include" />
+                <e p="orleans.svg" t="Include" />
+                <e p="pencil.svg" t="Include" />
+                <e p="reference.svg" t="Include" />
+                <e p="schemas.svg" t="Include" />
+                <e p="search.svg" t="Include" />
+                <e p="settings.svg" t="Include" />
+                <e p="type-Boolean.svg" t="Include" />
+                <e p="type-DateTime.svg" t="Include" />
+                <e p="type-Number.svg" t="Include" />
+                <e p="type-String.svg" t="Include" />
+                <e p="user-o.svg" t="Include" />
+                <e p="user.svg" t="Include" />
+                <e p="webhooks.svg" t="Include" />
+              </e>
+              <e p="selection.json" t="Include" />
+              <e p="style.css" t="Include" />
+            </e>
+            <e p="theme.scss" t="Include" />
+          </e>
+        </e>
+        <e p="app-config" t="Include">
+          <e p="fix-coverage-loader.js" t="Include" />
+          <e p="helpers.js" t="Include" />
+          <e p="karma-test-shim.js" t="Include" />
+          <e p="karma.conf.js" t="Include" />
+          <e p="karma.coverage.conf.js" t="Include" />
+          <e p="webpack.config.js" t="Include" />
+          <e p="webpack.run.base.js" t="Include" />
+          <e p="webpack.run.dev.js" t="Include" />
+          <e p="webpack.run.prod.js" t="Include" />
+          <e p="webpack.test.coverage.js" t="Include" />
+          <e p="webpack.test.js" t="Include" />
+        </e>
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="karma.conf.js" t="Include" />
+        <e p="karma.coverage.conf.js" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="Squidex.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="package-lock.json" t="Include" />
+        <e p="package.json" t="Include" />
+        <e p="tsconfig.json" t="Include" />
+        <e p="tslint.json" t="Include" />
+        <e p="web.config" t="Include" />
+        <e p="wwwroot" t="Include">
+          <e p="client-callback-popup.html" t="Include" />
+          <e p="client-callback-silent.html" t="Include" />
+          <e p="favicon.ico" t="Include" />
+          <e p="images" t="Include">
+            <e p="add-app.png" t="Include" />
+            <e p="asset_doc.png" t="Include" />
+            <e p="asset_docx.png" t="Include" />
+            <e p="asset_generic.png" t="Include" />
+            <e p="asset_pdf.png" t="Include" />
+            <e p="asset_ppt.png" t="Include" />
+            <e p="asset_pptx.png" t="Include" />
+            <e p="asset_video.png" t="Include" />
+            <e p="asset_xls.png" t="Include" />
+            <e p="asset_xlsx.png" t="Include" />
+            <e p="client.png" t="Include" />
+            <e p="client.svg" t="Include" />
+            <e p="dashboard-api.png" t="Include" />
+            <e p="dashboard-feedback.png" t="Include" />
+            <e p="dashboard-github.png" t="Include" />
+            <e p="dashboard-schema.png" t="Include" />
+            <e p="loader.gif" t="Include" />
+            <e p="login-icon.png" t="Include" />
+            <e p="logo-half.png" t="Include" />
+            <e p="logo-small.png" t="Include" />
+            <e p="logo-squared-120.png" t="Include" />
+            <e p="logo-white-small.png" t="Include" />
+            <e p="logo-white.png" t="Include" />
+            <e p="logo.png" t="Include" />
+            <e p="onboarding-background.png" t="Include" />
+            <e p="onboarding-step1.png" t="Include" />
+            <e p="onboarding-step2.png" t="Include" />
+            <e p="onboarding-step3.png" t="Include" />
+            <e p="onboarding-step4.png" t="Include" />
+          </e>
+          <e p="index.html" t="Include" />
+          <e p="scripts" t="Include">
+            <e p="oidc-client.min.js" t="Include" />
+          </e>
+          <e p="theme.html" t="Include" />
+        </e>
+      </e>
+      <e p="src/Squidex.Domain.Apps.Core.Model" t="IncludeRecursive">
+        <e p="Apps" t="Include">
+          <e p="AppClient.cs" t="Include" />
+          <e p="AppClientPermission.cs" t="Include" />
+          <e p="AppClients.cs" t="Include" />
+          <e p="AppContributorPermission.cs" t="Include" />
+          <e p="AppContributors.cs" t="Include" />
+          <e p="AppPattern.cs" t="Include" />
+          <e p="AppPatterns.cs" t="Include" />
+          <e p="AppPermission.cs" t="Include" />
+          <e p="AppPlan.cs" t="Include" />
+          <e p="Json" t="Include">
+            <e p="AppClientsConverter.cs" t="Include" />
+            <e p="AppContributorsConverter.cs" t="Include" />
+            <e p="AppPatternsConverter.cs" t="Include" />
+            <e p="JsonAppClient.cs" t="Include" />
+            <e p="JsonAppPattern.cs" t="Include" />
+            <e p="JsonLanguageConfig.cs" t="Include" />
+            <e p="JsonLanguagesConfig.cs" t="Include" />
+            <e p="LanguagesConfigConverter.cs" t="Include" />
+          </e>
+          <e p="LanguageConfig.cs" t="Include" />
+          <e p="LanguagesConfig.cs" t="Include" />
+          <e p="RoleExtension.cs" t="Include" />
+        </e>
+        <e p="Contents" t="Include">
+          <e p="ContentData.cs" t="Include" />
+          <e p="ContentFieldData.cs" t="Include" />
+          <e p="IdContentData.cs" t="Include" />
+          <e p="NamedContentData.cs" t="Include" />
+          <e p="Status.cs" t="Include" />
+          <e p="StatusFlow.cs" t="Include" />
+        </e>
+        <e p="DictionaryWrapper{TKey,TValue}.cs" t="Include" />
+        <e p="FodyWeavers.xml" t="Include" />
+        <e p="Freezable.cs" t="Include" />
+        <e p="IFieldPartitionItem.cs" t="Include" />
+        <e p="IFieldPartitioning.cs" t="Include" />
+        <e p="InvariantPartitioning.cs" t="Include" />
+        <e p="Partitioning.cs" t="Include" />
+        <e p="PartitioningExtensions.cs" t="Include" />
+        <e p="Rules" t="Include">
+          <e p="Actions" t="Include">
+            <e p="AlgoliaAction.cs" t="Include" />
+            <e p="AzureQueueAction.cs" t="Include" />
+            <e p="ElasticSearchAction.cs" t="Include" />
+            <e p="FastlyAction.cs" t="Include" />
+            <e p="SlackAction.cs" t="Include" />
+            <e p="WebhookAction.cs" t="Include" />
+          </e>
+          <e p="IRuleActionVisitor.cs" t="Include" />
+          <e p="IRuleTriggerVisitor.cs" t="Include" />
+          <e p="Json" t="Include">
+            <e p="JsonRule.cs" t="Include" />
+            <e p="RuleConverter.cs" t="Include" />
+          </e>
+          <e p="Rule.cs" t="Include" />
+          <e p="RuleAction.cs" t="Include" />
+          <e p="RuleJob.cs" t="Include" />
+          <e p="RuleJobData.cs" t="Include" />
+          <e p="RuleTrigger.cs" t="Include" />
+          <e p="Triggers" t="Include">
+            <e p="AssetChangedTrigger.cs" t="Include" />
+            <e p="ContentChangedTrigger.cs" t="Include" />
+            <e p="ContentChangedTriggerSchema.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Schemas" t="Include">
+          <e p="AssetsField.cs" t="Include" />
+          <e p="AssetsFieldProperties.cs" t="Include" />
+          <e p="BooleanField.cs" t="Include" />
+          <e p="BooleanFieldEditor.cs" t="Include" />
+          <e p="BooleanFieldProperties.cs" t="Include" />
+          <e p="DateTimeCalculatedDefaultValue.cs" t="Include" />
+          <e p="DateTimeField.cs" t="Include" />
+          <e p="DateTimeFieldEditor.cs" t="Include" />
+          <e p="DateTimeFieldProperties.cs" t="Include" />
+          <e p="Field.cs" t="Include" />
+          <e p="FieldProperties.cs" t="Include" />
+          <e p="FieldRegistry.cs" t="Include" />
+          <e p="Field{T}.cs" t="Include" />
+          <e p="GeolocationField.cs" t="Include" />
+          <e p="GeolocationFieldEditor.cs" t="Include" />
+          <e p="GeolocationFieldProperties.cs" t="Include" />
+          <e p="IFieldPropertiesVisitor.cs" t="Include" />
+          <e p="IFieldVisitor.cs" t="Include" />
+          <e p="Json" t="Include">
+            <e p="JsonFieldModel.cs" t="Include" />
+            <e p="JsonSchemaModel.cs" t="Include" />
+            <e p="SchemaConverter.cs" t="Include" />
+          </e>
+          <e p="JsonField.cs" t="Include" />
+          <e p="JsonFieldProperties.cs" t="Include" />
+          <e p="NamedElementPropertiesBase.cs" t="Include" />
+          <e p="NumberField.cs" t="Include" />
+          <e p="NumberFieldEditor.cs" t="Include" />
+          <e p="NumberFieldProperties.cs" t="Include" />
+          <e p="ReferencesField.cs" t="Include" />
+          <e p="ReferencesFieldProperties.cs" t="Include" />
+          <e p="Schema.cs" t="Include" />
+          <e p="SchemaProperties.cs" t="Include" />
+          <e p="StringField.cs" t="Include" />
+          <e p="StringFieldEditor.cs" t="Include" />
+          <e p="StringFieldProperties.cs" t="Include" />
+          <e p="TagsField.cs" t="Include" />
+          <e p="TagsFieldProperties.cs" t="Include" />
+        </e>
+        <e p="Squidex.Domain.Apps.Core.Model.csproj" t="IncludeRecursive" />
+        <e p="SquidexCoreModel.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Squidex.Domain.Apps.Core.Model.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="src/Squidex.Domain.Apps.Core.Operations" t="IncludeRecursive">
+        <e p="ConvertContent" t="Include">
+          <e p="ContentConverter.cs" t="Include" />
+        </e>
+        <e p="EnrichContent" t="Include">
+          <e p="ContentEnricher.cs" t="Include" />
+          <e p="ContentEnrichmentExtensions.cs" t="Include" />
+          <e p="DefaultValueFactory.cs" t="Include" />
+        </e>
+        <e p="ExtractReferenceIds" t="Include">
+          <e p="ContentReferencesExtensions.cs" t="Include" />
+          <e p="ReferencesCleaner.cs" t="Include" />
+          <e p="ReferencesExtractor.cs" t="Include" />
+        </e>
+        <e p="GenerateEdmSchema" t="Include">
+          <e p="EdmSchemaExtensions.cs" t="Include" />
+          <e p="EdmTypeVisitor.cs" t="Include" />
+        </e>
+        <e p="GenerateJsonSchema" t="Include">
+          <e p="ContentSchemaBuilder.cs" t="Include" />
+          <e p="JsonSchemaExtensions.cs" t="Include" />
+          <e p="JsonTypeVisitor.cs" t="Include" />
+        </e>
+        <e p="HandleRules" t="Include">
+          <e p="Actions" t="Include">
+            <e p="AlgoliaActionHandler.cs" t="Include" />
+            <e p="AzureQueueActionHandler.cs" t="Include" />
+            <e p="ElasticSearchActionHandler.cs" t="Include" />
+            <e p="FastlyActionHandler.cs" t="Include" />
+            <e p="SlackActionHandler.cs" t="Include" />
+            <e p="WebhookActionHandler.cs" t="Include" />
+          </e>
+          <e p="ClientPool.cs" t="Include" />
+          <e p="Constants.cs" t="Include" />
+          <e p="HttpClientPool.cs" t="Include" />
+          <e p="IRuleActionHandler.cs" t="Include" />
+          <e p="IRuleTriggerHandler.cs" t="Include" />
+          <e p="RuleActionHandler.cs" t="Include" />
+          <e p="RuleEventFormatter.cs" t="Include" />
+          <e p="RuleResult.cs" t="Include" />
+          <e p="RuleService.cs" t="Include" />
+          <e p="RuleTriggerHandler.cs" t="Include" />
+          <e p="Triggers" t="Include">
+            <e p="AssetChangedTriggerHandler.cs" t="Include" />
+            <e p="ContentChangedTriggerHandler.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Scripting" t="Include">
+          <e p="ContentWrapper" t="Include">
+            <e p="ContentDataObject.cs" t="Include" />
+            <e p="ContentDataProperty.cs" t="Include" />
+            <e p="ContentFieldObject.cs" t="Include" />
+            <e p="ContentFieldProperty.cs" t="Include" />
+            <e p="JsonMapper.cs" t="Include" />
+          </e>
+          <e p="IScriptEngine.cs" t="Include" />
+          <e p="JintScriptEngine.cs" t="Include" />
+          <e p="JintUser.cs" t="Include" />
+          <e p="ScriptContext.cs" t="Include" />
+        </e>
+        <e p="Squidex.Domain.Apps.Core.Operations.csproj" t="IncludeRecursive" />
+        <e p="ValidateContent" t="Include">
+          <e p="ContentValidationExtensions.cs" t="Include" />
+          <e p="ContentValidator.cs" t="Include" />
+          <e p="FieldExtensions.cs" t="Include" />
+          <e p="IAssetInfo.cs" t="Include" />
+          <e p="JsonValueConverter.cs" t="Include" />
+          <e p="ValidationContext.cs" t="Include" />
+          <e p="Validators" t="Include">
+            <e p="AllowedValuesValidator.cs" t="Include" />
+            <e p="AssetsValidator.cs" t="Include" />
+            <e p="CollectionItemValidator.cs" t="Include" />
+            <e p="CollectionValidator.cs" t="Include" />
+            <e p="IValidator.cs" t="Include" />
+            <e p="PatternValidator.cs" t="Include" />
+            <e p="RangeValidator.cs" t="Include" />
+            <e p="ReferencesValidator.cs" t="Include" />
+            <e p="RequiredStringValidator.cs" t="Include" />
+            <e p="RequiredValidator.cs" t="Include" />
+            <e p="StringLengthValidator.cs" t="Include" />
+          </e>
+          <e p="ValidatorsFactory.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Squidex.Domain.Apps.Core.Operations.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="src/Squidex.Domain.Apps.Entities" t="IncludeRecursive">
+        <e p="AppAggregateCommand.cs" t="Include" />
+        <e p="AppCommand.cs" t="Include" />
+        <e p="AppProvider.cs" t="Include" />
+        <e p="Apps" t="Include">
+          <e p="AppCommandMiddleware.cs" t="Include" />
+          <e p="AppDomainObject.cs" t="Include" />
+          <e p="AppEntityExtensions.cs" t="Include" />
+          <e p="AppHistoryEventsCreator.cs" t="Include" />
+          <e p="Commands" t="Include">
+            <e p="AddLanguage.cs" t="Include" />
+            <e p="AddPattern.cs" t="Include" />
+            <e p="AssignContributor.cs" t="Include" />
+            <e p="AttachClient.cs" t="Include" />
+            <e p="ChangePlan.cs" t="Include" />
+            <e p="CreateApp.cs" t="Include" />
+            <e p="DeletePattern.cs" t="Include" />
+            <e p="RemoveContributor.cs" t="Include" />
+            <e p="RemoveLanguage.cs" t="Include" />
+            <e p="RevokeClient.cs" t="Include" />
+            <e p="UpdateClient.cs" t="Include" />
+            <e p="UpdateLanguage.cs" t="Include" />
+            <e p="UpdatePattern.cs" t="Include" />
+          </e>
+          <e p="Guards" t="Include">
+            <e p="GuardApp.cs" t="Include" />
+            <e p="GuardAppClients.cs" t="Include" />
+            <e p="GuardAppContributors.cs" t="Include" />
+            <e p="GuardAppLanguages.cs" t="Include" />
+            <e p="GuardAppPattern.cs" t="Include" />
+          </e>
+          <e p="IAppEntity.cs" t="Include" />
+          <e p="InitialPatterns.cs" t="Include" />
+          <e p="Repositories" t="Include">
+            <e p="IAppRepository.cs" t="Include" />
+          </e>
+          <e p="Services" t="Include">
+            <e p="IAppLimitsPlan.cs" t="Include" />
+            <e p="IAppPlanBillingManager.cs" t="Include" />
+            <e p="IAppPlansProvider.cs" t="Include" />
+            <e p="IChangePlanResult.cs" t="Include" />
+            <e p="Implementations" t="Include">
+              <e p="ConfigAppLimitsPlan.cs" t="Include" />
+              <e p="ConfigAppPlansProvider.cs" t="Include" />
+              <e p="NoopAppPlanBillingManager.cs" t="Include" />
+            </e>
+            <e p="PlanChangeAsyncResult.cs" t="Include" />
+            <e p="PlanChangedResult.cs" t="Include" />
+            <e p="RedirectToCheckoutResult.cs" t="Include" />
+          </e>
+          <e p="State" t="Include">
+            <e p="AppState.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Assets" t="Include">
+          <e p="AssetCommandMiddleware.cs" t="Include" />
+          <e p="AssetDomainObject.cs" t="Include" />
+          <e p="AssetSavedResult.cs" t="Include" />
+          <e p="Commands" t="Include">
+            <e p="AssetAggregateCommand.cs" t="Include" />
+            <e p="CreateAsset.cs" t="Include" />
+            <e p="DeleteAsset.cs" t="Include" />
+            <e p="RenameAsset.cs" t="Include" />
+            <e p="UpdateAsset.cs" t="Include" />
+          </e>
+          <e p="Edm" t="Include">
+            <e p="EdmAssetModel.cs" t="Include" />
+            <e p="EdmAssetQuery.cs" t="Include" />
+          </e>
+          <e p="Guards" t="Include">
+            <e p="GuardAsset.cs" t="Include" />
+          </e>
+          <e p="IAssetEntity.cs" t="Include" />
+          <e p="IAssetStatsEntity.cs" t="Include" />
+          <e p="Repositories" t="Include">
+            <e p="IAssetRepository.cs" t="Include" />
+            <e p="IAssetStatsRepository.cs" t="Include" />
+          </e>
+          <e p="State" t="Include">
+            <e p="AssetState.cs" t="Include" />
+          </e>
+        </e>
+        <e p="CachingProviderBase.cs" t="Include" />
+        <e p="Contents" t="Include">
+          <e p="Commands" t="Include">
+            <e p="ChangeContentStatus.cs" t="Include" />
+            <e p="ContentCommand.cs" t="Include" />
+            <e p="ContentDataCommand.cs" t="Include" />
+            <e p="CreateContent.cs" t="Include" />
+            <e p="DeleteContent.cs" t="Include" />
+            <e p="PatchContent.cs" t="Include" />
+            <e p="UpdateContent.cs" t="Include" />
+          </e>
+          <e p="ContentCommandMiddleware.cs" t="Include" />
+          <e p="ContentDataChangedResult.cs" t="Include" />
+          <e p="ContentDomainObject.cs" t="Include" />
+          <e p="ContentEntity.cs" t="Include" />
+          <e p="ContentHistoryEventsCreator.cs" t="Include" />
+          <e p="ContentOperationContext.cs" t="Include" />
+          <e p="ContentQueryService.cs" t="Include" />
+          <e p="Edm" t="Include">
+            <e p="EdmModelBuilder.cs" t="Include" />
+            <e p="EdmModelExtensions.cs" t="Include" />
+          </e>
+          <e p="GraphQL" t="Include">
+            <e p="CachingGraphQLService.cs" t="Include" />
+            <e p="GraphQLExecutionContext.cs" t="Include" />
+            <e p="GraphQLModel.cs" t="Include" />
+            <e p="GraphQLQuery.cs" t="Include" />
+            <e p="IGraphModel.cs" t="Include" />
+            <e p="IGraphQLService.cs" t="Include" />
+            <e p="IGraphQLUrlGenerator.cs" t="Include" />
+            <e p="Types" t="Include">
+              <e p="AllTypes.cs" t="Include" />
+              <e p="AppMutationsGraphType.cs" t="Include" />
+              <e p="AppQueriesGraphType.cs" t="Include" />
+              <e p="AssetGraphType.cs" t="Include" />
+              <e p="AssetsResultGraphType.cs" t="Include" />
+              <e p="CommandVersionGraphType.cs" t="Include" />
+              <e p="ContentDataChangedResultGraphType.cs" t="Include" />
+              <e p="ContentDataGraphInputType.cs" t="Include" />
+              <e p="ContentDataGraphType.cs" t="Include" />
+              <e p="ContentGraphType.cs" t="Include" />
+              <e p="ContentsResultGraphType.cs" t="Include" />
+              <e p="GeolocationInputGraphType.cs" t="Include" />
+              <e p="GuidGraphType.cs" t="Include" />
+              <e p="NoopGraphType.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Guards" t="Include">
+            <e p="GuardContent.cs" t="Include" />
+          </e>
+          <e p="IContentEntity.cs" t="Include" />
+          <e p="IContentQueryService.cs" t="Include" />
+          <e p="QueryContext.cs" t="Include" />
+          <e p="Repositories" t="Include">
+            <e p="IContentRepository.cs" t="Include" />
+          </e>
+          <e p="State" t="Include">
+            <e p="ContentState.cs" t="Include" />
+          </e>
+        </e>
+        <e p="DomainObjectState.cs" t="Include" />
+        <e p="EntityMapper.cs" t="Include" />
+        <e p="History" t="Include">
+          <e p="HistoryEventToStore.cs" t="Include" />
+          <e p="HistoryEventsCreatorBase.cs" t="Include" />
+          <e p="IHistoryEventEntity.cs" t="Include" />
+          <e p="IHistoryEventsCreator.cs" t="Include" />
+          <e p="Repositories" t="Include">
+            <e p="IHistoryEventRepository.cs" t="Include" />
+          </e>
+        </e>
+        <e p="IAppProvider.cs" t="Include" />
+        <e p="IEntity.cs" t="Include" />
+        <e p="IEntityWithAppRef.cs" t="Include" />
+        <e p="IEntityWithCreatedBy.cs" t="Include" />
+        <e p="IEntityWithLastModifiedBy.cs" t="Include" />
+        <e p="IEntityWithVersion.cs" t="Include" />
+        <e p="IUpdateableEntity.cs" t="Include" />
+        <e p="IUpdateableEntityWithAppRef.cs" t="Include" />
+        <e p="IUpdateableEntityWithCreatedBy.cs" t="Include" />
+        <e p="IUpdateableEntityWithLastModifiedBy.cs" t="Include" />
+        <e p="IUpdateableEntityWithVersion.cs" t="Include" />
+        <e p="Rules" t="Include">
+          <e p="Commands" t="Include">
+            <e p="CreateRule.cs" t="Include" />
+            <e p="DeleteRule.cs" t="Include" />
+            <e p="DisableRule.cs" t="Include" />
+            <e p="EnableRule.cs" t="Include" />
+            <e p="RuleAggregateCommand.cs" t="Include" />
+            <e p="RuleEditCommand.cs" t="Include" />
+            <e p="UpdateRule.cs" t="Include" />
+          </e>
+          <e p="Guards" t="Include">
+            <e p="GuardRule.cs" t="Include" />
+            <e p="RuleActionValidator.cs" t="Include" />
+            <e p="RuleTriggerValidator.cs" t="Include" />
+          </e>
+          <e p="IRuleEntity.cs" t="Include" />
+          <e p="IRuleEventEntity.cs" t="Include" />
+          <e p="Repositories" t="Include">
+            <e p="IRuleEventRepository.cs" t="Include" />
+            <e p="IRuleRepository.cs" t="Include" />
+          </e>
+          <e p="RuleCommandMiddleware.cs" t="Include" />
+          <e p="RuleDequeuer.cs" t="Include" />
+          <e p="RuleDomainObject.cs" t="Include" />
+          <e p="RuleEnqueuer.cs" t="Include" />
+          <e p="RuleJobResult.cs" t="Include" />
+          <e p="State" t="Include">
+            <e p="RuleState.cs" t="Include" />
+          </e>
+        </e>
+        <e p="SchemaAggregateCommand.cs" t="Include" />
+        <e p="SchemaCommand.cs" t="Include" />
+        <e p="Schemas" t="Include">
+          <e p="Commands" t="Include">
+            <e p="AddField.cs" t="Include" />
+            <e p="ConfigureScripts.cs" t="Include" />
+            <e p="CreateSchema.cs" t="Include" />
+            <e p="CreateSchemaField.cs" t="Include" />
+            <e p="DeleteField.cs" t="Include" />
+            <e p="DeleteSchema.cs" t="Include" />
+            <e p="DisableField.cs" t="Include" />
+            <e p="EnableField.cs" t="Include" />
+            <e p="FieldCommand.cs" t="Include" />
+            <e p="HideField.cs" t="Include" />
+            <e p="LockField.cs" t="Include" />
+            <e p="PublishSchema.cs" t="Include" />
+            <e p="ReorderFields.cs" t="Include" />
+            <e p="ShowField.cs" t="Include" />
+            <e p="UnpublishSchema.cs" t="Include" />
+            <e p="UpdateField.cs" t="Include" />
+            <e p="UpdateSchema.cs" t="Include" />
+          </e>
+          <e p="Guards" t="Include">
+            <e p="FieldPropertiesValidator.cs" t="Include" />
+            <e p="GuardSchema.cs" t="Include" />
+            <e p="GuardSchemaField.cs" t="Include" />
+          </e>
+          <e p="ISchemaEntity.cs" t="Include" />
+          <e p="Repositories" t="Include">
+            <e p="ISchemaRepository.cs" t="Include" />
+          </e>
+          <e p="SchemaCommandMiddleware.cs" t="Include" />
+          <e p="SchemaDomainObject.cs" t="Include" />
+          <e p="SchemaExtensions.cs" t="Include" />
+          <e p="SchemaHistoryEventsCreator.cs" t="Include" />
+          <e p="State" t="Include">
+            <e p="SchemaState.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Squidex.Domain.Apps.Entities.csproj" t="IncludeRecursive" />
+        <e p="SquidexCommand.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Squidex.Domain.Apps.Entities.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="src/Squidex.Domain.Apps.Entities.MongoDb" t="IncludeRecursive">
+        <e p="Apps" t="Include">
+          <e p="MongoAppEntity.cs" t="Include" />
+          <e p="MongoAppRepository.cs" t="Include" />
+          <e p="MongoAppRepository_SnapshotStore.cs" t="Include" />
+        </e>
+        <e p="Assets" t="Include">
+          <e p="MongoAssetEntity.cs" t="Include" />
+          <e p="MongoAssetRepository.cs" t="Include" />
+          <e p="MongoAssetRepository_SnapshotStore.cs" t="Include" />
+          <e p="MongoAssetStatsEntity.cs" t="Include" />
+          <e p="MongoAssetStatsRepository.cs" t="Include" />
+          <e p="MongoAssetStatsRepository_EventHandling.cs" t="Include" />
+          <e p="Visitors" t="Include">
+            <e p="FindExtensions.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Contents" t="Include">
+          <e p="Extensions.cs" t="Include" />
+          <e p="MongoContentEntity.cs" t="Include" />
+          <e p="MongoContentRepository.cs" t="Include" />
+          <e p="MongoContentRepository_EventHandling.cs" t="Include" />
+          <e p="MongoContentRepository_SnapshotStore.cs" t="Include" />
+          <e p="Visitors" t="Include">
+            <e p="FindExtensions.cs" t="Include" />
+          </e>
+        </e>
+        <e p="History" t="Include">
+          <e p="MongoHistoryEventEntity.cs" t="Include" />
+          <e p="MongoHistoryEventRepository.cs" t="Include" />
+          <e p="ParsedHistoryEvent.cs" t="Include" />
+        </e>
+        <e p="MongoCollectionExtensions.cs" t="Include" />
+        <e p="Rules" t="Include">
+          <e p="MongoRuleEntity.cs" t="Include" />
+          <e p="MongoRuleEventEntity.cs" t="Include" />
+          <e p="MongoRuleEventRepository.cs" t="Include" />
+          <e p="MongoRuleRepository.cs" t="Include" />
+          <e p="MongoRuleRepository_SnapshotStore.cs" t="Include" />
+        </e>
+        <e p="Schemas" t="Include">
+          <e p="MongoSchemaEntity.cs" t="Include" />
+          <e p="MongoSchemaRepository.cs" t="Include" />
+          <e p="MongoSchemaRepository_SnapshotStore.cs" t="Include" />
+        </e>
+        <e p="Squidex.Domain.Apps.Entities.MongoDb.csproj" t="IncludeRecursive" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Squidex.Domain.Apps.Entities.MongoDb.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="src/Squidex.Domain.Apps.Events" t="IncludeRecursive">
+        <e p="AppEvent.cs" t="Include" />
+        <e p="Apps" t="Include">
+          <e p="AppClientAttached.cs" t="Include" />
+          <e p="AppClientRenamed.cs" t="Include" />
+          <e p="AppClientRevoked.cs" t="Include" />
+          <e p="AppClientUpdated.cs" t="Include" />
+          <e p="AppContributorAssigned.cs" t="Include" />
+          <e p="AppContributorRemoved.cs" t="Include" />
+          <e p="AppCreated.cs" t="Include" />
+          <e p="AppLanguageAdded.cs" t="Include" />
+          <e p="AppLanguageRemoved.cs" t="Include" />
+          <e p="AppLanguageUpdated.cs" t="Include" />
+          <e p="AppMasterLanguageSet.cs" t="Include" />
+          <e p="AppPatternAdded.cs" t="Include" />
+          <e p="AppPatternDeleted.cs" t="Include" />
+          <e p="AppPatternUpdated.cs" t="Include" />
+          <e p="AppPlanChanged.cs" t="Include" />
+        </e>
+        <e p="Assets" t="Include">
+          <e p="AssetCreated.cs" t="Include" />
+          <e p="AssetDeleted.cs" t="Include" />
+          <e p="AssetEvent.cs" t="Include" />
+          <e p="AssetRenamed.cs" t="Include" />
+          <e p="AssetUpdated.cs" t="Include" />
+        </e>
+        <e p="Contents" t="Include">
+          <e p="ContentCreated.cs" t="Include" />
+          <e p="ContentDeleted.cs" t="Include" />
+          <e p="ContentEvent.cs" t="Include" />
+          <e p="ContentStatusChanged.cs" t="Include" />
+          <e p="ContentUpdated.cs" t="Include" />
+        </e>
+        <e p="Rules" t="Include">
+          <e p="RuleCreated.cs" t="Include" />
+          <e p="RuleDeleted.cs" t="Include" />
+          <e p="RuleDisabled.cs" t="Include" />
+          <e p="RuleEnabled.cs" t="Include" />
+          <e p="RuleEvent.cs" t="Include" />
+          <e p="RuleUpdated.cs" t="Include" />
+        </e>
+        <e p="SchemaEvent.cs" t="Include" />
+        <e p="Schemas" t="Include">
+          <e p="FieldAdded.cs" t="Include" />
+          <e p="FieldDeleted.cs" t="Include" />
+          <e p="FieldDisabled.cs" t="Include" />
+          <e p="FieldEnabled.cs" t="Include" />
+          <e p="FieldEvent.cs" t="Include" />
+          <e p="FieldHidden.cs" t="Include" />
+          <e p="FieldLocked.cs" t="Include" />
+          <e p="FieldShown.cs" t="Include" />
+          <e p="FieldUpdated.cs" t="Include" />
+          <e p="SchemaCreated.cs" t="Include" />
+          <e p="SchemaCreatedField.cs" t="Include" />
+          <e p="SchemaDeleted.cs" t="Include" />
+          <e p="SchemaFieldsReordered.cs" t="Include" />
+          <e p="SchemaPublished.cs" t="Include" />
+          <e p="SchemaUnpublished.cs" t="Include" />
+          <e p="SchemaUpdated.cs" t="Include" />
+          <e p="ScriptsConfigured.cs" t="Include" />
+        </e>
+        <e p="Squidex.Domain.Apps.Events.csproj" t="IncludeRecursive" />
+        <e p="SquidexEvent.cs" t="Include" />
+        <e p="SquidexEvents.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Squidex.Domain.Apps.Events.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="src/Squidex.Domain.Users" t="IncludeRecursive">
+        <e p="AssetUserPictureStore.cs" t="Include" />
+        <e p="IRole.cs" t="Include" />
+        <e p="IRoleFactory.cs" t="Include" />
+        <e p="IUserEvents.cs" t="Include" />
+        <e p="IUserFactory.cs" t="Include" />
+        <e p="IUserPictureStore.cs" t="Include" />
+        <e p="NoopUserEvents.cs" t="Include" />
+        <e p="Squidex.Domain.Users.csproj" t="IncludeRecursive" />
+        <e p="UserClaimsPrincipalFactoryWithEmail.cs" t="Include" />
+        <e p="UserExtensions.cs" t="Include" />
+        <e p="UserManagerExtensions.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Squidex.Domain.Users.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="src/Squidex.Domain.Users.MongoDb" t="IncludeRecursive">
+        <e p="Infrastructure" t="Include">
+          <e p="MongoPersistedGrantStore.cs" t="Include" />
+        </e>
+        <e p="MongoRole.cs" t="Include" />
+        <e p="MongoRoleStore.cs" t="Include" />
+        <e p="MongoUser.cs" t="Include" />
+        <e p="MongoUserClaim.cs" t="Include" />
+        <e p="MongoUserLogin.cs" t="Include" />
+        <e p="MongoUserStore.cs" t="Include" />
+        <e p="MongoUserToken.cs" t="Include" />
+        <e p="MongoXmlDocument.cs" t="Include" />
+        <e p="MongoXmlRepository.cs" t="Include" />
+        <e p="Squidex.Domain.Users.MongoDb.csproj" t="IncludeRecursive" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Squidex.Domain.Users.MongoDb.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="src/Squidex.Infrastructure" t="IncludeRecursive">
+        <e p="Assets" t="Include">
+          <e p="AssetFile.cs" t="Include" />
+          <e p="AssetNotFoundException.cs" t="Include" />
+          <e p="FolderAssetStore.cs" t="Include" />
+          <e p="IAssetStore.cs" t="Include" />
+          <e p="IAssetThumbnailGenerator.cs" t="Include" />
+          <e p="ImageInfo.cs" t="Include" />
+          <e p="ImageSharp" t="Include">
+            <e p="ImageSharpAssetThumbnailGenerator.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Caching" t="Include">
+          <e p="IInvalidatingCache.cs" t="Include" />
+          <e p="InvalidateMessage.cs" t="Include" />
+          <e p="InvalidatingMemoryCache.cs" t="Include" />
+          <e p="InvalidatingMemoryCacheExtensions.cs" t="Include" />
+          <e p="LRUCache.cs" t="Include" />
+          <e p="LRUCacheItem.cs" t="Include" />
+        </e>
+        <e p="Cloneable.cs" t="Include" />
+        <e p="Cloneable{T}.cs" t="Include" />
+        <e p="CollectionExtensions.cs" t="Include" />
+        <e p="Commands" t="Include">
+          <e p="AggregateHandler.cs" t="Include" />
+          <e p="CommandContext.cs" t="Include" />
+          <e p="CommandExtensions.cs" t="Include" />
+          <e p="DomainObjectBase.cs" t="Include" />
+          <e p="EnrichWithTimestampCommandMiddleware.cs" t="Include" />
+          <e p="EntityCreatedResult.cs" t="Include" />
+          <e p="EntityCreatedResult{T}.cs" t="Include" />
+          <e p="EntitySavedResult.cs" t="Include" />
+          <e p="IAggregateCommand.cs" t="Include" />
+          <e p="IAggregateHandler.cs" t="Include" />
+          <e p="ICommand.cs" t="Include" />
+          <e p="ICommandBus.cs" t="Include" />
+          <e p="ICommandMiddleware.cs" t="Include" />
+          <e p="IDomainObject.cs" t="Include" />
+          <e p="IDomainState.cs" t="Include" />
+          <e p="ITimestampCommand.cs" t="Include" />
+          <e p="InMemoryCommandBus.cs" t="Include" />
+          <e p="LogCommandMiddleware.cs" t="Include" />
+        </e>
+        <e p="ConfigurationException.cs" t="Include" />
+        <e p="Dispatching" t="Include">
+          <e p="ActionContextDispatcher.cs" t="Include" />
+          <e p="ActionDispatcher.cs" t="Include" />
+          <e p="DispatchExtensions.cs" t="Include" />
+          <e p="FuncContextDispatcher.cs" t="Include" />
+          <e p="FuncDispatcher.cs" t="Include" />
+          <e p="Helper.cs" t="Include" />
+        </e>
+        <e p="DisposableObjectBase.cs" t="Include" />
+        <e p="DomainException.cs" t="Include" />
+        <e p="DomainForbiddenException.cs" t="Include" />
+        <e p="DomainObjectDeletedException.cs" t="Include" />
+        <e p="DomainObjectException.cs" t="Include" />
+        <e p="DomainObjectNotFoundException.cs" t="Include" />
+        <e p="DomainObjectVersionException.cs" t="Include" />
+        <e p="EtagVersion.cs" t="Include" />
+        <e p="EventSourcing" t="Include">
+          <e p="CommonHeaders.cs" t="Include" />
+          <e p="CompoundEventConsumer.cs" t="Include" />
+          <e p="DefaultEventNotifier.cs" t="Include" />
+          <e p="Envelope.cs" t="Include" />
+          <e p="EnvelopeExtensions.cs" t="Include" />
+          <e p="EnvelopeHeaders.cs" t="Include" />
+          <e p="Envelope{T}.cs" t="Include" />
+          <e p="EventConsumerInfo.cs" t="Include" />
+          <e p="EventData.cs" t="Include" />
+          <e p="EventTypeAttribute.cs" t="Include" />
+          <e p="Grains" t="Include">
+            <e p="EventConsumerGrain.cs" t="Include" />
+            <e p="EventConsumerGrainManager.cs" t="Include" />
+            <e p="EventConsumerState.cs" t="Include" />
+            <e p="Messages" t="Include">
+              <e p="GetStatesRequest.cs" t="Include" />
+              <e p="GetStatesResponse.cs" t="Include" />
+              <e p="ResetConsumerMessage.cs" t="Include" />
+              <e p="StartConsumerMessage.cs" t="Include" />
+              <e p="StopConsumerMessage.cs" t="Include" />
+            </e>
+          </e>
+          <e p="IEvent.cs" t="Include" />
+          <e p="IEventConsumer.cs" t="Include" />
+          <e p="IEventDataFormatter.cs" t="Include" />
+          <e p="IEventNotifier.cs" t="Include" />
+          <e p="IEventStore.cs" t="Include" />
+          <e p="IEventSubscriber.cs" t="Include" />
+          <e p="IEventSubscription.cs" t="Include" />
+          <e p="IMigratedEvent.cs" t="Include" />
+          <e p="JsonEventDataFormatter.cs" t="Include" />
+          <e p="NoopEvent.cs" t="Include" />
+          <e p="PollingSubscription.cs" t="Include" />
+          <e p="RetrySubscription.cs" t="Include" />
+          <e p="StoredEvent.cs" t="Include" />
+          <e p="WrongEventVersionException.cs" t="Include" />
+        </e>
+        <e p="ExceptionHelper.cs" t="Include" />
+        <e p="FileExtensions.cs" t="Include" />
+        <e p="GravatarHelper.cs" t="Include" />
+        <e p="Guard.cs" t="Include" />
+        <e p="Http" t="Include">
+          <e p="DumpFormatter.cs" t="Include" />
+        </e>
+        <e p="IFreezable.cs" t="Include" />
+        <e p="IInitializable.cs" t="Include" />
+        <e p="IPubSub.cs" t="Include" />
+        <e p="IResultList.cs" t="Include" />
+        <e p="IRunnable.cs" t="Include" />
+        <e p="IValidatable.cs" t="Include" />
+        <e p="InMemoryPubSub.cs" t="Include" />
+        <e p="Json" t="Include">
+          <e p="ClaimsPrincipalConverter.cs" t="Include" />
+          <e p="ConverterContractResolver.cs" t="Include" />
+          <e p="InstantConverter.cs" t="Include" />
+          <e p="JsonClassConverter.cs" t="Include" />
+          <e p="JsonExtension.cs" t="Include" />
+          <e p="LanguageConverter.cs" t="Include" />
+          <e p="NamedGuidIdConverter.cs" t="Include" />
+          <e p="NamedLongIdConverter.cs" t="Include" />
+          <e p="NamedStringIdConverter.cs" t="Include" />
+          <e p="PropertiesBagConverter.cs" t="Include" />
+          <e p="RefTokenConverter.cs" t="Include" />
+          <e p="TypeNameSerializationBinder.cs" t="Include" />
+        </e>
+        <e p="Language.cs" t="Include" />
+        <e p="Languages.cs" t="Include" />
+        <e p="Log" t="Include">
+          <e p="Adapter" t="Include">
+            <e p="SemanticLogLogger.cs" t="Include" />
+            <e p="SemanticLogLoggerFactoryExtensions.cs" t="Include" />
+            <e p="SemanticLogLoggerProvider.cs" t="Include" />
+          </e>
+          <e p="ApplicationInfoLogAppender.cs" t="Include" />
+          <e p="ConsoleLogChannel.cs" t="Include" />
+          <e p="ConstantsLogWriter.cs" t="Include" />
+          <e p="DebugLogChannel.cs" t="Include" />
+          <e p="FileChannel.cs" t="Include" />
+          <e p="IArrayWriter.cs" t="Include" />
+          <e p="ILogAppender.cs" t="Include" />
+          <e p="ILogChannel.cs" t="Include" />
+          <e p="IObjectWriter.cs" t="Include" />
+          <e p="ISemanticLog.cs" t="Include" />
+          <e p="Internal" t="Include">
+            <e p="AnsiLogConsole.cs" t="Include" />
+            <e p="ConsoleLogProcessor.cs" t="Include" />
+            <e p="FileLogProcessor.cs" t="Include" />
+            <e p="IConsole.cs" t="Include" />
+            <e p="LogMessageEntry.cs" t="Include" />
+            <e p="WindowsLogConsole.cs" t="Include" />
+          </e>
+          <e p="JsonLogWriter.cs" t="Include" />
+          <e p="SemanticLog.cs" t="Include" />
+          <e p="SemanticLogExtensions.cs" t="Include" />
+          <e p="SemanticLogLevel.cs" t="Include" />
+          <e p="TimestampLogAppender.cs" t="Include" />
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="IMigration.cs" t="Include" />
+          <e p="IMigrationStatus.cs" t="Include" />
+          <e p="Migrator.cs" t="Include" />
+        </e>
+        <e p="NamedId.cs" t="Include" />
+        <e p="PropertiesBag.cs" t="Include" />
+        <e p="PropertyValue.cs" t="Include" />
+        <e p="PubSubExtensions.cs" t="Include" />
+        <e p="RandomHash.cs" t="Include" />
+        <e p="RefToken.cs" t="Include" />
+        <e p="Reflection" t="Include">
+          <e p="IPropertyAccessor.cs" t="Include" />
+          <e p="PropertiesTypeAccessor.cs" t="Include" />
+          <e p="PropertyAccessor.cs" t="Include" />
+          <e p="ReflectionExtensions.cs" t="Include" />
+          <e p="SimpleCopier.cs" t="Include" />
+          <e p="SimpleMapper.cs" t="Include" />
+        </e>
+        <e p="ResultList.cs" t="Include" />
+        <e p="RetryWindow.cs" t="Include" />
+        <e p="SearchEngines" t="Include">
+          <e p="ISearchEngine.cs" t="Include" />
+        </e>
+        <e p="Security" t="Include">
+          <e p="Extensions.cs" t="Include" />
+          <e p="OpenIdClaims.cs" t="Include" />
+        </e>
+        <e p="Singletons.cs" t="Include" />
+        <e p="Squidex.Infrastructure.csproj" t="IncludeRecursive" />
+        <e p="SquidexInfrastructure.cs" t="Include" />
+        <e p="States" t="Include">
+          <e p="DefaultStreamNameResolver.cs" t="Include" />
+          <e p="IPersistence.cs" t="Include" />
+          <e p="ISnapshotStore.cs" t="Include" />
+          <e p="IStateFactory.cs" t="Include" />
+          <e p="IStatefulObject.cs" t="Include" />
+          <e p="IStore.cs" t="Include" />
+          <e p="IStreamNameResolver.cs" t="Include" />
+          <e p="InconsistentStateException.cs" t="Include" />
+          <e p="InvalidateMessage.cs" t="Include" />
+          <e p="Persistence.cs" t="Include" />
+          <e p="PersistenceMode.cs" t="Include" />
+          <e p="Persistence{TOwner,TSnapshot,TKey}.cs" t="Include" />
+          <e p="StateFactory.cs" t="Include" />
+          <e p="Store.cs" t="Include" />
+          <e p="StoreExtensions.cs" t="Include" />
+        </e>
+        <e p="StringExtensions.cs" t="Include" />
+        <e p="Tasks" t="Include">
+          <e p="AsyncLock.cs" t="Include" />
+          <e p="AsyncLockPool.cs" t="Include" />
+          <e p="SingleThreadedDispatcher.cs" t="Include" />
+          <e p="TaskExtensions.cs" t="Include" />
+          <e p="TaskHelper.cs" t="Include" />
+        </e>
+        <e p="Timers" t="Include">
+          <e p="CompletionTimer.cs" t="Include" />
+        </e>
+        <e p="TypeNameAttribute.cs" t="Include" />
+        <e p="TypeNameNotFoundException.cs" t="Include" />
+        <e p="TypeNameRegistry.cs" t="Include" />
+        <e p="UsageTracking" t="Include">
+          <e p="BackgroundUsageTracker.cs" t="Include" />
+          <e p="IUsageStore.cs" t="Include" />
+          <e p="IUsageTracker.cs" t="Include" />
+          <e p="StoredUsage.cs" t="Include" />
+          <e p="Usage.cs" t="Include" />
+        </e>
+        <e p="Validate.cs" t="Include" />
+        <e p="ValidationError.cs" t="Include" />
+        <e p="ValidationException.cs" t="Include" />
+        <e p="ValidationExtensions.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="language-codes.csv" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Squidex.Infrastructure.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="src/Squidex.Infrastructure.Azure" t="IncludeRecursive">
+        <e p="Assets" t="Include">
+          <e p="AzureBlobAssetStore.cs" t="Include" />
+        </e>
+        <e p="Squidex.Infrastructure.Azure.csproj" t="IncludeRecursive" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Squidex.Infrastructure.Azure.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="src/Squidex.Infrastructure.ElasticSearch" t="IncludeRecursive">
+        <e p="DefaultElasticClientFactory.cs" t="Include" />
+        <e p="ElasticSearchClient.cs" t="Include" />
+        <e p="IElasticLowLevelClientFactory.cs" t="Include" />
+        <e p="Squidex.Infrastructure.ElasticSearch.csproj" t="IncludeRecursive" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Squidex.Infrastructure.ElasticSearch.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="src/Squidex.Infrastructure.GetEventStore" t="IncludeRecursive">
+        <e p="EventSourcing" t="Include">
+          <e p="Formatter.cs" t="Include" />
+          <e p="GetEventStore.cs" t="Include" />
+          <e p="GetEventStoreSubscription.cs" t="Include" />
+          <e p="ProjectionHelper.cs" t="Include" />
+        </e>
+        <e p="Squidex.Infrastructure.GetEventStore.csproj" t="IncludeRecursive" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Squidex.Infrastructure.GetEventStore.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="src/Squidex.Infrastructure.GoogleCloud" t="IncludeRecursive">
+        <e p="Assets" t="Include">
+          <e p="GoogleCloudAssetStore.cs" t="Include" />
+        </e>
+        <e p="Squidex.Infrastructure.GoogleCloud.csproj" t="IncludeRecursive" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Squidex.Infrastructure.GoogleCloud.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="src/Squidex.Infrastructure.MongoDb" t="IncludeRecursive">
+        <e p="EventSourcing" t="Include">
+          <e p="MongoEvent.cs" t="Include" />
+          <e p="MongoEventCommit.cs" t="Include" />
+          <e p="MongoEventStore.cs" t="Include" />
+          <e p="StreamPosition.cs" t="Include" />
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="MongoMigrationEntity.cs" t="Include" />
+          <e p="MongoMigrationStatus.cs" t="Include" />
+        </e>
+        <e p="MongoDb" t="Include">
+          <e p="BsonHelper.cs" t="Include" />
+          <e p="BsonJsonAttribute.cs" t="Include" />
+          <e p="BsonJsonConvention.cs" t="Include" />
+          <e p="BsonJsonConverter.cs" t="Include" />
+          <e p="BsonJsonReader.cs" t="Include" />
+          <e p="BsonJsonSerializer.cs" t="Include" />
+          <e p="BsonJsonWriter.cs" t="Include" />
+          <e p="FieldDefinitionBuilder.cs" t="Include" />
+          <e p="IVersionedEntity.cs" t="Include" />
+          <e p="InstantSerializer.cs" t="Include" />
+          <e p="MongoEntity.cs" t="Include" />
+          <e p="MongoExtensions.cs" t="Include" />
+          <e p="MongoRepositoryBase.cs" t="Include" />
+          <e p="OData" t="Include">
+            <e p="ConstantVisitor.cs" t="Include" />
+            <e p="FilterBuilder.cs" t="Include" />
+            <e p="FilterVisitor.cs" t="Include" />
+            <e p="LimitExtensions.cs" t="Include" />
+            <e p="PropertyBuilder.cs" t="Include" />
+            <e p="PropertyNameVisitor.cs" t="Include" />
+            <e p="SearchTermVisitor.cs" t="Include" />
+            <e p="SortBuilder.cs" t="Include" />
+          </e>
+          <e p="RefTokenSerializer.cs" t="Include" />
+        </e>
+        <e p="Squidex.Infrastructure.MongoDb.csproj" t="IncludeRecursive" />
+        <e p="States" t="Include">
+          <e p="MongoSnapshotStore.cs" t="Include" />
+          <e p="MongoState.cs" t="Include" />
+        </e>
+        <e p="UsageTracking" t="Include">
+          <e p="MongoUsage.cs" t="Include" />
+          <e p="MongoUsageStore.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Squidex.Infrastructure.MongoDb.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="src/Squidex.Infrastructure.RabbitMq" t="IncludeRecursive">
+        <e p="CQRS" t="Include">
+          <e p="Events" t="Include">
+            <e p="RabbitMqEventConsumer.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Squidex.Infrastructure.RabbitMq.csproj" t="IncludeRecursive" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Squidex.Infrastructure.RabbitMq.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="src/Squidex.Infrastructure.Redis" t="IncludeRecursive">
+        <e p="RedisPubSub.cs" t="Include" />
+        <e p="RedisSubscription.cs" t="Include" />
+        <e p="Squidex.Infrastructure.Redis.csproj" t="IncludeRecursive" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Squidex.Infrastructure.Redis.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="src/Squidex.Shared" t="IncludeRecursive">
+        <e p="Identity" t="Include">
+          <e p="ClaimsPrincipalExtensions.cs" t="Include" />
+          <e p="SquidexClaimTypes.cs" t="Include" />
+          <e p="SquidexRoles.cs" t="Include" />
+        </e>
+        <e p="Squidex.Shared.csproj" t="IncludeRecursive" />
+        <e p="Users" t="Include">
+          <e p="ExternalLogin.cs" t="Include" />
+          <e p="IUser.cs" t="Include" />
+          <e p="IUserResolver.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Squidex.Shared.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="stylecop.json" t="Include" />
+      <e p="tests/Squidex.Domain.Apps.Core.Tests" t="IncludeRecursive">
+        <e p="Model" t="Include">
+          <e p="Apps" t="Include">
+            <e p="AppClientJsonTests.cs" t="Include" />
+            <e p="AppClientsTests.cs" t="Include" />
+            <e p="AppContributorsJsonTests.cs" t="Include" />
+            <e p="AppContributorsTests.cs" t="Include" />
+            <e p="AppPatternJsonTests.cs" t="Include" />
+            <e p="AppPatternsTests.cs" t="Include" />
+            <e p="AppPlanTests.cs" t="Include" />
+            <e p="LanguagesConfigJsonTests.cs" t="Include" />
+            <e p="LanguagesConfigTests.cs" t="Include" />
+            <e p="RoleExtensionTests.cs" t="Include" />
+          </e>
+          <e p="Contents" t="Include">
+            <e p="ContentDataTests.cs" t="Include" />
+            <e p="StatusFlowTests.cs" t="Include" />
+          </e>
+          <e p="InvariantPartitionTests.cs" t="Include" />
+          <e p="PartitioningTests.cs" t="Include" />
+          <e p="Rules" t="Include">
+            <e p="RuleTests.cs" t="Include" />
+          </e>
+          <e p="Schemas" t="Include">
+            <e p="FieldRegistryTests.cs" t="Include" />
+            <e p="SchemaFieldTests.cs" t="Include" />
+            <e p="SchemaTests.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Operations" t="Include">
+          <e p="ConvertContent" t="Include">
+            <e p="ContentConversionTests.cs" t="Include" />
+          </e>
+          <e p="EnrichContent" t="Include">
+            <e p="ContentEnrichmentTests.cs" t="Include" />
+          </e>
+          <e p="ExtractReferenceIds" t="Include">
+            <e p="ReferenceExtractionTests.cs" t="Include" />
+          </e>
+          <e p="GenerateEdmSchema" t="Include">
+            <e p="EdmTests.cs" t="Include" />
+          </e>
+          <e p="GenerateJsonSchema" t="Include">
+            <e p="JsonSchemaTests.cs" t="Include" />
+          </e>
+          <e p="HandleRules" t="Include">
+            <e p="RuleEventFormatterTests.cs" t="Include" />
+            <e p="RuleServiceTests.cs" t="Include" />
+            <e p="Triggers" t="Include">
+              <e p="AssetChangedTriggerTests.cs" t="Include" />
+              <e p="ContentChangedTriggerTests.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Scripting" t="Include">
+            <e p="ContentDataObjectTests.cs" t="Include" />
+            <e p="JintScriptEngineTests.cs" t="Include" />
+            <e p="JintUserTests.cs" t="Include" />
+          </e>
+          <e p="ValidateContent" t="Include">
+            <e p="AssetsFieldTests.cs" t="Include" />
+            <e p="BooleanFieldTests.cs" t="Include" />
+            <e p="ContentValidationTests.cs" t="Include" />
+            <e p="DateTimeFieldTests.cs" t="Include" />
+            <e p="GeolocationFieldTests.cs" t="Include" />
+            <e p="JsonFieldTests.cs" t="Include" />
+            <e p="NumberFieldTests.cs" t="Include" />
+            <e p="ReferencesFieldTests.cs" t="Include" />
+            <e p="StringFieldTests.cs" t="Include" />
+            <e p="TagsFieldTests.cs" t="Include" />
+            <e p="ValidationTestExtensions.cs" t="Include" />
+            <e p="Validators" t="Include">
+              <e p="AllowedValuesValidatorTests.cs" t="Include" />
+              <e p="CollectionItemValidatorTests.cs" t="Include" />
+              <e p="CollectionValidatorTests.cs" t="Include" />
+              <e p="PatternValidatorTests.cs" t="Include" />
+              <e p="RangeValidatorTests.cs" t="Include" />
+              <e p="RequiredStringValidatorTests.cs" t="Include" />
+              <e p="RequiredValidatorTests.cs" t="Include" />
+              <e p="StringLengthValidatorTests.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Squidex.Domain.Apps.Core.Tests.csproj" t="IncludeRecursive" />
+        <e p="TestData.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="Squidex.Domain.Apps.Core.Tests.AssemblyInfo.cs" t="Include" />
+              <e p="Squidex.Domain.Apps.Core.Tests.Program.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="tests/Squidex.Domain.Apps.Entities.Tests" t="IncludeRecursive">
+        <e p="Apps" t="Include">
+          <e p="AppCommandMiddlewareTests.cs" t="Include" />
+          <e p="AppDomainObjectTests.cs" t="Include" />
+          <e p="ConfigAppLimitsProviderTests.cs" t="Include" />
+          <e p="Guards" t="Include">
+            <e p="GuardAppClientsTests.cs" t="Include" />
+            <e p="GuardAppContributorsTests.cs" t="Include" />
+            <e p="GuardAppLanguagesTests.cs" t="Include" />
+            <e p="GuardAppPatternsTests.cs" t="Include" />
+            <e p="GuardAppTests.cs" t="Include" />
+          </e>
+          <e p="NoopAppPlanBillingManagerTests.cs" t="Include" />
+        </e>
+        <e p="Assets" t="Include">
+          <e p="AssetCommandMiddlewareTests.cs" t="Include" />
+          <e p="AssetDomainObjectTests.cs" t="Include" />
+          <e p="Guards" t="Include">
+            <e p="GuardAssetTests.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Contents" t="Include">
+          <e p="ContentCommandMiddlewareTests.cs" t="Include" />
+          <e p="ContentDomainObjectTests.cs" t="Include" />
+          <e p="ContentQueryServiceTests.cs" t="Include" />
+          <e p="GraphQL" t="Include">
+            <e p="GraphQLMutationTests.cs" t="Include" />
+            <e p="GraphQLQueriesTests.cs" t="Include" />
+            <e p="GraphQLTestBase.cs" t="Include" />
+          </e>
+          <e p="Guard" t="Include">
+            <e p="GuardContentTests.cs" t="Include" />
+          </e>
+          <e p="OData" t="Include">
+            <e p="ODataQueryTests.cs" t="Include" />
+          </e>
+          <e p="TestData" t="Include">
+            <e p="FakeAssetEntity.cs" t="Include" />
+            <e p="FakeUrlGenerator.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Rules" t="Include">
+          <e p="Guards" t="Include">
+            <e p="Actions" t="Include">
+              <e p="AlgoliaActionTests.cs" t="Include" />
+              <e p="AzureQueueActionTests.cs" t="Include" />
+              <e p="FastlyActionTests.cs" t="Include" />
+              <e p="SlackActionTests.cs" t="Include" />
+              <e p="WebhookActionTests.cs" t="Include" />
+            </e>
+            <e p="GuardRuleTests.cs" t="Include" />
+            <e p="Triggers" t="Include">
+              <e p="ContentChangedTriggerTests.cs" t="Include" />
+            </e>
+          </e>
+          <e p="RuleCommandMiddlewareTests.cs" t="Include" />
+          <e p="RuleDequeuerTests.cs" t="Include" />
+          <e p="RuleDomainObjectTests.cs" t="Include" />
+          <e p="RuleEnqueuerTests.cs" t="Include" />
+        </e>
+        <e p="Schemas" t="Include">
+          <e p="Guards" t="Include">
+            <e p="FieldProperties" t="Include">
+              <e p="AssetsFieldPropertiesTests.cs" t="Include" />
+              <e p="BooleanFieldPropertiesTests.cs" t="Include" />
+              <e p="DateTimeFieldPropertiesTests.cs" t="Include" />
+              <e p="GeolocationFieldPropertiesTests.cs" t="Include" />
+              <e p="JsonFieldPropertiesTests.cs" t="Include" />
+              <e p="NumberFieldPropertiesTests.cs" t="Include" />
+              <e p="ReferencesFieldPropertiesTests.cs" t="Include" />
+              <e p="StringFieldPropertiesTests.cs" t="Include" />
+              <e p="TagsFieldPropertiesTests.cs" t="Include" />
+            </e>
+            <e p="GuardSchemaFieldTests.cs" t="Include" />
+            <e p="GuardSchemaTests.cs" t="Include" />
+          </e>
+          <e p="SchemaCommandMiddlewareTests.cs" t="Include" />
+          <e p="SchemaDomainObjectTests.cs" t="Include" />
+        </e>
+        <e p="Squidex.Domain.Apps.Entities.Tests.csproj" t="IncludeRecursive" />
+        <e p="TestHelpers" t="Include">
+          <e p="AssertHelper.cs" t="Include" />
+          <e p="HandlerTestBase.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="Squidex.Domain.Apps.Entities.Tests.AssemblyInfo.cs" t="Include" />
+              <e p="Squidex.Domain.Apps.Entities.Tests.Program.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="tests/Squidex.Domain.Users.Tests" t="IncludeRecursive">
+        <e p="AssetUserPictureStoreTests.cs" t="Include" />
+        <e p="Squidex.Domain.Users.Tests.csproj" t="IncludeRecursive" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="Squidex.Domain.Users.Tests.AssemblyInfo.cs" t="Include" />
+              <e p="Squidex.Domain.Users.Tests.Program.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="tests/Squidex.Infrastructure.Tests" t="IncludeRecursive">
+        <e p="Assets" t="Include">
+          <e p="AssetStoreTests.cs" t="Include" />
+          <e p="AzureBlobAssetStoreTests.cs" t="Include" />
+          <e p="FolderAssetStoreTests.cs" t="Include" />
+          <e p="GoogleCloudAssetStoreTests.cs" t="Include" />
+          <e p="ImageSharpAssetThumbnailGeneratorTests.cs" t="Include" />
+        </e>
+        <e p="Caching" t="Include">
+          <e p="InvalidatingMemoryCacheTests.cs" t="Include" />
+          <e p="LRUCacheTests.cs" t="Include" />
+        </e>
+        <e p="CollectionExtensionsTests.cs" t="Include" />
+        <e p="Commands" t="Include">
+          <e p="AggregateHandlerTests.cs" t="Include" />
+          <e p="CommandContextTests.cs" t="Include" />
+          <e p="DomainObjectBaseTests.cs" t="Include" />
+          <e p="EnrichWithTimestampCommandMiddlewareTests.cs" t="Include" />
+          <e p="InMemoryCommandBusTests.cs" t="Include" />
+          <e p="LogCommandMiddlewareTests.cs" t="Include" />
+        </e>
+        <e p="DispatchingTests.cs" t="Include" />
+        <e p="DisposableObjectBaseTests.cs" t="Include" />
+        <e p="EventSourcing" t="Include">
+          <e p="CompoundEventConsumerTests.cs" t="Include" />
+          <e p="DefaultEventNotifierTests.cs" t="Include" />
+          <e p="EnvelopeExtensionsTests.cs" t="Include" />
+          <e p="EnvelopeHeaderTests.cs" t="Include" />
+          <e p="EnvelopeTests.cs" t="Include" />
+          <e p="EventDataFormatterTests.cs" t="Include" />
+          <e p="Grains" t="Include">
+            <e p="EventConsumerGrainTests.cs" t="Include" />
+            <e p="EventConsumerManagerTests.cs" t="Include" />
+          </e>
+          <e p="PollingSubscriptionTests.cs" t="Include" />
+          <e p="RetrySubscriptionTests.cs" t="Include" />
+        </e>
+        <e p="FileExtensionsTests.cs" t="Include" />
+        <e p="GravatarHelperTests.cs" t="Include" />
+        <e p="GuardTests.cs" t="Include" />
+        <e p="Http" t="Include">
+          <e p="DumpFormatterTests.cs" t="Include" />
+        </e>
+        <e p="InMemoryPubSubTests.cs" t="Include" />
+        <e p="Json" t="Include">
+          <e p="ClaimsPrincipalConverterTests.cs" t="Include" />
+          <e p="ConverterContractResolverTests.cs" t="Include" />
+          <e p="InstantConverterTests.cs" t="Include" />
+        </e>
+        <e p="LanguageTests.cs" t="Include" />
+        <e p="Log" t="Include">
+          <e p="JsonLogWriterTests.cs" t="Include" />
+          <e p="SemanticLogAdapterTests.cs" t="Include" />
+          <e p="SemanticLogTests.cs" t="Include" />
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="MigratorTests.cs" t="Include" />
+        </e>
+        <e p="MongoDb" t="Include">
+          <e p="BsonConverterTests.cs" t="Include" />
+        </e>
+        <e p="NamedIdTests.cs" t="Include" />
+        <e p="PropertiesBagTests.cs" t="Include" />
+        <e p="RandomHashTests.cs" t="Include" />
+        <e p="RefTokenTests.cs" t="Include" />
+        <e p="Reflection" t="Include">
+          <e p="PropertiesTypeAccessorTests.cs" t="Include" />
+          <e p="ReflectionExtensionTests.cs" t="Include" />
+          <e p="SimpleCopierTests.cs" t="Include" />
+          <e p="SimpleMapperTests.cs" t="Include" />
+        </e>
+        <e p="RetryWindowTests.cs" t="Include" />
+        <e p="Security" t="Include">
+          <e p="ExtensionsTests.cs" t="Include" />
+        </e>
+        <e p="Squidex.Infrastructure.Tests.csproj" t="IncludeRecursive" />
+        <e p="States" t="Include">
+          <e p="DefaultStreamNameResolverTests.cs" t="Include" />
+          <e p="PersistenceEventSourcingTests.cs" t="Include" />
+          <e p="PersistenceSnapshotTests.cs" t="Include" />
+          <e p="StateFactoryTests.cs" t="Include" />
+        </e>
+        <e p="StringExtensionsTests.cs" t="Include" />
+        <e p="TaskExtensionsTests.cs" t="Include" />
+        <e p="Tasks" t="Include">
+          <e p="SingleThreadedDispatcherTests.cs" t="Include" />
+        </e>
+        <e p="TestHelpers" t="Include">
+          <e p="JsonHelper.cs" t="Include" />
+          <e p="MyCommand.cs" t="Include" />
+          <e p="MyDomainObject.cs" t="Include" />
+          <e p="MyDomainState.cs" t="Include" />
+          <e p="MyEvent.cs" t="Include" />
+        </e>
+        <e p="Timers" t="Include">
+          <e p="CompletionTimerTests.cs" t="Include" />
+        </e>
+        <e p="TypeNameAttributeTests.cs" t="Include" />
+        <e p="TypeNameRegistryTests.cs" t="Include" />
+        <e p="UsageTracking" t="Include">
+          <e p="BackgroundUsageTrackerTests.cs" t="Include" />
+        </e>
+        <e p="ValidationExceptionTests.cs" t="Include" />
+        <e p="ValidationExtensionsTests.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="Squidex.Infrastructure.Tests.AssemblyInfo.cs" t="Include" />
+              <e p="Squidex.Infrastructure.Tests.Program.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="tools/Migrate_00" t="IncludeRecursive">
+        <e p="Migrate_00.csproj" t="IncludeRecursive" />
+        <e p="Program.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="Migrate_00.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="tools/Migrate_01" t="IncludeRecursive">
+        <e p="Migrate_01.csproj" t="IncludeRecursive" />
+        <e p="Migration01_FromCqrs.cs" t="Include" />
+        <e p="Migration02_AddPatterns.cs" t="Include" />
+        <e p="Migration03_SplitContentCollections.cs" t="Include" />
+        <e p="Migration04_FlattenAssetEntity.cs" t="Include" />
+        <e p="OldEvents" t="Include">
+          <e p="AppClientChanged.cs" t="Include" />
+          <e p="ContentArchived.cs" t="Include" />
+          <e p="ContentPublished.cs" t="Include" />
+          <e p="ContentRestored.cs" t="Include" />
+          <e p="ContentUnpublished.cs" t="Include" />
+          <e p="WebhookAdded.cs" t="Include" />
+          <e p="WebhookDeleted.cs" t="Include" />
+        </e>
+        <e p="Rebuilder.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Migrate_01.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+    </e>
+    <e p="$USER_HOME$/.Rider2017.3/system/resharper-host/local/Transient/ReSharperHost/v11/SolutionCaches/_Squidex.-301618521.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.1/build/netcoreapp1.0/xunit.runner.reporters.netcoreapp10.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.1/build/netcoreapp1.0/xunit.runner.utility.netcoreapp10.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.1/build/netcoreapp1.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
+  </component>
+</project>
