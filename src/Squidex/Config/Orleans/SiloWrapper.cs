@@ -71,12 +71,7 @@ namespace Squidex.Config.Orleans
                     {
                         options.ClusterId = "squidex";
                     })
-                    .ConfigureLogging((hostingContext, builder) =>
-                    {
-                        builder.AddConfiguration(hostingContext.Configuration.GetSection("logging"));
-                        builder.AddSemanticLog();
-                        builder.AddFilter("Orleans.Runtime.SiloControl", LogLevel.Warning);
-                    })
+
                     .ConfigureApplicationParts(builder =>
                     {
                         builder.AddApplicationPart(SquidexEntities.Assembly);

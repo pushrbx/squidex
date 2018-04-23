@@ -81,7 +81,7 @@ namespace Squidex.Pipeline
 
         private static AppPermission? FindByOpenIdClient(IAppEntity app, ClaimsPrincipal user)
         {
-            var clientId = user.GetClientId();
+            var clientId = user.OpenIdClientId();
 
             if (clientId != null && app.Clients.TryGetValue(clientId, out var client))
             {
@@ -93,7 +93,7 @@ namespace Squidex.Pipeline
 
         private static AppPermission? FindByOpenIdSubject(IAppEntity app, ClaimsPrincipal user)
         {
-            var subjectId = user.FindFirst(OpenIdClaims.Subject)?.Value;
+            var subjectId = user.OpenIdSubject();
 
             if (subjectId != null && app.Contributors.TryGetValue(subjectId, out var permission))
             {

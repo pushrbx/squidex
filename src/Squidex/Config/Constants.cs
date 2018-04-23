@@ -11,6 +11,8 @@ namespace Squidex.Config
 {
     public static class Constants
     {
+        public static readonly string Audiance = "isshotosho-admin";
+
         public static readonly string SecurityDefinition = "squidex-oauth-auth";
 
         public static readonly string ApiPrefix = "/api";

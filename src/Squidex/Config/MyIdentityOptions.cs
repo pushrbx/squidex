@@ -31,6 +31,8 @@ namespace Squidex.Config
 
         public bool LockAutomatically { get; set; }
 
+        public bool UseExternalIdentityProvider { get; set; }
+
         public bool IsAdminConfigured()
         {
             return !string.IsNullOrWhiteSpace(AdminEmail) && !string.IsNullOrWhiteSpace(AdminPassword);

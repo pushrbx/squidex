@@ -12,6 +12,8 @@ using System.Security;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using IdentityModel;
+using IdentityModel.Client;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
 using Microsoft.AspNetCore.Identity;
@@ -92,6 +94,7 @@ namespace Squidex.Areas.IdentityServer.Controllers.Account
         [Route("account/consent/")]
         public IActionResult Consent(string returnUrl = null)
         {
+            PreventIfExternalIdentityProviderIsEnabled();
             return View(new ConsentVM { PrivacyUrl = identityOptions.Value.PrivacyUrl, ReturnUrl = returnUrl });
         }
 
@@ -99,6 +102,7 @@ namespace Squidex.Areas.IdentityServer.Controllers.Account
         [Route("account/consent/")]
         public async Task<IActionResult> Consent(ConsentModel model, string returnUrl = null)
         {
+            PreventIfExternalIdentityProviderIsEnabled();
             if (!model.ConsentToCookies)
             {
                 ModelState.AddModelError(nameof(model.ConsentToCookies), "You have to give consent.");
@@ -130,6 +134,7 @@ namespace Squidex.Areas.IdentityServer.Controllers.Account
         [Route("account/logout/")]
         public async Task<IActionResult> Logout(string logoutId)
         {
+            PreventIfExternalIdentityProviderIsEnabled();
             var context = await interactions.GetLogoutContextAsync(logoutId);
 
             await signInManager.SignOutAsync();
@@ -141,6 +146,7 @@ namespace Squidex.Areas.IdentityServer.Controllers.Account
         [Route("account/logout-redirect/")]
         public async Task<IActionResult> LogoutRedirect()
         {
+            PreventIfExternalIdentityProviderIsEnabled();
             await signInManager.SignOutAsync();
 
             return RedirectToAction(nameof(LogoutCompleted));
@@ -150,6 +156,7 @@ namespace Squidex.Areas.IdentityServer.Controllers.Account
         [Route("account/signup/")]
         public Task<IActionResult> Signup(string returnUrl = null)
         {
+            PreventIfExternalIdentityProviderIsEnabled();
             return LoginViewAsync(returnUrl, false, false);
         }
 
@@ -157,6 +164,7 @@ namespace Squidex.Areas.IdentityServer.Controllers.Account
         [Route("account/login/")]
         public Task<IActionResult> Login(string returnUrl = null)
         {
+            PreventIfExternalIdentityProviderIsEnabled();
             return LoginViewAsync(returnUrl, true, false);
         }
 
@@ -164,6 +172,7 @@ namespace Squidex.Areas.IdentityServer.Controllers.Account
         [Route("account/login/")]
         public async Task<IActionResult> Login(LoginModel model, string returnUrl = null)
         {
+            PreventIfExternalIdentityProviderIsEnabled();
             if (!ModelState.IsValid)
             {
                 return await LoginViewAsync(returnUrl, true, true);
@@ -397,6 +406,12 @@ namespace Squidex.Areas.IdentityServer.Controllers.Account
 
                 return false;
             }
+        }
+
+        private void PreventIfExternalIdentityProviderIsEnabled()
+        {
+            if (identityOptions.Value.UseExternalIdentityProvider)
+                throw new SecurityException("Not allowed.");
         }
     }
 }

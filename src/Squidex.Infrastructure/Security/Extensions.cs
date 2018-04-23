@@ -15,12 +15,12 @@ namespace Squidex.Infrastructure.Security
     {
         public static string OpenIdSubject(this ClaimsPrincipal principal)
         {
-            return principal.Claims.FirstOrDefault(x => x.Type == OpenIdClaims.Subject)?.Value;
+            return principal.Claims.FirstOrDefault(x => x.Type == OpenIdClaims.Subject || x.Type.Contains("nameidentifier"))?.Value;
         }
 
         public static string OpenIdClientId(this ClaimsPrincipal principal)
         {
-            return principal.Claims.FirstOrDefault(x => x.Type == OpenIdClaims.ClientId)?.Value;
+            return principal.Claims.FirstOrDefault(x => x.Type == OpenIdClaims.ClientId || x.Type == "aud")?.Value;
         }
 
         public static string OpenIdPreferredUserName(this ClaimsPrincipal principal)
