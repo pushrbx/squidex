@@ -6,21 +6,21 @@
  */
 
 import { Injectable } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import '@app/framework/utils/rxjs-extensions';
 
 import {
     DialogService,
+    Form,
     ImmutableArray,
     Pager,
-    Form,
     State
 } from '@app/framework';
 
-import { AppsState } from './apps.state';
 import { AssetDto, AssetsService} from './../services/assets.service';
+import { AppsState } from './apps.state';
 
 export class RenameAssetForm extends Form<FormGroup> {
     constructor(formBuilder: FormBuilder) {
@@ -39,7 +39,7 @@ interface Snapshot {
     assetsPager: Pager;
     assetsQuery?: string;
 
-    loaded: false;
+    isLoaded?: false;
 }
 
 @Injectable()
@@ -52,22 +52,30 @@ export class AssetsState extends State<Snapshot> {
         this.changes.map(x => x.assetsPager)
             .distinctUntilChanged();
 
+    public isLoaded =
+        this.changes.map(x => !!x.isLoaded)
+            .distinctUntilChanged();
+
     constructor(
         private readonly appsState: AppsState,
         private readonly assetsService: AssetsService,
         private readonly dialogs: DialogService
     ) {
-        super({ assets: ImmutableArray.empty(), assetsPager: new Pager(0, 0, 30), loaded: false });
+        super({ assets: ImmutableArray.empty(), assetsPager: new Pager(0, 0, 30) });
     }
 
-    public load(notifyLoad = false, noReload = false): Observable<any> {
-        if (this.snapshot.loaded && noReload) {
-            return Observable.of({});
+    public load(isReload = false): Observable<any> {
+        if (!isReload) {
+            this.resetState();
         }
 
+        return this.loadInternal(isReload);
+    }
+
+    private loadInternal(isReload = false): Observable<any> {
         return this.assetsService.getAssets(this.appName, this.snapshot.assetsPager.pageSize, this.snapshot.assetsPager.skip, this.snapshot.assetsQuery)
             .do(dtos => {
-                if (notifyLoad) {
+                if (isReload) {
                     this.dialogs.notifyInfo('Assets reloaded.');
                 }
 
@@ -75,7 +83,7 @@ export class AssetsState extends State<Snapshot> {
                     const assets = ImmutableArray.of(dtos.items);
                     const assetsPager = s.assetsPager.setCount(dtos.total);
 
-                    return { ...s, assets, assetsPager, loaded: true };
+                    return { ...s, assets, assetsPager, isLoaded: true };
                 });
             })
             .notify(this.dialogs);
@@ -87,14 +95,6 @@ export class AssetsState extends State<Snapshot> {
             const assetsPager = s.assetsPager.incrementCount();
 
             return { ...s, assets, assetsPager };
-        });
-    }
-
-    public update(asset: AssetDto) {
-        this.next(s => {
-            const assets = s.assets.replaceBy('id', asset);
-
-            return { ...s, assets };
         });
     }
 
@@ -111,22 +111,30 @@ export class AssetsState extends State<Snapshot> {
             .notify(this.dialogs);
     }
 
+    public update(asset: AssetDto) {
+        this.next(s => {
+            const assets = s.assets.replaceBy('id', asset);
+
+            return { ...s, assets };
+        });
+    }
+
     public search(query: string): Observable<any> {
         this.next(s => ({ ...s, assetsPager: new Pager(0, 0, 30), assetsQuery: query }));
 
-        return this.load();
+        return this.loadInternal();
     }
 
     public goNext(): Observable<any> {
         this.next(s => ({ ...s, assetsPager: s.assetsPager.goNext() }));
 
-        return this.load();
+        return this.loadInternal();
     }
 
     public goPrev(): Observable<any> {
         this.next(s => ({ ...s, assetsPager: s.assetsPager.goPrev() }));
 
-        return this.load();
+        return this.loadInternal();
     }
 
     private get appName() {

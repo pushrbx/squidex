@@ -10,19 +10,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { DndModule } from 'ng2-dnd';
 
 import {
+    HelpComponent,
     SchemaMustExistGuard,
     SqxFrameworkModule,
     SqxSharedModule
 } from '@app/shared';
 
 import {
-    FieldComponent,
     AssetsUIComponent,
     AssetsValidationComponent,
     BooleanUIComponent,
     BooleanValidationComponent,
     DateTimeUIComponent,
     DateTimeValidationComponent,
+    FieldComponent,
     FieldFormCommonComponent,
     FieldFormUIComponent,
     FieldFormValidationComponent,
@@ -38,8 +39,8 @@ import {
     SchemaEditFormComponent,
     SchemaFormComponent,
     SchemaPageComponent,
-    SchemasPageComponent,
     SchemaScriptsFormComponent,
+    SchemasPageComponent,
     StringUIComponent,
     StringValidationComponent,
     TagsUIComponent,
@@ -54,7 +55,16 @@ const routes: Routes = [
             {
                 path: ':schemaName',
                 component: SchemaPageComponent,
-                canActivate: [SchemaMustExistGuard]
+                canActivate: [SchemaMustExistGuard],
+                children: [
+                    {
+                        path: 'help',
+                        component: HelpComponent,
+                        data: {
+                            helpPage: '05-integrated/schemas'
+                        }
+                    }
+                ]
             }]
     }
 ];

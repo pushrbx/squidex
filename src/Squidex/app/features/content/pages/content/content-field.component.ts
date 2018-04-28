@@ -5,13 +5,14 @@
  * Copyright (c) Squidex UG (haftungsbeschränkt). All rights reserved.
  */
 
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 
 import {
     AppLanguageDto,
     FieldDto,
-    fieldInvariant
+    fieldInvariant,
+    ImmutableArray
 } from '@app/shared';
 
 @Component({
@@ -19,7 +20,7 @@ import {
     styleUrls: ['./content-field.component.scss'],
     templateUrl: './content-field.component.html'
 })
-export class ContentFieldComponent implements OnInit {
+export class ContentFieldComponent implements OnChanges {
     @Input()
     public field: FieldDto;
 
@@ -27,31 +28,29 @@ export class ContentFieldComponent implements OnInit {
     public fieldForm: FormGroup;
 
     @Input()
-    public languages: AppLanguageDto[];
+    public language: AppLanguageDto;
+
+    @Output()
+    public languageChange = new EventEmitter<AppLanguageDto>();
+
+    @Input()
+    public languages: ImmutableArray<AppLanguageDto>;
 
     @Input()
     public contentFormSubmitted: boolean;
 
     public selectedFormControl: AbstractControl;
-    public selectedLanguage: AppLanguageDto;
 
-    public ngOnInit() {
-        const masterLanguage = this.languages[0];
-
+    public ngOnChanges(changes: SimpleChanges) {
         if (this.field.isLocalizable) {
-            this.selectedFormControl = this.fieldForm.controls[masterLanguage.iso2Code];
+            this.selectedFormControl = this.fieldForm.controls[this.language.iso2Code];
         } else {
             this.selectedFormControl = this.fieldForm.controls[fieldInvariant];
         }
 
-        this.selectedLanguage = masterLanguage;
-    }
-
-    public selectLanguage(language: AppLanguageDto) {
-        this.selectedFormControl['_clearChangeFns']();
-
-        this.selectedFormControl = this.fieldForm.controls[language.iso2Code];
-        this.selectedLanguage = language;
+        if (changes['language']) {
+            this.selectedFormControl['_clearChangeFns']();
+        }
     }
 }
 

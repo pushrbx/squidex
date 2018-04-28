@@ -1,6 +1,6 @@
 <sqx-title message="{app} | {schema}" parameter1="app" [value1]="appsState.appName" parameter2="schema" [value2]="schemasState.schemaName"></sqx-title>
 
-<sqx-panel desiredWidth="56rem">
+<sqx-panel desiredWidth="60rem" [showSidebar]="true">
     <ng-container title>
         <i class="schema-edit icon-pencil" (click)="editSchemaDialog.show()"></i> {{schema.displayName}} 
     </ng-container>
@@ -60,8 +60,8 @@
         </div>
 
         <div dnd-sortable-container [sortableData]="schema.fields">
-            <div *ngFor="let field of schema.fields; let i = index; trackBy: trackByField" dnd-sortable [sortableIndex]="i" (sqxSorted)="sortFields($event)">
-                <sqx-field [field]="field" [schema]="schema" [patterns]="patterns"></sqx-field>
+            <div *ngFor="let field of schema.fields; let i = index;" dnd-sortable [sortableIndex]="i" (sqxSorted)="sortFields($event)">
+                <sqx-field [field]="field" [schema]="schema" [patterns]="patternsState.patterns | async"></sqx-field>
             </div>
     
             <button class="btn btn-success field-button" (click)="addFieldDialog.show()">
@@ -69,7 +69,15 @@
             </button>
         </div>
     </ng-container>
+
+    <ng-container sidebar>
+        <a class="panel-link" routerLink="help" routerLinkActive="active">
+            <i class="icon-help"></i>
+        </a>
+    </ng-container>
 </sqx-panel>
+
+<router-outlet></router-outlet>
 
 <ng-container *sqxModalView="editSchemaDialog;onRoot:true">
     <sqx-schema-edit-form [schema]="schema" 

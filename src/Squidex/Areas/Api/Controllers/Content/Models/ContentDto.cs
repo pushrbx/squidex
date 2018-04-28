@@ -66,7 +66,7 @@ namespace Squidex.Areas.Api.Controllers.Contents.Models
         public Instant LastModified { get; set; }
 
         /// <summary>
-        /// Gets the status of the content.
+        /// The the status of the content.
         /// </summary>
         public Status Status { get; set; }
 
@@ -75,7 +75,7 @@ namespace Squidex.Areas.Api.Controllers.Contents.Models
         /// </summary>
         public long Version { get; set; }
 
-        public static ContentDto Create(CreateContent command, EntityCreatedResult<NamedContentData> result)
+        public static ContentDto FromCommand(CreateContent command, EntityCreatedResult<NamedContentData> result)
         {
             var now = SystemClock.Instance.GetCurrentInstant();
 

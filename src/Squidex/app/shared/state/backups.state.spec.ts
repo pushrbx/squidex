@@ -11,11 +11,11 @@ import { IMock, It, Mock, Times } from 'typemoq';
 import {
     AppsState,
     BackupDto,
-    BackupsState,
     BackupsService,
+    BackupsState,
     DateTime,
     DialogService
- } from '@app/shared';
+} from '@app/shared';
 
 describe('BackupsState', () => {
     const app = 'my-app';
@@ -49,15 +49,18 @@ describe('BackupsState', () => {
 
     it('should load backups', () => {
         expect(backupsState.snapshot.backups.values).toEqual(oldBackups);
+        expect(backupsState.snapshot.isLoaded).toBeTruthy();
+
+        dialogs.verify(x => x.notifyInfo(It.isAnyString()), Times.never());
     });
 
-    it('should show notification on load when flag is true', () => {
+    it('should show notification on load when reload is true', () => {
         backupsState.load(true, true).subscribe();
 
         dialogs.verify(x => x.notifyInfo(It.isAnyString()), Times.once());
     });
 
-    it('should show notification on load error when flag is true', () => {
+    it('should show notification on load error when silent is true', () => {
         backupsService.setup(x => x.getBackups(app))
             .returns(() => Observable.throw({}));
 

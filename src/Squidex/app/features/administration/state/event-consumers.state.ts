@@ -20,12 +20,19 @@ import { EventConsumerDto, EventConsumersService } from './../services/event-con
 
 interface Snapshot {
     eventConsumers: ImmutableArray<EventConsumerDto>;
+
+    isLoaded?: false;
 }
 
 @Injectable()
 export class EventConsumersState extends State<Snapshot> {
     public eventConsumers =
-        this.changes.map(x => x.eventConsumers);
+        this.changes.map(x => x.eventConsumers)
+            .distinctUntilChanged();
+
+    public isLoaded =
+        this.changes.map(x => !!x.isLoaded)
+            .distinctUntilChanged();
 
     constructor(
         private readonly dialogs: DialogService,
@@ -34,21 +41,25 @@ export class EventConsumersState extends State<Snapshot> {
         super({ eventConsumers: ImmutableArray.empty() });
     }
 
-    public load(notifyLoad = false, notifyError = false): Observable<any> {
+    public load(isReload = false, silent = false): Observable<any> {
+        if (!isReload) {
+            this.resetState();
+        }
+
         return this.eventConsumersService.getEventConsumers()
             .do(dtos => {
-                if (notifyLoad) {
+                if (isReload) {
                     this.dialogs.notifyInfo('Event Consumers reloaded.');
                 }
 
                 this.next(s => {
                     const eventConsumers = ImmutableArray.of(dtos);
 
-                    return { ...s, eventConsumers };
+                    return { ...s, eventConsumers, isLoaded: true };
                 });
             })
             .catch(error => {
-                if (notifyError) {
+                if (silent) {
                     this.dialogs.notifyError(error);
                 }
 
@@ -59,7 +70,7 @@ export class EventConsumersState extends State<Snapshot> {
     public start(es: EventConsumerDto): Observable<any> {
         return this.eventConsumersService.putStart(es.name)
             .do(() => {
-                this.replaceEventConsumer(start(es));
+                this.replaceEventConsumer(setStopped(es, false));
             })
             .notify(this.dialogs);
     }
@@ -67,7 +78,7 @@ export class EventConsumersState extends State<Snapshot> {
     public stop(es: EventConsumerDto): Observable<any> {
         return this.eventConsumersService.putStop(es.name)
             .do(() => {
-                this.replaceEventConsumer(stop(es));
+                this.replaceEventConsumer(setStopped(es, true));
             })
             .notify(this.dialogs);
     }
@@ -89,11 +100,8 @@ export class EventConsumersState extends State<Snapshot> {
     }
 }
 
-const start = (es: EventConsumerDto) =>
-    new EventConsumerDto(es.name, false, false, es.error, es.position);
-
-const stop = (es: EventConsumerDto) =>
-    new EventConsumerDto(es.name, true, false, es.error, es.position);
+const setStopped = (es: EventConsumerDto, isStoped: boolean) =>
+    new EventConsumerDto(es.name, isStoped, false, es.error, es.position);
 
 const reset = (es: EventConsumerDto) =>
     new EventConsumerDto(es.name, es.isStopped, true, es.error, es.position);

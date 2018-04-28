@@ -6,13 +6,13 @@
  */
 
 import { Observable } from 'rxjs';
-import { IMock, Mock } from 'typemoq';
+import { IMock, It, Mock, Times } from 'typemoq';
 
 import {
-    AppsState,
     AppClientDto,
     AppClientsDto,
     AppClientsService,
+    AppsState,
     ClientsState,
     CreateAppClientDto,
     DialogService,
@@ -55,8 +55,16 @@ describe('ClientsState', () => {
 
     it('should load clients', () => {
         expect(clientsState.snapshot.clients.values).toEqual(oldClients);
-        expect(clientsState.snapshot.isLoaded).toBeTruthy();
         expect(clientsState.snapshot.version).toEqual(version);
+        expect(clientsState.isLoaded).toBeTruthy();
+
+        dialogs.verify(x => x.notifyInfo(It.isAnyString()), Times.never());
+    });
+
+    it('should show notification on load when reload is true', () => {
+        clientsState.load(true).subscribe();
+
+        dialogs.verify(x => x.notifyInfo(It.isAnyString()), Times.once());
     });
 
     it('should add client to snapshot when created', () => {

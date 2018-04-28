@@ -21,22 +21,22 @@ import {
     Version
 } from '@app/framework';
 
-import { AppsState } from './apps.state';
 import { AuthService } from './../services/auth.service';
+import { AppsState } from './apps.state';
 
 import {
     AddFieldDto,
     createProperties,
     CreateSchemaDto,
     FieldDto,
-    SchemaDto,
+    FieldPropertiesDto,
     SchemaDetailsDto,
+    SchemaDto,
+    SchemaPropertiesDto,
     SchemasService,
     UpdateFieldDto,
-    UpdateSchemaScriptsDto,
     UpdateSchemaDto,
-    SchemaPropertiesDto,
-    FieldPropertiesDto
+    UpdateSchemaScriptsDto
 } from './../services/schemas.service';
 
 const FALLBACK_NAME = 'my-schema';
@@ -142,22 +142,30 @@ export class AddFieldForm extends Form<FormGroup> {
 }
 
 interface Snapshot {
+    schemasApp?: string;
     schemas: ImmutableArray<SchemaDto>;
+
+    isLoaded?: boolean;
+
     selectedSchema?: SchemaDetailsDto | null;
 }
 
 @Injectable()
 export class SchemasState extends State<Snapshot> {
     public selectedSchema =
-        this.changes.map(s => s.selectedSchema)
+        this.changes.map(x => x.selectedSchema)
             .distinctUntilChanged();
 
     public schemas =
-        this.changes.map(s => s.schemas)
+        this.changes.map(x => x.schemas)
             .distinctUntilChanged();
 
     public publishedSchemas =
-        this.changes.map(s => s.schemas.filter(x => x.isPublished))
+        this.changes.map(x => x.schemas.filter(s => s.isPublished))
+            .distinctUntilChanged();
+
+    public isLoaded =
+        this.changes.map(x => !!x.isLoaded)
             .distinctUntilChanged();
 
     public get schemaName() {
@@ -190,13 +198,21 @@ export class SchemasState extends State<Snapshot> {
                 .catch(() => Observable.of(null));
     }
 
-    public load(): Observable<any> {
+    public load(isReload = false): Observable<any> {
+        if (!isReload) {
+            this.resetState();
+        }
+
         return this.schemasService.getSchemas(this.appName)
             .do(dtos => {
+                if (isReload) {
+                    this.dialogs.notifyInfo('Schemas reloaded.');
+                }
+
                 return this.next(s => {
                     const schemas = ImmutableArray.of(dtos).sortByStringAsc(x => x.displayName);
 
-                    return { ...s, schemas };
+                    return { ...s, schemas, schemasApp: this.appName, isLoaded: true };
                 });
             })
             .notify(this.dialogs);

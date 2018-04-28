@@ -39,9 +39,13 @@ export class AssetsSelectorComponent implements OnInit {
     }
 
     public ngOnInit() {
-        this.state.load(false, true).onErrorResumeNext().subscribe();
+        this.state.load().onErrorResumeNext().subscribe();
 
         this.assetsFilter.setValue(this.state.snapshot.assetsQuery);
+    }
+
+    public reload() {
+        this.state.load(true).onErrorResumeNext().subscribe();
     }
 
     public search() {
@@ -56,7 +60,7 @@ export class AssetsSelectorComponent implements OnInit {
         this.selected.emit(Object.values(this.selectedAssets));
     }
 
-    public onAssetSelected(asset: AssetDto) {
+    public selectAsset(asset: AssetDto) {
         if (this.selectedAssets[asset.id]) {
             delete this.selectedAssets[asset.id];
         } else {

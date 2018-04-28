@@ -4,14 +4,18 @@
     </ng-container>
 
     <ng-container tabs>
-        <form class="form-inline" (ngSubmit)="search()">
+        <button class="float-right btn btn-link btn-secondary" (click)="reload()">
+            <i class="icon-reset"></i> Refresh
+        </button>
+
+        <form class="float-left form-inline" (ngSubmit)="search()">
             <input class="form-control" [formControl]="assetsFilter" placeholder="Search for assets" />
         </form>
     </ng-container>
 
     <ng-container content>
-        <sqx-assets-list assetClass="asset-default" size="4"
-            (selected)="onAssetSelected($event)"
+        <sqx-assets-list
+            (selected)="selectAsset($event)"
             [selectedIds]="selectedAssets"
             [state]="state" isDisabled="true">
         </sqx-assets-list>

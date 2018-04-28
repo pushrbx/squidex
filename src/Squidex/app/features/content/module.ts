@@ -11,19 +11,20 @@ import { DndModule } from 'ng2-dnd';
 
 import {
     CanDeactivateGuard,
-    ResolveAppLanguagesGuard,
-    ResolveContentGuard,
+    ContentMustExistGuard,
+    LoadLanguagesGuard,
     SchemaMustExistPublishedGuard,
     SqxFrameworkModule,
-    SqxSharedModule
+    SqxSharedModule,
+    UnsetContentGuard
 } from '@app/shared';
 
 import {
     AssetsEditorComponent,
     ContentFieldComponent,
     ContentHistoryComponent,
-    ContentPageComponent,
     ContentItemComponent,
+    ContentPageComponent,
     ContentsPageComponent,
     ContentsSelectorComponent,
     ReferencesEditorComponent,
@@ -35,6 +36,7 @@ const routes: Routes = [
     {
         path: '',
         component: SchemasPageComponent,
+        canActivate: [LoadLanguagesGuard],
         children: [
             {
                 path: ''
@@ -42,9 +44,6 @@ const routes: Routes = [
             {
                 path: ':schemaName',
                 canActivate: [SchemaMustExistPublishedGuard],
-                resolve: {
-                    appLanguages: ResolveAppLanguagesGuard
-                },
                 children: [
                     {
                         path: '',
@@ -54,15 +53,14 @@ const routes: Routes = [
                     {
                         path: 'new',
                         component: ContentPageComponent,
+                        canActivate: [UnsetContentGuard],
                         canDeactivate: [CanDeactivateGuard]
                     },
                     {
                         path: ':contentId',
                         component: ContentPageComponent,
+                        canActivate: [ContentMustExistGuard],
                         canDeactivate: [CanDeactivateGuard],
-                        resolve: {
-                            content: ResolveContentGuard
-                        },
                         children: [
                              {
                                 path: 'history',

@@ -8,10 +8,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 
-import { ImmutableArray, ModalView } from '@app/shared';
+import { ModalView } from '@app/shared';
 
 import { EventConsumerDto } from './../../services/event-consumers.service';
-import { EventConsumersState } from '@appfeatures/administration/declarations';
+import { EventConsumersState } from './../../state/event-consumers.state';
 
 @Component({
     selector: 'sqx-event-consumers-page',
@@ -23,7 +23,6 @@ export class EventConsumersPageComponent implements OnDestroy, OnInit {
 
     public eventConsumerErrorDialog = new ModalView();
     public eventConsumerError = '';
-    public eventConsumers = ImmutableArray.empty<EventConsumerDto>();
 
     constructor(
         public readonly eventConsumersState: EventConsumersState

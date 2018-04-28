@@ -5,7 +5,7 @@
  * Copyright (c) Squidex UG (haftungsbeschränkt). All rights reserved.
  */
 
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 import { UserDto } from './../../services/users.service';
@@ -14,8 +14,7 @@ import { UsersState } from './../../state/users.state';
 @Component({
     selector: 'sqx-users-page',
     styleUrls: ['./users-page.component.scss'],
-    templateUrl: './users-page.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: './users-page.component.html'
 })
 export class UsersPageComponent implements OnInit {
     public usersFilter = new FormControl();
@@ -53,8 +52,8 @@ export class UsersPageComponent implements OnInit {
         this.usersState.unlock(user).onErrorResumeNext().subscribe();
     }
 
-    public trackByUser(index: number, user: { user: UserDto }) {
-        return user.user.id;
+    public trackByUser(index: number, userInfo: { user: UserDto }) {
+        return userInfo.user.id;
     }
 }
 

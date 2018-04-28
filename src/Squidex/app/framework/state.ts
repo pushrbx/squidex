@@ -33,7 +33,7 @@ export class Form<T extends AbstractControl> {
     public load(value: any) {
         this.state.next({ submitted: false, error: null });
 
-        this.form.reset(value);
+        this.form.reset(value, { emitEvent: true });
     }
 
     public submit(): any | null {
@@ -57,6 +57,8 @@ export class Form<T extends AbstractControl> {
 
         if (newValue) {
             this.form.reset(newValue);
+        } else {
+            this.form.markAsPristine();
         }
     }
 
@@ -77,6 +79,7 @@ export class Form<T extends AbstractControl> {
 
 export class State<T extends {}> {
     private readonly state: BehaviorSubject<T>;
+    private readonly initialState: T;
 
     public get changes(): Observable<T> {
         return this.state;
@@ -87,7 +90,13 @@ export class State<T extends {}> {
     }
 
     constructor(state: T) {
+        this.initialState = state;
+
         this.state = new BehaviorSubject(state);
+    }
+
+    public resetState() {
+        this.next(this.initialState);
     }
 
     public next(update: ((v: T) => T) | object) {

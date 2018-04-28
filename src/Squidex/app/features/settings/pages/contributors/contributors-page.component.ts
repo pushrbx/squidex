@@ -15,7 +15,7 @@ import {
     AssignContributorForm,
     AutocompleteSource,
     ContributorsState,
-    PublicUserDto,
+    UserDto,
     UsersService
 } from '@app/shared';
 
@@ -29,11 +29,11 @@ export class UsersDataSource implements AutocompleteSource {
 
     public find(query: string): Observable<any[]> {
         return this.usersService.getUsers(query)
-            .withLatestFrom(this.contributorsState.contributors, (users, contributors) => {
+            .withLatestFrom(this.contributorsState.contributors.filter(x => !!x), (users, contributors) => {
                 const results: any[] = [];
 
                 for (let user of users) {
-                    if (!contributors.find(t => t.contributor.contributorId === user.id)) {
+                    if (!contributors!.find(t => t.contributor.contributorId === user.id)) {
                         results.push(user);
                     }
                 }
@@ -67,6 +67,10 @@ export class ContributorsPageComponent implements OnInit {
         this.contributorsState.load().onErrorResumeNext().subscribe();
     }
 
+    public reload() {
+        this.contributorsState.load(true).onErrorResumeNext().subscribe();
+    }
+
     public remove(contributor: AppContributorDto) {
         this.contributorsState.revoke(contributor).onErrorResumeNext().subscribe();
     }
@@ -81,7 +85,7 @@ export class ContributorsPageComponent implements OnInit {
         if (value) {
             let user = value.user;
 
-            if (user instanceof PublicUserDto) {
+            if (user instanceof UserDto) {
                 user = user.id;
             }
 
@@ -96,7 +100,7 @@ export class ContributorsPageComponent implements OnInit {
         }
     }
 
-    public trackByContributor(index: number, contributor: { contributor: AppContributorDto }) {
-        return contributor.contributor.contributorId;
+    public trackByContributor(index: number, contributorInfo: { contributor: AppContributorDto }) {
+        return contributorInfo.contributor.contributorId;
     }
 }

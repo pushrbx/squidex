@@ -6,19 +6,19 @@
  */
 
 import { Observable } from 'rxjs';
-import { IMock, Mock } from 'typemoq';
+import { IMock, It, Mock, Times } from 'typemoq';
 
 import {
-    AppsState,
     AppPatternDto,
     AppPatternsDto,
     AppPatternsService,
-    PatternsState,
+    AppsState,
     DialogService,
     EditAppPatternDto,
+    PatternsState,
     Version,
     Versioned
- } from '@app/shared';
+} from '@app/shared';
 
 describe('PatternsState', () => {
     const app = 'my-app';
@@ -55,6 +55,14 @@ describe('PatternsState', () => {
     it('should load patterns', () => {
         expect(patternsState.snapshot.patterns.values).toEqual(oldPatterns);
         expect(patternsState.snapshot.version).toEqual(version);
+
+        dialogs.verify(x => x.notifyInfo(It.isAnyString()), Times.never());
+    });
+
+    it('should show notification on load when reload is true', () => {
+        patternsState.load(true).subscribe();
+
+        dialogs.verify(x => x.notifyInfo(It.isAnyString()), Times.once());
     });
 
     it('should add pattern to snapshot when created', () => {

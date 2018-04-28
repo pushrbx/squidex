@@ -16,8 +16,8 @@ import {
     AuthService,
     createProperties,
     CreateSchemaDto,
-    DialogService,
     DateTime,
+    DialogService,
     FieldDto,
     SchemaDetailsDto,
     SchemaDto,
@@ -27,7 +27,7 @@ import {
     UpdateSchemaScriptsDto,
     Version,
     Versioned
- } from '@app/shared';
+} from '@app/shared';
 
 describe('SchemasState', () => {
     const app = 'my-app';
@@ -89,8 +89,15 @@ describe('SchemasState', () => {
 
     it('should load schemas', () => {
         expect(schemasState.snapshot.schemas.values).toEqual(oldSchemas);
+        expect(schemasState.snapshot.isLoaded).toBeTruthy();
 
         schemasService.verifyAll();
+    });
+
+    it('should show notification on load when reload is true', () => {
+        schemasState.load(true).subscribe();
+
+        dialogs.verify(x => x.notifyInfo(It.isAnyString()), Times.once());
     });
 
     it('should return schema on select and reload when already loaded', () => {

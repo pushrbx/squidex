@@ -6,15 +6,15 @@
  */
 
 import { Injectable } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import '@app/framework/utils/rxjs-extensions';
 
 import {
     DialogService,
-    ImmutableArray,
     Form,
+    ImmutableArray,
     State,
     ValidatorsEx,
     Version
@@ -55,7 +55,7 @@ export class EditPatternForm extends Form<FormGroup> {
 interface Snapshot {
     patterns: ImmutableArray<AppPatternDto>;
 
-    isLoaded: boolean;
+    isLoaded?: boolean;
 
     version: Version;
 }
@@ -63,22 +63,32 @@ interface Snapshot {
 @Injectable()
 export class PatternsState extends State<Snapshot> {
     public patterns =
-        this.changes.map(x => x.patterns);
+        this.changes.map(x => x.patterns)
+            .distinctUntilChanged();
 
     public isLoaded =
-        this.changes.map(x => x.isLoaded);
+        this.changes.map(x => !!x.isLoaded)
+            .distinctUntilChanged();
 
     constructor(
         private readonly appPatternsService: AppPatternsService,
         private readonly appsState: AppsState,
         private readonly dialogs: DialogService
     ) {
-        super({ patterns: ImmutableArray.empty(), version: new Version(''), isLoaded: false });
+        super({ patterns: ImmutableArray.empty(), version: new Version('') });
     }
 
-    public load(): Observable<any> {
+    public load(isReload = false): Observable<any> {
+        if (!isReload) {
+            this.resetState();
+        }
+
         return this.appPatternsService.getPatterns(this.appName)
             .do(dtos => {
+                if (isReload) {
+                    this.dialogs.notifyInfo('Patterns reloaded.');
+                }
+
                 this.next(s => {
                     const patterns = ImmutableArray.of(dtos.patterns).sortByStringAsc(x => x.name);
 
@@ -89,7 +99,7 @@ export class PatternsState extends State<Snapshot> {
     }
 
     public create(request: EditAppPatternDto): Observable<any> {
-        return this.appPatternsService.postPattern(this.appName, request, this.snapshot.version)
+        return this.appPatternsService.postPattern(this.appName, request, this.version)
             .do(dto => {
                 this.next(s => {
                     const patterns = s.patterns.push(dto.payload).sortByStringAsc(x => x.name);
@@ -101,7 +111,7 @@ export class PatternsState extends State<Snapshot> {
     }
 
     public update(pattern: AppPatternDto, request: EditAppPatternDto): Observable<any> {
-        return this.appPatternsService.putPattern(this.appName, pattern.id, request, this.snapshot.version)
+        return this.appPatternsService.putPattern(this.appName, pattern.id, request, this.version)
             .do(dto => {
                 this.next(s => {
                     const patterns = s.patterns.replaceBy('id', update(pattern, request)).sortByStringAsc(x => x.name);
@@ -113,7 +123,7 @@ export class PatternsState extends State<Snapshot> {
     }
 
     public delete(pattern: AppPatternDto): Observable<any> {
-        return this.appPatternsService.deletePattern(this.appName, pattern.id, this.snapshot.version)
+        return this.appPatternsService.deletePattern(this.appName, pattern.id, this.version)
             .do(dto => {
                 this.next(s => {
                     const patterns = s.patterns.filter(c => c.id !== pattern.id);
@@ -126,6 +136,10 @@ export class PatternsState extends State<Snapshot> {
 
     private get appName() {
         return this.appsState.appName;
+    }
+
+    private get version() {
+        return this.snapshot.version;
     }
 }
 

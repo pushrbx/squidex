@@ -13,14 +13,14 @@ import { RulesState } from './rules.state';
 import {
     AppsState,
     AuthService,
-    DialogService,
+    CreateRuleDto,
     DateTime,
+    DialogService,
     RuleDto,
     RulesService,
+    UpdateRuleDto,
     Version,
-    Versioned,
-    CreateRuleDto,
-    UpdateRuleDto
+    Versioned
 } from '@app/shared';
 
 describe('RulesState', () => {
@@ -67,11 +67,12 @@ describe('RulesState', () => {
 
     it('should load rules', () => {
         expect(rulesState.snapshot.rules.values).toEqual(oldRules);
+        expect(rulesState.snapshot.isLoaded).toBeTruthy();
 
         dialogs.verify(x => x.notifyInfo(It.isAnyString()), Times.never());
     });
 
-    it('should show notification on load when flag is true', () => {
+    it('should show notification on load when reload is true', () => {
         rulesState.load(true).subscribe();
 
         dialogs.verify(x => x.notifyInfo(It.isAnyString()), Times.once());

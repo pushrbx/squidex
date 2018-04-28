@@ -6,7 +6,7 @@
  */
 
 import { Injectable } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import '@app/framework/utils/rxjs-extensions';
@@ -14,18 +14,18 @@ import '@app/framework/utils/rxjs-extensions';
 import {
     AuthService,
     DialogService,
+    Form,
     ImmutableArray,
     Pager,
-    Form,
     State,
     ValidatorsEx
 } from '@app/shared';
 
 import {
     CreateUserDto,
+    UpdateUserDto,
     UserDto,
-    UsersService,
-    UpdateUserDto
+    UsersService
 } from './../services/users.service';
 
 export class UserForm extends Form<FormGroup> {
@@ -81,6 +81,8 @@ interface Snapshot {
     usersPager: Pager;
     usersQuery?: string;
 
+    isLoaded?: boolean;
+
     selectedUser?: SnapshotUser;
 }
 
@@ -96,6 +98,10 @@ export class UsersState extends State<Snapshot> {
 
     public selectedUser =
         this.changes.map(x => x.selectedUser)
+            .distinctUntilChanged();
+
+    public isLoaded =
+        this.changes.map(x => !!x.isLoaded)
             .distinctUntilChanged();
 
     constructor(
@@ -127,10 +133,21 @@ export class UsersState extends State<Snapshot> {
                 });
     }
 
-    public load(notifyLoad = false): Observable<any> {
-        return this.usersService.getUsers(this.snapshot.usersPager.pageSize, this.snapshot.usersPager.skip, this.snapshot.usersQuery)
+    public load(isReload = false): Observable<any> {
+        if (!isReload) {
+            this.resetState();
+        }
+
+        return this.loadInternal(isReload);
+    }
+
+    private loadInternal(isReload = false): Observable<any> {
+        return this.usersService.getUsers(
+                this.snapshot.usersPager.pageSize,
+                this.snapshot.usersPager.skip,
+                this.snapshot.usersQuery)
             .do(dtos => {
-                if (notifyLoad) {
+                if (isReload) {
                     this.dialogs.notifyInfo('Users reloaded.');
                 }
 
@@ -144,7 +161,7 @@ export class UsersState extends State<Snapshot> {
                         selectedUser = users.find(x => x.user.id === selectedUser!.user.id) || selectedUser;
                     }
 
-                    return { ...s, users, usersPager, selectedUser };
+                    return { ...s, users, usersPager, selectedUser, isLoaded: true };
                 });
             })
             .notify(this.dialogs);
@@ -188,34 +205,43 @@ export class UsersState extends State<Snapshot> {
     public search(query: string): Observable<any> {
         this.next(s => ({ ...s, usersPager: new Pager(0), usersQuery: query }));
 
-        return this.load();
+        return this.loadInternal();
     }
 
     public goNext(): Observable<any> {
         this.next(s => ({ ...s, usersPager: s.usersPager.goNext() }));
 
-        return this.load();
+        return this.loadInternal();
     }
 
     public goPrev(): Observable<any> {
         this.next(s => ({ ...s, usersPager: s.usersPager.goPrev() }));
 
-        return this.load();
+        return this.loadInternal();
     }
 
-    private replaceUser(userDto: UserDto) {
+    private replaceUser(user: UserDto) {
         return this.next(s => {
-            const user = this.createUser(userDto);
-            const users = s.users.map(u => u.user.id === userDto.id ? user : u);
+            const users = s.users.map(u => u.user.id === user.id ? this.createUser(user, u) : u);
 
-            const selectedUser = s.selectedUser && s.selectedUser.user.id === userDto.id ? user : s.selectedUser;
+            const selectedUser = s.selectedUser && s.selectedUser.user.id === user.id ? users.find(x => x.user.id === user.id) : s.selectedUser;
 
             return { ...s, users, selectedUser };
         });
     }
 
-    private createUser(user: UserDto): SnapshotUser {
-        return user ? { user, isCurrentUser: user.id === this.authState.user!.id } : null!;
+    private get userId() {
+        return this.authState.user!.id;
+    }
+
+    private createUser(user: UserDto, current?: SnapshotUser): SnapshotUser {
+        if (!user) {
+            return null!;
+        } else if (current && current.user === user) {
+            return current;
+        } else {
+            return { user, isCurrentUser: user.id === this.userId };
+        }
     }
 }
 
@@ -223,5 +249,5 @@ export class UsersState extends State<Snapshot> {
 const update = (user: UserDto, request: UpdateUserDto) =>
     new UserDto(user.id, request.email, request.displayName, user.isLocked);
 
-const setLocked = (user: UserDto, locked: boolean) =>
-    new UserDto(user.id, user.email, user.displayName, locked);
+const setLocked = (user: UserDto, isLocked: boolean) =>
+    new UserDto(user.id, user.email, user.displayName, isLocked);
