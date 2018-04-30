@@ -11,6 +11,7 @@ using Squidex.Areas.Api.Config.Swagger;
 using Squidex.Areas.IdentityServer.Config;
 using Squidex.Config;
 using Squidex.Config.Authentication;
+using Squidex.Config.Authentication.Keycloak;
 using Squidex.Config.Domain;
 using Squidex.Config.Web;
 
@@ -39,6 +40,7 @@ namespace Squidex
             services.AddMyStoreServices(config);
             services.AddMySwaggerSettings();
             services.AddMySubscriptionServices(config);
+            services.AddKeycloakAuthentication(config);
 
             services.Configure<MyUrlsOptions>(
                 config.GetSection("urls"));

@@ -57,5 +57,7 @@ namespace Squidex.Domain.Users.Keycloak
 
             _claims.Add(claim);
         }
+
+        internal UserRepresentation Representation => _userRepresentation;
     }
 }

@@ -20,7 +20,14 @@ namespace Squidex.Domain.Users.Keycloak
         Task<UserRepresentation> CreateUserAsync(UserRepresentation userRepresentation);
 
         Task<List<ClientRepresentation>> GetClientsAsync();
+        
+        // filters by client id
+        Task<List<ClientRepresentation>> GetClientsAsync(string clientId);
 
         Task<List<UserRepresentation>> GetUsersAsync(Dictionary<string, string> query = null);
+
+        Task<List<RoleRepresentation>> GetClientLevelRoleMappingsForUser(string userId, string clientId);
+
+        Task<List<RoleRepresentation>> GetRealmLevelRoleMappingsForUser(string userId);
     }
 }

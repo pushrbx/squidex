@@ -36,18 +36,8 @@ namespace Squidex.Config.Authentication
                 {
                     o.Authority = identityOptions.AuthorityUrl;
                     o.Audience = Constants.Audiance;
+                    // todo: change this based on environment - Production or Development
                     o.RequireHttpsMetadata = false; // if dev, for prod this is true
-                    o.Events = new JwtBearerEvents()
-                    {
-//                        OnAuthenticationFailed = c =>
-//                        {
-//                            c.NoResult();
-//
-//                            // c.Response.StatusCode = 500;
-//                            c.Response.ContentType = "text/plain";
-//                            return c.Response.WriteAsync("An error occured processing your authentication.");
-//                        }
-                    };
                 });
             }
         }

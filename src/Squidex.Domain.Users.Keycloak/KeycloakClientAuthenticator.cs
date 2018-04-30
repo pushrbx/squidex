@@ -7,11 +7,13 @@
 
 using System;
 using System.Net;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using RestSharp.Authenticators;
 using Squidex.Domain.Users.Keycloak.Models;
+using Squidex.Infrastructure;
 
 namespace Squidex.Domain.Users.Keycloak
 {
@@ -28,11 +30,12 @@ namespace Squidex.Domain.Users.Keycloak
         private readonly string _adminPassword;
         private readonly KeycloakClientToken _token;
 
-        public KeycloakClientAuthenticator(string baseUrl, string adminUserName, string adminPassword)
+        public KeycloakClientAuthenticator(IOptions<KeycloakOptions> options)
         {
-            this._baseUrl = baseUrl;
-            this._adminUserName = adminUserName;
-            this._adminPassword = adminPassword;
+            Guard.NotNull(options, nameof(options));
+            this._baseUrl = options.Value?.BaseUrl;
+            this._adminUserName = options.Value?.AdminUserName;
+            this._adminPassword = options.Value?.AdminPassword;
             this._token = new KeycloakClientToken();
         }
 
@@ -59,7 +62,6 @@ namespace Squidex.Domain.Users.Keycloak
                 BaseUrl = new Uri(this._baseUrl)
             };
 
-            // /protocol/openid-connect/token
             var tokenRequest = new RestRequest("/protocol/openid-connect/token", Method.POST);
             tokenRequest.AddHeader("cache-control", "no-cache");
             tokenRequest.AddHeader("content-type", "application/x-www-form-urlencoded");
