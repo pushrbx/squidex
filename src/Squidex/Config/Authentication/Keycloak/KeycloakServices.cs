@@ -5,8 +5,11 @@
 //  All rights reserved. Licensed under the MIT license.
 // ==========================================================================
 
+using System;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using RestSharp;
 using RestSharp.Authenticators;
 using Squidex.Domain.Users;
 using Squidex.Domain.Users.Keycloak;
@@ -24,15 +27,18 @@ namespace Squidex.Config.Authentication.Keycloak
             var keycloakOptions = keycloakSection.Get<KeycloakOptions>();
             if (!keycloakOptions.Enabled)
                 return;
-            
+
             if (string.IsNullOrEmpty(keycloakOptions.AdminUserName))
-                throw new ConfigurationException("Invalid keycloak configuration: Keycloak authentication is enabled, but the admin user name was empty or null.");
-            
+                throw new ConfigurationException(
+                    "Invalid keycloak configuration: Keycloak authentication is enabled, but the admin user name was empty or null.");
+
             if (string.IsNullOrEmpty(keycloakOptions.AdminPassword))
-                throw new ConfigurationException("Invalid keycloak configuration: Keycloak authentication is enabled, but the admin password was empty or null.");
-            
+                throw new ConfigurationException(
+                    "Invalid keycloak configuration: Keycloak authentication is enabled, but the admin password was empty or null.");
+
             if (string.IsNullOrEmpty(keycloakOptions.ClientNameForAdminFrontend))
-                throw new ConfigurationException("Invalid keycloak configuration: Keycloak authentication is enabled, but the client name for the squidex admin frontend was empty or null.");
+                throw new ConfigurationException(
+                    "Invalid keycloak configuration: Keycloak authentication is enabled, but the client name for the squidex admin frontend was empty or null.");
 
             services.Configure<KeycloakOptions>(keycloakSection);
             services.AddSingletonAs<KeycloakUserResolver>()
@@ -43,6 +49,14 @@ namespace Squidex.Config.Authentication.Keycloak
                 .As<IKeycloakClient>();
             services.AddSingletonAs<KeycloakClientAuthenticator>()
                 .As<IAuthenticator>();
+            services.AddSingletonAs<KeycloakUserClaimMapper>()
+                .As<IKeycloakUserClaimMapper>();
+
+            services.AddSingletonAs(c => new RestClient()
+            {
+                BaseUrl = new Uri(c.GetRequiredService<IOptions<KeycloakOptions>>().Value.AdminApiBaseUrl),
+                Authenticator = c.GetRequiredService<IAuthenticator>()
+            }).As<IRestClient>();
         }
     }
 }

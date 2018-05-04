@@ -12,7 +12,9 @@ namespace Squidex.Domain.Users.Keycloak.Models
         public bool Enabled { get; set; }
         
         // should contain realm name
-        public string BaseUrl { get; set; }
+        public string AdminApiBaseUrl { get; set; }
+        
+        public string RealmBaseUrl { get; set; }
         
         public string AdminUserName { get; set; }
         

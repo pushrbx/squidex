@@ -39,6 +39,9 @@ namespace Squidex.Domain.Users.Keycloak
             {
                 user = users.FirstOrDefault();
             }
+
+            if (user == null)
+                return null;
     
             return await _userClaimMapper.MapClaimsAsync(new KeycloakUser(user));
         }

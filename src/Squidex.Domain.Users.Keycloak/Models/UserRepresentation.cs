@@ -47,10 +47,10 @@ namespace Squidex.Domain.Users.Keycloak.Models
         public List<string> RealmRoles { get; set; }
         
         [JsonProperty("clientRoles")]
-        public Dictionary<string, JObject> ClientRoles { get; set; }
+        public Dictionary<string, List<string>> ClientRoles { get; set; }
         
         [JsonProperty("access")]
-        public Dictionary<string, JObject> Access { get; set; }
+        public Dictionary<string, bool> Access { get; set; }
         
         [JsonProperty("createdTimestamp")]
         public long CreatedTimestamp { get; set; }

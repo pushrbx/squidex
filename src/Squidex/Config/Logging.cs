@@ -18,7 +18,7 @@ namespace Squidex.Config
             {
                 if (category.StartsWith("Orleans.", StringComparison.OrdinalIgnoreCase))
                 {
-                    return level >= LogLevel.Warning;
+                    return level >= LogLevel.Error;
                 }
 
                 if (category.StartsWith("Runtime.", StringComparison.OrdinalIgnoreCase))

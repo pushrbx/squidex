@@ -33,7 +33,7 @@ namespace Squidex.Domain.Users.Keycloak
         public KeycloakClientAuthenticator(IOptions<KeycloakOptions> options)
         {
             Guard.NotNull(options, nameof(options));
-            this._baseUrl = options.Value?.BaseUrl;
+            this._baseUrl = options.Value?.RealmBaseUrl;
             this._adminUserName = options.Value?.AdminUserName;
             this._adminPassword = options.Value?.AdminPassword;
             this._token = new KeycloakClientToken();
@@ -52,7 +52,7 @@ namespace Squidex.Domain.Users.Keycloak
 
         private bool IsTokenExpired()
         {
-            return this._token.ExpiresAt == default(DateTime) || this._token.ExpiresAt >= DateTime.UtcNow;
+            return this._token.ExpiresAt <= DateTime.UtcNow;
         }
 
         private void UpdateToken()

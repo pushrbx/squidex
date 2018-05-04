@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Squidex.Domain.Users.Keycloak.Models;
 using Squidex.Infrastructure;
+using Squidex.Shared.Identity;
 
 namespace Squidex.Domain.Users.Keycloak
 {
@@ -65,6 +66,11 @@ namespace Squidex.Domain.Users.Keycloak
                 user.AddClaim(resourceAccessClaim);
             }
 
+            if (user.Claims.All(x => x.Type != SquidexClaimTypes.SquidexDisplayName))
+            {
+                user.AddClaim(new Claim(SquidexClaimTypes.SquidexDisplayName, $"{user.Representation.FirstName} {user.Representation.LastName}"));
+            }
+            
             if (user.Claims.All(x => x.Type != "name"))
             {
                 user.AddClaim(new Claim("name", $"{user.Representation.FirstName} {user.Representation.LastName}"));
@@ -90,7 +96,7 @@ namespace Squidex.Domain.Users.Keycloak
             if (clients == null || clients.Count == 0)
                 return null;
 
-            var client = clients.FirstOrDefault(x => x.Name == _options.ClientNameForAdminFrontend);
+            var client = clients.FirstOrDefault(x => x.ClientId == _options.ClientNameForAdminFrontend);
             if (client == null)
                 return null;
 

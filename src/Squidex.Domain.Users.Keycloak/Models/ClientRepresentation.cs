@@ -16,7 +16,7 @@ namespace Squidex.Domain.Users.Keycloak.Models
         public string AdminUrl { get; set; }
         
         [JsonProperty("attributes")]
-        public Dictionary<string, string[]> Attributes { get; set; }
+        public Dictionary<string, List<string>> Attributes { get; set; }
         
         [JsonProperty("authorizationServicesEnabled")]
         public bool AuthorizationServicesEnabled { get; set; }
@@ -88,7 +88,7 @@ namespace Squidex.Domain.Users.Keycloak.Models
         public List<string> RedirectUris { get; set; }
         
         [JsonProperty("registeredNodes")]
-        public Dictionary<string, string[]> RegisteredNodes { get; set; }
+        public Dictionary<string, List<string>> RegisteredNodes { get; set; }
         
         [JsonProperty("registrationAccessToken")]
         public string RegistrationAccessToken { get; set; }

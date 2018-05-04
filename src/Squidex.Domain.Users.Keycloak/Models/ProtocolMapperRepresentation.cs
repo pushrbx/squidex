@@ -23,7 +23,7 @@ namespace Squidex.Domain.Users.Keycloak.Models
         public string Id { get; set; }
         
         [JsonProperty("config")]
-        public Dictionary<string, JObject> Config { get; set; }
+        public Dictionary<string, string> Config { get; set; }
         
         [JsonProperty("consentRequired")]
         public bool ConsentRequired { get; set; }
