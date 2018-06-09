@@ -8,8 +8,9 @@
 import { AfterViewInit, Component, ElementRef, forwardRef, ViewChild } from '@angular/core';
 import { ControlValueAccessor,  NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
-import { ResourceLoaderService } from '@app/framework/internal';
+import { ResourceLoaderService, Types } from '@app/framework/internal';
 
 declare var ace: any;
 
@@ -40,7 +41,7 @@ export class JscriptEditorComponent implements ControlValueAccessor, AfterViewIn
     }
 
     public writeValue(obj: any) {
-        this.value = obj + '';
+        this.value = Types.isString(obj) ? obj : '';
 
         if (this.aceEditor) {
             this.setValue(this.value);
@@ -64,7 +65,8 @@ export class JscriptEditorComponent implements ControlValueAccessor, AfterViewIn
     }
 
     public ngAfterViewInit() {
-        this.valueChanged.debounceTime(500)
+        this.valueChanged.pipe(
+                debounceTime(500))
             .subscribe(() => {
                 this.changeValue();
             });

@@ -23,22 +23,22 @@ namespace Squidex.Domain.Apps.Entities
     public sealed class AppProvider : IAppProvider
     {
         private readonly IGrainFactory grainFactory;
-        private readonly IRequestCache requestCache;
+        private readonly ILocalCache localCache;
 
-        public AppProvider(IGrainFactory grainFactory, IRequestCache requestCache)
+        public AppProvider(IGrainFactory grainFactory, ILocalCache localCache)
         {
             Guard.NotNull(grainFactory, nameof(grainFactory));
-            Guard.NotNull(requestCache, nameof(requestCache));
+            Guard.NotNull(localCache, nameof(localCache));
 
             this.grainFactory = grainFactory;
-            this.requestCache = requestCache;
+            this.localCache = localCache;
         }
 
         public Task<(IAppEntity, ISchemaEntity)> GetAppWithSchemaAsync(Guid appId, Guid id)
         {
-            return requestCache.GetOrCreateAsync($"GetAppWithSchemaAsync({appId}, {id})", async () =>
+            return localCache.GetOrCreateAsync($"GetAppWithSchemaAsync({appId}, {id})", async () =>
             {
-                using (Profile.Method<AppProvider>())
+                using (Profiler.TraceMethod<AppProvider>())
                 {
                     var app = await grainFactory.GetGrain<IAppGrain>(appId).GetStateAsync();
 
@@ -47,23 +47,23 @@ namespace Squidex.Domain.Apps.Entities
                         return (null, null);
                     }
 
-                    var schema = await grainFactory.GetGrain<ISchemaGrain>(id).GetStateAsync();
+                    var schema = await GetSchemaAsync(appId, id, false);
 
-                    if (!IsExisting(schema, false))
+                    if (schema == null)
                     {
                         return (null, null);
                     }
 
-                    return (app.Value, schema.Value);
+                    return (app.Value, schema);
                 }
             });
         }
 
         public Task<IAppEntity> GetAppAsync(string appName)
         {
-            return requestCache.GetOrCreateAsync($"GetAppAsync({appName})", async () =>
+            return localCache.GetOrCreateAsync($"GetAppAsync({appName})", async () =>
             {
-                using (Profile.Method<AppProvider>())
+                using (Profiler.TraceMethod<AppProvider>())
                 {
                     var appId = await GetAppIdAsync(appName);
 
@@ -86,9 +86,9 @@ namespace Squidex.Domain.Apps.Entities
 
         public Task<ISchemaEntity> GetSchemaAsync(Guid appId, string name)
         {
-            return requestCache.GetOrCreateAsync($"GetSchemaAsync({appId}, {name})", async () =>
+            return localCache.GetOrCreateAsync($"GetSchemaAsync({appId}, {name})", async () =>
             {
-                using (Profile.Method<AppProvider>())
+                using (Profiler.TraceMethod<AppProvider>("GetSchemaAsyncByName"))
                 {
                     var schemaId = await GetSchemaIdAsync(appId, name);
 
@@ -104,9 +104,9 @@ namespace Squidex.Domain.Apps.Entities
 
         public Task<ISchemaEntity> GetSchemaAsync(Guid appId, Guid id, bool allowDeleted = false)
         {
-            return requestCache.GetOrCreateAsync($"GetSchemaAsync({appId}, {id}, {allowDeleted})", async () =>
+            return localCache.GetOrCreateAsync($"GetSchemaAsync({appId}, {id}, {allowDeleted})", async () =>
             {
-                using (Profile.Method<AppProvider>())
+                using (Profiler.TraceMethod<AppProvider>("GetSchemaAsyncById"))
                 {
                     var schema = await grainFactory.GetGrain<ISchemaGrain>(id).GetStateAsync();
 
@@ -122,9 +122,9 @@ namespace Squidex.Domain.Apps.Entities
 
         public Task<List<ISchemaEntity>> GetSchemasAsync(Guid appId)
         {
-            return requestCache.GetOrCreateAsync($"GetSchemasAsync({appId})", async () =>
+            return localCache.GetOrCreateAsync($"GetSchemasAsync({appId})", async () =>
             {
-                using (Profile.Method<AppProvider>())
+                using (Profiler.TraceMethod<AppProvider>())
                 {
                     var ids = await grainFactory.GetGrain<ISchemasByAppIndex>(appId).GetSchemaIdsAsync();
 
@@ -139,9 +139,9 @@ namespace Squidex.Domain.Apps.Entities
 
         public Task<List<IRuleEntity>> GetRulesAsync(Guid appId)
         {
-            return requestCache.GetOrCreateAsync($"GetRulesAsync({appId})", async () =>
+            return localCache.GetOrCreateAsync($"GetRulesAsync({appId})", async () =>
             {
-                using (Profile.Method<AppProvider>())
+                using (Profiler.TraceMethod<AppProvider>())
                 {
                     var ids = await grainFactory.GetGrain<IRulesByAppIndex>(appId).GetRuleIdsAsync();
 
@@ -156,9 +156,9 @@ namespace Squidex.Domain.Apps.Entities
 
         public Task<List<IAppEntity>> GetUserApps(string userId)
         {
-            return requestCache.GetOrCreateAsync($"GetUserApps({userId})", async () =>
+            return localCache.GetOrCreateAsync($"GetUserApps({userId})", async () =>
             {
-                using (Profile.Method<AppProvider>())
+                using (Profiler.TraceMethod<AppProvider>())
                 {
                     var ids = await grainFactory.GetGrain<IAppsByUserIndex>(userId).GetAppIdsAsync();
 
@@ -173,7 +173,7 @@ namespace Squidex.Domain.Apps.Entities
 
         private async Task<Guid> GetAppIdAsync(string name)
         {
-            using (Profile.Method<AppProvider>())
+            using (Profiler.TraceMethod<AppProvider>())
             {
                 return await grainFactory.GetGrain<IAppsByNameIndex>(SingleGrain.Id).GetAppIdAsync(name);
             }
@@ -181,7 +181,7 @@ namespace Squidex.Domain.Apps.Entities
 
         private async Task<Guid> GetSchemaIdAsync(Guid appId, string name)
         {
-            using (Profile.Method<AppProvider>())
+            using (Profiler.TraceMethod<AppProvider>())
             {
                 return await grainFactory.GetGrain<ISchemasByAppIndex>(appId).GetSchemaIdAsync(name);
             }

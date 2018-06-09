@@ -8,13 +8,16 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Orleans.CodeGeneration;
+using Orleans.Concurrency;
 using Orleans.Serialization;
 using Squidex.Infrastructure.Log;
 
 namespace Squidex.Infrastructure.Orleans
 {
+    [Immutable]
     public struct J<T>
     {
         public T Value { get; }
@@ -54,38 +57,46 @@ namespace Squidex.Infrastructure.Orleans
         [SerializerMethod]
         public static void Serialize(object input, ISerializationContext context, Type expected)
         {
-            using (Profile.Method(nameof(J)))
+            using (Profiler.TraceMethod(nameof(J)))
             {
-                var stream = new MemoryStream();
+                var jsonSerializer = GetSerializer(context);
+
+                var stream = new StreamWriterWrapper(context.StreamWriter);
 
                 using (var writer = new JsonTextWriter(new StreamWriter(stream)))
                 {
-                    J.Serializer.Serialize(writer, input);
+                    jsonSerializer.Serialize(writer, input);
 
                     writer.Flush();
                 }
-
-                var outBytes = stream.ToArray();
-
-                context.StreamWriter.Write(outBytes.Length);
-                context.StreamWriter.Write(outBytes);
             }
         }
 
         [DeserializerMethod]
         public static object Deserialize(Type expected, IDeserializationContext context)
         {
-            using (Profile.Method(nameof(J)))
+            using (Profiler.TraceMethod(nameof(J)))
             {
-                var outLength = context.StreamReader.ReadInt();
-                var outBytes = context.StreamReader.ReadBytes(outLength);
+                var jsonSerializer = GetSerializer(context);
 
-                var stream = new MemoryStream(outBytes);
+                var stream = new StreamReaderWrapper(context.StreamReader);
 
                 using (var reader = new JsonTextReader(new StreamReader(stream)))
                 {
-                    return J.Serializer.Deserialize(reader, expected);
+                    return jsonSerializer.Deserialize(reader, expected);
                 }
+            }
+        }
+
+        private static JsonSerializer GetSerializer(ISerializerContext context)
+        {
+            try
+            {
+                return context?.ServiceProvider?.GetService<JsonSerializer>() ?? J.DefaultSerializer;
+            }
+            catch
+            {
+                return J.DefaultSerializer;
             }
         }
     }

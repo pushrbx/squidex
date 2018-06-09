@@ -7,12 +7,11 @@
 
 using System;
 using System.Threading.Tasks;
-using MongoDB.Driver;
-using Squidex.Domain.Apps.Core.ConvertContent;
+using Squidex.Domain.Apps.Core.Contents;
 using Squidex.Domain.Apps.Entities.Contents.State;
 using Squidex.Domain.Apps.Entities.Schemas;
 using Squidex.Infrastructure;
-using Squidex.Infrastructure.MongoDb;
+using Squidex.Infrastructure.Log;
 using Squidex.Infrastructure.Reflection;
 using Squidex.Infrastructure.States;
 
@@ -20,72 +19,54 @@ namespace Squidex.Domain.Apps.Entities.MongoDb.Contents
 {
     public partial class MongoContentRepository : ISnapshotStore<ContentState, Guid>
     {
-        Task ISnapshotStore<ContentState, Guid>.ReadAllAsync(Func<ContentState, long, Task> callback)
-        {
-            throw new NotSupportedException();
-        }
-
         public async Task<(ContentState Value, long Version)> ReadAsync(Guid key)
         {
-            var contentEntity =
-                await Collection.Find(x => x.Id == key).SortByDescending(x => x.Version)
-                    .FirstOrDefaultAsync();
-
-            if (contentEntity != null)
+            using (Profiler.TraceMethod<MongoContentRepository>())
             {
-                var schema = await GetSchemaAsync(contentEntity.AppIdId, contentEntity.SchemaIdId);
-
-                contentEntity?.ParseData(schema.SchemaDef);
-
-                return (SimpleMapper.Map(contentEntity, new ContentState()), contentEntity.Version);
+                return await contentsDraft.ReadAsync(key, GetSchemaAsync);
             }
-
-            return (null, EtagVersion.NotFound);
         }
 
         public async Task WriteAsync(Guid key, ContentState value, long oldVersion, long newVersion)
         {
-            if (value.SchemaId.Id == Guid.Empty)
+            using (Profiler.TraceMethod<MongoContentRepository>())
             {
-                return;
-            }
-
-            var schema = await GetSchemaAsync(value.AppId.Id, value.SchemaId.Id);
-
-            var idData = value.Data?.ToIdModel(schema.SchemaDef, true);
-
-            var document = SimpleMapper.Map(value, new MongoContentEntity
-            {
-                AppIdId = value.AppId.Id,
-                SchemaIdId = value.SchemaId.Id,
-                IsDeleted = value.IsDeleted,
-                DataText = idData?.ToFullText(),
-                DataByIds = idData,
-                ReferencedIds = idData?.ToReferencedIds(schema.SchemaDef),
-            });
-
-            document.Version = newVersion;
-
-            try
-            {
-                await Collection.ReplaceOneAsync(x => x.Id == key && x.Version == oldVersion, document, Upsert);
-            }
-            catch (MongoWriteException ex)
-            {
-                if (ex.WriteError.Category == ServerErrorCategory.DuplicateKey)
+                if (value.SchemaId.Id == Guid.Empty)
                 {
-                    var existingVersion =
-                        await Collection.Find(x => x.Id == key).Only(x => x.Id, x => x.Version)
-                            .FirstOrDefaultAsync();
+                    return;
+                }
 
-                    if (existingVersion != null)
-                    {
-                        throw new InconsistentStateException(existingVersion["vs"].AsInt64, oldVersion, ex);
-                    }
+                var schema = await GetSchemaAsync(value.AppId.Id, value.SchemaId.Id);
+
+                var idData = value.Data.ToMongoModel(schema.SchemaDef);
+                var idDraftData = idData;
+
+                if (!ReferenceEquals(value.Data, value.DataDraft))
+                {
+                    idDraftData = value.DataDraft?.ToMongoModel(schema.SchemaDef);
+                }
+
+                var content = SimpleMapper.Map(value, new MongoContentEntity
+                {
+                    DataByIds = idData,
+                    DataDraftByIds = idDraftData,
+                    IsDeleted = value.IsDeleted,
+                    IndexedAppId = value.AppId.Id,
+                    IndexedSchemaId = value.SchemaId.Id,
+                    ReferencedIds = idData.ToReferencedIds(schema.SchemaDef),
+                    ScheduledAt = value.ScheduleJob?.DueTime,
+                    Version = newVersion
+                });
+
+                await contentsDraft.UpsertAsync(content, oldVersion);
+
+                if (value.Status == Status.Published && !value.IsDeleted)
+                {
+                    await contentsPublished.UpsertAsync(content);
                 }
                 else
                 {
-                    throw;
+                    await contentsPublished.RemoveAsync(content.Id);
                 }
             }
         }
@@ -100,6 +81,11 @@ namespace Squidex.Domain.Apps.Entities.MongoDb.Contents
             }
 
             return schema;
+        }
+
+        Task ISnapshotStore<ContentState, Guid>.ReadAllAsync(Func<ContentState, long, Task> callback)
+        {
+            throw new NotSupportedException();
         }
     }
 }

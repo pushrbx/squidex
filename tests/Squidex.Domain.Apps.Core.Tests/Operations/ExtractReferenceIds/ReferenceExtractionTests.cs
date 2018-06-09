@@ -11,6 +11,7 @@ using System.Linq;
 using Newtonsoft.Json.Linq;
 using Squidex.Domain.Apps.Core.Apps;
 using Squidex.Domain.Apps.Core.Contents;
+using Squidex.Domain.Apps.Core.ConvertContent;
 using Squidex.Domain.Apps.Core.ExtractReferenceIds;
 using Squidex.Domain.Apps.Core.Schemas;
 using Squidex.Infrastructure;
@@ -30,13 +31,13 @@ namespace Squidex.Domain.Apps.Core.Operations.ExtractReferenceIds
         {
             schema =
                 new Schema("my-schema")
-                    .AddField(new NumberField(1, "field1", Partitioning.Language))
-                    .AddField(new NumberField(2, "field2", Partitioning.Invariant))
-                    .AddField(new NumberField(3, "field3", Partitioning.Invariant))
-                    .AddField(new AssetsField(5, "assets1", Partitioning.Invariant))
-                    .AddField(new AssetsField(6, "assets2", Partitioning.Invariant))
-                    .AddField(new JsonField(4, "json", Partitioning.Language))
-                    .HideField(3);
+                    .AddNumber(1, "field1", Partitioning.Language)
+                    .AddNumber(2, "field2", Partitioning.Invariant)
+                    .AddNumber(3, "field3", Partitioning.Invariant)
+                    .AddAssets(5, "assets1", Partitioning.Invariant)
+                    .AddAssets(6, "assets2", Partitioning.Invariant)
+                    .AddJson(4, "json", Partitioning.Language)
+                    .UpdateField(3, f => f.Hide());
         }
 
         [Fact]
@@ -68,7 +69,9 @@ namespace Squidex.Domain.Apps.Core.Operations.ExtractReferenceIds
                         new ContentFieldData()
                             .AddValue("iv", new JArray(id1.ToString(), id2.ToString())));
 
-            var actual = input.ToCleanedReferences(schema, new HashSet<Guid>(new[] { id2 }));
+            var converter = FieldConverters.ForValues(ValueReferencesConverter.CleanReferences(new[] { id2 }));
+
+            var actual = input.ConvertId2Id(schema, converter);
 
             var cleanedValue = (JArray)actual[5]["iv"];
 
@@ -82,7 +85,7 @@ namespace Squidex.Domain.Apps.Core.Operations.ExtractReferenceIds
             var id1 = Guid.NewGuid();
             var id2 = Guid.NewGuid();
 
-            var sut = new AssetsField(1, "my-asset", Partitioning.Invariant);
+            var sut = Fields.Assets(1, "my-asset", Partitioning.Invariant);
 
             var result = sut.ExtractReferences(CreateValue(id1, id2)).ToArray();
 
@@ -90,9 +93,9 @@ namespace Squidex.Domain.Apps.Core.Operations.ExtractReferenceIds
         }
 
         [Fact]
-        public void Should_empty_list_from_assets_field_for_referenced_ids_when_null()
+        public void Should_return_empty_list_from_assets_field_for_referenced_ids_when_null()
         {
-            var sut = new AssetsField(1, "my-asset", Partitioning.Invariant);
+            var sut = Fields.Assets(1, "my-asset", Partitioning.Invariant);
 
             var result = sut.ExtractReferences(null).ToArray();
 
@@ -100,9 +103,19 @@ namespace Squidex.Domain.Apps.Core.Operations.ExtractReferenceIds
         }
 
         [Fact]
-        public void Should_empty_list_from_assets_field_for_referenced_ids_when_other_type()
+        public void Should_return_empty_list_from_assets_field_for_referenced_ids_when_other_type()
         {
-            var sut = new AssetsField(1, "my-asset", Partitioning.Invariant);
+            var sut = Fields.Assets(1, "my-asset", Partitioning.Invariant);
+
+            var result = sut.ExtractReferences("invalid").ToArray();
+
+            Assert.Empty(result);
+        }
+
+        [Fact]
+        public void Should_return_empty_list_from_non_references_field()
+        {
+            var sut = Fields.String(1, "my-string", Partitioning.Invariant);
 
             var result = sut.ExtractReferences("invalid").ToArray();
 
@@ -112,7 +125,7 @@ namespace Squidex.Domain.Apps.Core.Operations.ExtractReferenceIds
         [Fact]
         public void Should_return_null_from_assets_field_when_removing_references_from_null_array()
         {
-            var sut = new AssetsField(1, "my-asset", Partitioning.Invariant);
+            var sut = Fields.Assets(1, "my-asset", Partitioning.Invariant);
 
             var result = sut.CleanReferences(null, null);
 
@@ -125,7 +138,7 @@ namespace Squidex.Domain.Apps.Core.Operations.ExtractReferenceIds
             var id1 = Guid.NewGuid();
             var id2 = Guid.NewGuid();
 
-            var sut = new AssetsField(1, "my-asset", Partitioning.Invariant);
+            var sut = Fields.Assets(1, "my-asset", Partitioning.Invariant);
 
             var result = sut.CleanReferences(CreateValue(id1, id2), new HashSet<Guid>(new[] { id2 }));
 
@@ -138,7 +151,7 @@ namespace Squidex.Domain.Apps.Core.Operations.ExtractReferenceIds
             var id1 = Guid.NewGuid();
             var id2 = Guid.NewGuid();
 
-            var sut = new AssetsField(1, "my-asset", Partitioning.Invariant);
+            var sut = Fields.Assets(1, "my-asset", Partitioning.Invariant);
 
             var token = CreateValue(id1, id2);
             var result = sut.CleanReferences(token, new HashSet<Guid>(new[] { Guid.NewGuid() }));
@@ -152,7 +165,7 @@ namespace Squidex.Domain.Apps.Core.Operations.ExtractReferenceIds
             var id1 = Guid.NewGuid();
             var id2 = Guid.NewGuid();
 
-            var sut = new ReferencesField(1, "my-refs", Partitioning.Invariant,
+            var sut = Fields.References(1, "my-refs", Partitioning.Invariant,
                 new ReferencesFieldProperties { SchemaId = schemaId });
 
             var result = sut.ExtractReferences(CreateValue(id1, id2)).ToArray();
@@ -163,7 +176,7 @@ namespace Squidex.Domain.Apps.Core.Operations.ExtractReferenceIds
         [Fact]
         public void Should_return_list_from_references_field_with_schema_id_list_for_referenced_ids_when_null()
         {
-            var sut = new ReferencesField(1, "my-refs", Partitioning.Invariant,
+            var sut = Fields.References(1, "my-refs", Partitioning.Invariant,
                 new ReferencesFieldProperties { SchemaId = schemaId });
 
             var result = sut.ExtractReferences(null).ToArray();
@@ -174,7 +187,7 @@ namespace Squidex.Domain.Apps.Core.Operations.ExtractReferenceIds
         [Fact]
         public void Should_return_list_from_references_field_with_schema_id_for_referenced_ids_when_other_type()
         {
-            var sut = new ReferencesField(1, "my-refs", Partitioning.Invariant,
+            var sut = Fields.References(1, "my-refs", Partitioning.Invariant,
                 new ReferencesFieldProperties { SchemaId = schemaId });
 
             var result = sut.ExtractReferences("invalid").ToArray();
@@ -185,7 +198,7 @@ namespace Squidex.Domain.Apps.Core.Operations.ExtractReferenceIds
         [Fact]
         public void Should_return_null_from_references_field_when_removing_references_from_null_array()
         {
-            var sut = new ReferencesField(1, "my-refs", Partitioning.Invariant);
+            var sut = Fields.References(1, "my-refs", Partitioning.Invariant);
 
             var result = sut.CleanReferences(null, null);
 
@@ -198,7 +211,7 @@ namespace Squidex.Domain.Apps.Core.Operations.ExtractReferenceIds
             var id1 = Guid.NewGuid();
             var id2 = Guid.NewGuid();
 
-            var sut = new ReferencesField(1, "my-refs", Partitioning.Invariant,
+            var sut = Fields.References(1, "my-refs", Partitioning.Invariant,
                 new ReferencesFieldProperties { SchemaId = schemaId });
 
             var result = sut.CleanReferences(CreateValue(id1, id2), new HashSet<Guid>(new[] { id2 }));
@@ -212,7 +225,7 @@ namespace Squidex.Domain.Apps.Core.Operations.ExtractReferenceIds
             var id1 = Guid.NewGuid();
             var id2 = Guid.NewGuid();
 
-            var sut = new ReferencesField(1, "my-refs", Partitioning.Invariant,
+            var sut = Fields.References(1, "my-refs", Partitioning.Invariant,
                 new ReferencesFieldProperties { SchemaId = schemaId });
 
             var result = sut.CleanReferences(CreateValue(id1, id2), new HashSet<Guid>(new[] { schemaId }));
@@ -226,7 +239,7 @@ namespace Squidex.Domain.Apps.Core.Operations.ExtractReferenceIds
             var id1 = Guid.NewGuid();
             var id2 = Guid.NewGuid();
 
-            var sut = new ReferencesField(1, "my-refs", Partitioning.Invariant);
+            var sut = Fields.References(1, "my-refs", Partitioning.Invariant);
 
             var token = CreateValue(id1, id2);
             var result = sut.CleanReferences(token, new HashSet<Guid>(new[] { Guid.NewGuid() }));

@@ -1,5 +1,26 @@
 # Changelog
 
+## v1.6.0 - 2018-06-07
+
+### Features
+
+* **Schemas**: Nested Schemas**
+* **UI**: Migration to RxJS6
+* **UI**: Migration to Angular6
+
+## v1.5.0 - 2018-05-20
+
+### Bugfixes
+
+* **UI**: Fixed the pattern selector in field editor.
+
+### Features
+
+* **Content**: Allow to save content updates as draft.
+* **Schemas**: Create folders to group schemas.
+* **UI**: Increased the search input.
+* **UI**: Plugin system for content editors.
+
 ## v1.4.1 - 2018-05-02
 
 ### Bugfixes

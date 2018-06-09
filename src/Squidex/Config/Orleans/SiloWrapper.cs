@@ -6,7 +6,7 @@
 // ==========================================================================
 
 using System;
-using System.Diagnostics;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +15,6 @@ using Orleans;
 using Orleans.Configuration;
 using Orleans.Hosting;
 using Squidex.Config.Domain;
-using Squidex.Domain.Apps.Entities;
 using Squidex.Domain.Apps.Entities.Contents;
 using Squidex.Domain.Apps.Entities.Rules;
 using Squidex.Infrastructure;
@@ -27,7 +26,7 @@ using Squidex.Infrastructure.Tasks;
 
 namespace Squidex.Config.Orleans
 {
-    public class SiloWrapper : DisposableObjectBase, IInitializable, IDisposable
+    public sealed class SiloWrapper : DisposableObjectBase, IInitializable, IDisposable
     {
         private readonly Lazy<ISiloHost> silo;
         private readonly ISemanticLog log;
@@ -53,10 +52,9 @@ namespace Squidex.Config.Orleans
 
             silo = new Lazy<ISiloHost>(() =>
             {
-                J.Serializer = SerializationServices.DefaultJsonSerializer;
-
                 var hostBuilder = new SiloHostBuilder()
                     .UseDashboard(options => options.HostSelf = false)
+                    .AddIncomingGrainCallFilter<LocalCacheFilter>()
                     .AddStartupTask<Bootstrap<IContentSchedulerGrain>>()
                     .AddStartupTask<Bootstrap<IEventConsumerManagerGrain>>()
                     .AddStartupTask<Bootstrap<IRuleDequeuerGrain>>()
@@ -68,18 +66,17 @@ namespace Squidex.Config.Orleans
                     })
                     .Configure<ClusterOptions>(options =>
                     {
-                        options.ClusterId = "squidex";
+                        options.Configure();
+                    })
+                    .ConfigureApplicationParts(builder =>
+                    {
+                        builder.AddMyParts();
                     })
                     .ConfigureLogging((hostingContext, builder) =>
                     {
                         builder.AddConfiguration(hostingContext.Configuration.GetSection("logging"));
                         builder.AddSemanticLog();
                         builder.AddFilter();
-                    })
-                    .ConfigureApplicationParts(builder =>
-                    {
-                        builder.AddApplicationPart(SquidexEntities.Assembly);
-                        builder.AddApplicationPart(SquidexInfrastructure.Assembly);
                     })
                     .ConfigureServices((context, services) =>
                     {
@@ -103,7 +100,7 @@ namespace Squidex.Config.Orleans
                 {
                     ["MongoDB"] = () =>
                     {
-                        hostBuilder.ConfigureEndpoints(ConfigUtilities.SiloAddress, 11111, 40000, true);
+                        hostBuilder.ConfigureEndpoints(Dns.GetHostName(), 11111, 40000, listenOnAnyHostAddress: true);
 
                         var mongoConfiguration = config.GetRequiredValue("store:mongoDb:configuration");
                         var mongoDatabaseName = config.GetRequiredValue("store:mongoDb:database");
@@ -117,7 +114,7 @@ namespace Squidex.Config.Orleans
                     },
                     ["Development"] = () =>
                     {
-                        hostBuilder.UseLocalhostClustering(gatewayPort: 40000, clusterId: "squidex");
+                        hostBuilder.UseLocalhostClustering(gatewayPort: 40000, serviceId: Constants.OrleansClusterId, clusterId: Constants.OrleansClusterId);
                         hostBuilder.Configure<ClusterMembershipOptions>(options => options.ExpectedClusterSize = 1);
                     }
                 });
@@ -144,19 +141,18 @@ namespace Squidex.Config.Orleans
 
         public void Initialize()
         {
-            var watch = Stopwatch.StartNew();
+            var watch = ValueStopwatch.StartNew();
             try
             {
                 silo.Value.StartAsync().Wait();
             }
             finally
             {
-                watch.Stop();
+                var elapsedMs = watch.Stop();
 
                 log.LogInformation(w => w
                     .WriteProperty("message", "Silo started")
-                    .WriteProperty("elapsed", watch.Elapsed)
-                    .WriteProperty("elapsedMs", watch.ElapsedMilliseconds));
+                    .WriteProperty("elapsedMs", elapsedMs));
             }
         }
 

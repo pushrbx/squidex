@@ -8,13 +8,16 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-#pragma warning disable SA1401 // Fields must be private
-
 namespace Squidex.Infrastructure.Orleans
 {
     public static class J
     {
-        public static JsonSerializer Serializer = new JsonSerializer();
+        internal static readonly JsonSerializer DefaultSerializer = JsonSerializer.CreateDefault();
+
+        public static J<T> AsJ<T>(this T value)
+        {
+            return new J<T>(value);
+        }
 
         public static J<T> Of<T>(T value)
         {

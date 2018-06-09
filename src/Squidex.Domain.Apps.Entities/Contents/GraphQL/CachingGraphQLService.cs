@@ -7,13 +7,11 @@
 
 using System;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
 using Squidex.Domain.Apps.Entities.Apps;
 using Squidex.Domain.Apps.Entities.Assets.Repositories;
 using Squidex.Infrastructure;
-using Squidex.Infrastructure.Commands;
 
 namespace Squidex.Domain.Apps.Entities.Contents.GraphQL
 {
@@ -21,7 +19,6 @@ namespace Squidex.Domain.Apps.Entities.Contents.GraphQL
     {
         private static readonly TimeSpan CacheDuration = TimeSpan.FromMinutes(10);
         private readonly IContentQueryService contentQuery;
-        private readonly ICommandBus commandBus;
         private readonly IGraphQLUrlGenerator urlGenerator;
         private readonly IAssetRepository assetRepository;
         private readonly IAppProvider appProvider;
@@ -29,27 +26,24 @@ namespace Squidex.Domain.Apps.Entities.Contents.GraphQL
         public CachingGraphQLService(IMemoryCache cache,
             IAppProvider appProvider,
             IAssetRepository assetRepository,
-            ICommandBus commandBus,
             IContentQueryService contentQuery,
             IGraphQLUrlGenerator urlGenerator)
             : base(cache)
         {
             Guard.NotNull(appProvider, nameof(appProvider));
             Guard.NotNull(assetRepository, nameof(assetRepository));
-            Guard.NotNull(commandBus, nameof(commandBus));
             Guard.NotNull(contentQuery, nameof(contentQuery));
             Guard.NotNull(urlGenerator, nameof(urlGenerator));
 
             this.appProvider = appProvider;
             this.assetRepository = assetRepository;
-            this.commandBus = commandBus;
             this.contentQuery = contentQuery;
             this.urlGenerator = urlGenerator;
         }
 
-        public async Task<(object Data, object[] Errors)> QueryAsync(IAppEntity app, ClaimsPrincipal user, GraphQLQuery query)
+        public async Task<(object Data, object[] Errors)> QueryAsync(QueryContext context, GraphQLQuery query)
         {
-            Guard.NotNull(app, nameof(app));
+            Guard.NotNull(context, nameof(context));
             Guard.NotNull(query, nameof(query));
 
             if (string.IsNullOrWhiteSpace(query.Query))
@@ -57,9 +51,9 @@ namespace Squidex.Domain.Apps.Entities.Contents.GraphQL
                 return (new object(), new object[0]);
             }
 
-            var modelContext = await GetModelAsync(app);
+            var modelContext = await GetModelAsync(context.App);
 
-            var ctx = new GraphQLExecutionContext(app, assetRepository, commandBus, contentQuery, user, urlGenerator);
+            var ctx = new GraphQLExecutionContext(context, assetRepository, contentQuery, urlGenerator);
 
             return await modelContext.ExecuteAsync(ctx, query);
         }

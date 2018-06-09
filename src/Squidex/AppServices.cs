@@ -14,6 +14,7 @@ using Squidex.Config.Authentication;
 using Squidex.Config.Authentication.Keycloak;
 using Squidex.Config.Domain;
 using Squidex.Config.Web;
+using Squidex.Infrastructure.Commands;
 
 namespace Squidex
 {
@@ -42,6 +43,8 @@ namespace Squidex
             services.AddMySubscriptionServices(config);
             services.AddKeycloakAuthentication(config);
 
+            services.Configure<ReadonlyOptions>(
+                config.GetSection("mode"));
             services.Configure<MyUrlsOptions>(
                 config.GetSection("urls"));
             services.Configure<MyIdentityOptions>(

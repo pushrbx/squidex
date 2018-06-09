@@ -6,11 +6,9 @@
 // ==========================================================================
 
 using System;
-using System.Net;
 using Orleans;
 using Orleans.Configuration;
-using Orleans.Runtime;
-using Squidex.Domain.Apps.Entities;
+using Squidex.Config.Domain;
 using Squidex.Infrastructure;
 
 namespace Squidex.Config.Orleans
@@ -23,18 +21,18 @@ namespace Squidex.Config.Orleans
         {
             Client = new ClientBuilder()
                 .UseDashboard()
-                .UseStaticClustering(options =>
-                {
-                    options.Gateways.Add(new IPEndPoint(ConfigUtilities.SiloAddress, 40000).ToGatewayUri());
-                })
+                .UseLocalhostClustering(40000)
                 .Configure<ClusterOptions>(options =>
                 {
-                    options.ClusterId = "squidex";
+                    options.Configure();
+                })
+                .ConfigureServices((context, services) =>
+                {
+                    services.AddMySerializers();
                 })
                 .ConfigureApplicationParts(builder =>
                 {
-                    builder.AddApplicationPart(SquidexEntities.Assembly);
-                    builder.AddApplicationPart(SquidexInfrastructure.Assembly);
+                    builder.AddMyParts();
                 })
                 .Build();
         }

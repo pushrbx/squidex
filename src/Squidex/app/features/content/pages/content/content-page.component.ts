@@ -5,9 +5,10 @@
  * Copyright (c) Squidex UG (haftungsbeschränkt). All rights reserved.
  */
 
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
+import { filter, map, onErrorResumeNext, switchMap } from 'rxjs/operators';
 
 import { ContentVersionSelected } from './../messages';
 
@@ -19,18 +20,25 @@ import {
     ContentsState,
     DialogService,
     EditContentForm,
+    fadeAnimation,
     ImmutableArray,
     LanguagesState,
     MessageBus,
+    ModalView,
     SchemaDetailsDto,
     SchemasState,
     Version
 } from '@app/shared';
 
+import { DueTimeSelectorComponent } from './../../shared/due-time-selector.component';
+
 @Component({
     selector: 'sqx-content-page',
     styleUrls: ['./content-page.component.scss'],
-    templateUrl: './content-page.component.html'
+    templateUrl: './content-page.component.html',
+    animations: [
+        fadeAnimation
+    ]
 })
 export class ContentPageComponent implements CanComponentDeactivate, OnDestroy, OnInit {
     private languagesSubscription: Subscription;
@@ -44,8 +52,13 @@ export class ContentPageComponent implements CanComponentDeactivate, OnDestroy, 
     public contentVersion: Version | null;
     public contentForm: EditContentForm;
 
+    public dropdown = new ModalView(false, true);
+
     public language: AppLanguageDto;
     public languages: ImmutableArray<AppLanguageDto>;
+
+    @ViewChild('dueTimeSelector')
+    public dueTimeSelector: DueTimeSelectorComponent;
 
     constructor(
         public readonly appsState: AppsState,
@@ -75,7 +88,7 @@ export class ContentPageComponent implements CanComponentDeactivate, OnDestroy, 
                 });
 
         this.selectedSchemaSubscription =
-            this.schemasState.selectedSchema.filter(s => !!s).map(s => s!)
+            this.schemasState.selectedSchema.pipe(filter(s => !!s), map(s => s!))
                 .subscribe(schema => {
                     this.schema = schema;
 
@@ -83,11 +96,11 @@ export class ContentPageComponent implements CanComponentDeactivate, OnDestroy, 
                 });
 
         this.contentSubscription =
-            this.contentsState.selectedContent.filter(c => !!c).map(c => c!)
+            this.contentsState.selectedContent.pipe(filter(c => !!c), map(c => c!))
                 .subscribe(content => {
                     this.content = content;
 
-                    this.loadContent(content.data);
+                    this.loadContent(content.dataDraft);
                 });
 
         this.contentVersionSelectedSubscription =
@@ -99,21 +112,25 @@ export class ContentPageComponent implements CanComponentDeactivate, OnDestroy, 
 
     public canDeactivate(): Observable<boolean> {
         if (!this.contentForm.form.dirty || !this.content) {
-            return Observable.of(true);
+            return of(true);
         } else {
             return this.dialogs.confirmUnsavedChanges();
         }
     }
 
     public saveAndPublish() {
-        this.saveContent(true);
+        this.saveContent(true, false);
     }
 
-    public saveAsDraft() {
-        this.saveContent(false);
+    public saveAsProposal() {
+        this.saveContent(false, true);
     }
 
-    private saveContent(publish: boolean) {
+    public save() {
+        this.saveContent(false, false);
+    }
+
+    private saveContent(publish: boolean, asProposal: boolean) {
         if (this.content && this.content.status === 'Archived') {
             return;
         }
@@ -122,12 +139,21 @@ export class ContentPageComponent implements CanComponentDeactivate, OnDestroy, 
 
         if (value) {
             if (this.content) {
-                this.contentsState.update(this.content, value)
-                    .subscribe(dto => {
-                        this.contentForm.submitCompleted();
-                    }, error => {
-                        this.contentForm.submitFailed(error);
-                    });
+                if (asProposal) {
+                    this.contentsState.proposeUpdate(this.content, value)
+                        .subscribe(dto => {
+                            this.contentForm.submitCompleted();
+                        }, error => {
+                            this.contentForm.submitFailed(error);
+                        });
+                } else {
+                    this.contentsState.update(this.content, value)
+                        .subscribe(dto => {
+                            this.contentForm.submitCompleted();
+                        }, error => {
+                            this.contentForm.submitFailed(error);
+                        });
+                }
             } else {
                 this.contentsState.create(value, publish)
                     .subscribe(dto => {
@@ -146,7 +172,46 @@ export class ContentPageComponent implements CanComponentDeactivate, OnDestroy, 
     }
 
     private loadContent(data: any) {
-        this.contentForm.loadData(data, this.content && this.content.status === 'Archived');
+        this.contentForm.loadContent(data, this.content && this.content.status === 'Archived');
+    }
+
+    public discardChanges() {
+        this.contentsState.discardChanges(this.content).pipe(onErrorResumeNext()).subscribe();
+    }
+
+    public publish() {
+        this.changeContentItems('Publish', 'Published');
+    }
+
+    public unpublish() {
+        this.changeContentItems('Unpublish', 'Draft');
+    }
+
+    public archive() {
+        this.changeContentItems('Archive', 'Archived');
+    }
+
+    public restore() {
+        this.changeContentItems('Restore', 'Draft');
+    }
+
+    public delete() {
+        this.contentsState.deleteMany([this.content]).pipe(onErrorResumeNext())
+            .subscribe(() => {
+                this.back();
+            });
+    }
+
+    public publishChanges() {
+        this.dueTimeSelector.selectDueTime('Publish').pipe(
+                switchMap(d => this.contentsState.publishChanges(this.content, d)), onErrorResumeNext())
+            .subscribe();
+    }
+
+    private changeContentItems(action: string, status: string) {
+        this.dueTimeSelector.selectDueTime(action).pipe(
+                switchMap(d => this.contentsState.changeStatus(this.content, action, status, d)), onErrorResumeNext())
+            .subscribe();
     }
 
     private loadVersion(version: Version) {
@@ -168,7 +233,7 @@ export class ContentPageComponent implements CanComponentDeactivate, OnDestroy, 
         if (this.contentVersion) {
             this.contentVersion = null;
 
-            this.loadContent(this.content.data);
+            this.loadContent(this.content.dataDraft);
         }
     }
 }

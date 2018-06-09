@@ -30,9 +30,9 @@ namespace Squidex.Domain.Apps.Entities.Contents.OData
 {
     public class ODataQueryTests
     {
+        private static readonly IBsonSerializerRegistry Registry = BsonSerializer.SerializerRegistry;
+        private static readonly IBsonSerializer<MongoContentEntity> Serializer = BsonSerializer.SerializerRegistry.GetSerializer<MongoContentEntity>();
         private readonly Schema schemaDef;
-        private readonly IBsonSerializerRegistry registry = BsonSerializer.SerializerRegistry;
-        private readonly IBsonSerializer<MongoContentEntity> serializer = BsonSerializer.SerializerRegistry.GetSerializer<MongoContentEntity>();
         private readonly IEdmModel edmModel;
         private readonly LanguagesConfig languagesConfig = LanguagesConfig.Build(Language.EN, Language.DE);
 
@@ -45,22 +45,22 @@ namespace Squidex.Domain.Apps.Entities.Contents.OData
         {
             schemaDef =
                 new Schema("user")
-                    .AddField(new StringField(1, "firstName", Partitioning.Language,
-                        new StringFieldProperties { Label = "FirstName", IsRequired = true, AllowedValues = ImmutableList.Create("1", "2") }))
-                    .AddField(new StringField(2, "lastName", Partitioning.Language,
-                        new StringFieldProperties { Hints = "Last Name", Editor = StringFieldEditor.Input }))
-                    .AddField(new BooleanField(3, "isAdmin", Partitioning.Invariant,
-                        new BooleanFieldProperties()))
-                    .AddField(new NumberField(4, "age", Partitioning.Invariant,
-                        new NumberFieldProperties { MinValue = 1, MaxValue = 10 }))
-                    .AddField(new DateTimeField(5, "birthday", Partitioning.Invariant,
-                        new DateTimeFieldProperties()))
-                    .AddField(new AssetsField(6, "pictures", Partitioning.Invariant,
-                        new AssetsFieldProperties()))
-                    .AddField(new ReferencesField(7, "friends", Partitioning.Invariant,
-                        new ReferencesFieldProperties()))
-                    .AddField(new StringField(8, "dashed-field", Partitioning.Invariant,
-                        new StringFieldProperties()))
+                    .AddString(1, "firstName", Partitioning.Language,
+                        new StringFieldProperties { Label = "FirstName", IsRequired = true, AllowedValues = ImmutableList.Create("1", "2") })
+                    .AddString(2, "lastName", Partitioning.Language,
+                        new StringFieldProperties { Hints = "Last Name", Editor = StringFieldEditor.Input })
+                    .AddBoolean(3, "isAdmin", Partitioning.Invariant,
+                        new BooleanFieldProperties())
+                    .AddNumber(4, "age", Partitioning.Invariant,
+                        new NumberFieldProperties { MinValue = 1, MaxValue = 10 })
+                    .AddDateTime(5, "birthday", Partitioning.Invariant,
+                        new DateTimeFieldProperties())
+                    .AddAssets(6, "pictures", Partitioning.Invariant,
+                        new AssetsFieldProperties())
+                    .AddReferences(7, "friends", Partitioning.Invariant,
+                        new ReferencesFieldProperties())
+                    .AddString(8, "dashed-field", Partitioning.Invariant,
+                        new StringFieldProperties())
                     .Update(new SchemaProperties { Hints = "The User" });
 
             var builder = new EdmModelBuilder(new MemoryCache(Options.Create(new MemoryCacheOptions())));
@@ -417,10 +417,10 @@ namespace Squidex.Domain.Apps.Entities.Contents.OData
             A.CallTo(() => cursor.Sort(A<SortDefinition<MongoContentEntity>>.Ignored))
                 .Invokes((SortDefinition<MongoContentEntity> sortDefinition) =>
                 {
-                    i = sortDefinition.Render(serializer, registry).ToString();
+                    i = sortDefinition.Render(Serializer, Registry).ToString();
                 });
 
-            cursor.ContentSort(parser, FindExtensions.CreatePropertyCalculator(schemaDef));
+            cursor.ContentSort(parser, FindExtensions.CreatePropertyCalculator(schemaDef, false));
 
             return i;
         }
@@ -430,8 +430,8 @@ namespace Squidex.Domain.Apps.Entities.Contents.OData
             var parser = edmModel.ParseQuery(value);
 
             var query =
-                parser.BuildFilter<MongoContentEntity>(FindExtensions.CreatePropertyCalculator(schemaDef))
-                    .Filter.Render(serializer, registry).ToString();
+                parser.BuildFilter<MongoContentEntity>(FindExtensions.CreatePropertyCalculator(schemaDef, false))
+                    .Filter.Render(Serializer, Registry).ToString();
 
             return query;
         }

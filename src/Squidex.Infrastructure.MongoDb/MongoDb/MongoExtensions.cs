@@ -74,6 +74,27 @@ namespace Squidex.Infrastructure.MongoDb
             return find.Project<BsonDocument>(Builders<TDocument>.Projection.Include(include1).Include(include2).Include(include3));
         }
 
+        public static IFindFluent<TDocument, TDocument> Not<TDocument>(this IFindFluent<TDocument, TDocument> find,
+            Expression<Func<TDocument, object>> exclude)
+        {
+            return find.Project<TDocument>(Builders<TDocument>.Projection.Exclude(exclude));
+        }
+
+        public static IFindFluent<TDocument, TDocument> Not<TDocument>(this IFindFluent<TDocument, TDocument> find,
+            Expression<Func<TDocument, object>> exclude1,
+            Expression<Func<TDocument, object>> exclude2)
+        {
+            return find.Project<TDocument>(Builders<TDocument>.Projection.Exclude(exclude1).Exclude(exclude2));
+        }
+
+        public static IFindFluent<TDocument, TDocument> Not<TDocument>(this IFindFluent<TDocument, TDocument> find,
+            Expression<Func<TDocument, object>> exclude1,
+            Expression<Func<TDocument, object>> exclude2,
+            Expression<Func<TDocument, object>> exclude3)
+        {
+            return find.Project<TDocument>(Builders<TDocument>.Projection.Exclude(exclude1).Exclude(exclude2).Exclude(exclude3));
+        }
+
         public static async Task UpsertVersionedAsync<T, TKey>(this IMongoCollection<T> collection, TKey key, long oldVersion, long newVersion, Func<UpdateDefinition<T>, UpdateDefinition<T>> updater) where T : IVersionedEntity<TKey>
         {
             try
@@ -140,19 +161,24 @@ namespace Squidex.Infrastructure.MongoDb
 
         public static async Task ForEachPipelineAsync<TDocument>(this IAsyncCursor<TDocument> source, Func<TDocument, Task> processor, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var actionBlock =
-                new ActionBlock<TDocument>(processor,
-                    new ExecutionDataflowBlockOptions
-                    {
-                        MaxDegreeOfParallelism = 1,
-                        MaxMessagesPerTask = 1,
-                        BoundedCapacity = 100
-                    });
-
             using (var selfToken = new CancellationTokenSource())
             {
                 using (var combined = CancellationTokenSource.CreateLinkedTokenSource(selfToken.Token, cancellationToken))
                 {
+                    var actionBlock =
+                        new ActionBlock<TDocument>(async x =>
+                            {
+                                if (!combined.IsCancellationRequested)
+                                {
+                                    await processor(x);
+                                }
+                            },
+                            new ExecutionDataflowBlockOptions
+                            {
+                                MaxDegreeOfParallelism = 1,
+                                MaxMessagesPerTask = 1,
+                                BoundedCapacity = 100
+                            });
                     try
                     {
                         await source.ForEachAsync(async i =>

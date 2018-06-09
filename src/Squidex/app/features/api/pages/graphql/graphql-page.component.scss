@@ -1,19 +1,25 @@
 @import '_vars';
 @import '_mixins';
 
-@import '~graphiql/graphiql';
+:host /deep/ {
+    @import '~graphiql/graphiql';
 
-.graphiql-container {
-    & {
-        @include absolute(0, 0, 0, 0);
+    .graphiql-container {
+        & {
+            @include absolute(0, 0, 0, 0);
+        }
+
+        & * {
+            box-sizing: content-box;
+        }
+
+        // sass-lint:disable class-name-format
+        & .editorWrap {
+            overflow: hidden;
+        }
     }
 
-    & * {
-        box-sizing: content-box;
-    }
-
-    // sass-lint:disable class-name-format
-    & .editorWrap {
-        overflow: hidden;
+    .CodeMirror-linenumbers {
+        min-width: 29px;
     }
 }

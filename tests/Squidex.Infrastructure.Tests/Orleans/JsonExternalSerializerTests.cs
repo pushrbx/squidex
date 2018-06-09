@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using FakeItEasy;
 using Orleans.Serialization;
 using Xunit;
@@ -46,35 +47,66 @@ namespace Squidex.Infrastructure.Orleans
         [Fact]
         public void Should_serialize_and_deserialize_value()
         {
-            var value = new J<List<int>>(new List<int> { 1, 2, 3 });
+            SerializeAndDeserialize(ArrayOfLength(100), Assert.Equal);
+        }
 
-            var writtenLength = 0;
-            var writtenBuffer = (byte[])null;
+        [Fact]
+        public void Should_serialize_and_deserialize_large_value()
+        {
+            SerializeAndDeserialize(ArrayOfLength(8000), Assert.Equal);
+        }
 
-            var writer = A.Fake<IBinaryTokenStreamWriter>();
-            var writerContext = new SerializationContext(null) { StreamWriter = writer };
+        private void SerializeAndDeserialize<T>(T value, Action<T, T> equals) where T : class
+        {
+            var buffer = new MemoryStream();
 
-            A.CallTo(() => writer.Write(A<int>.Ignored))
-                .Invokes(new Action<int>(x => writtenLength = x));
+            J<object>.Serialize(J.Of(value), CreateWriter(buffer), typeof(T));
 
-            A.CallTo(() => writer.Write(A<byte[]>.Ignored))
-                .Invokes(new Action<byte[]>(x => writtenBuffer = x));
+            buffer.Position = 0;
 
-            J<object>.Serialize(value, writerContext, value.GetType());
+            var copy = (J<T>)J<object>.Deserialize(typeof(J<T>), CreateReader(buffer));
 
+            equals(copy.Value, value);
+
+            Assert.NotSame(value, copy.Value);
+        }
+
+        private static DeserializationContext CreateReader(MemoryStream buffer)
+        {
             var reader = A.Fake<IBinaryTokenStreamReader>();
-            var readerContext = new DeserializationContext(null) { StreamReader = reader };
 
-            A.CallTo(() => reader.ReadInt())
-                .Returns(writtenLength);
+            A.CallTo(() => reader.ReadByteArray(A<byte[]>.Ignored, A<int>.Ignored, A<int>.Ignored))
+                .Invokes(new Action<byte[], int, int>((b, o, l) => buffer.Read(b, o, l)));
+            A.CallTo(() => reader.CurrentPosition)
+                .ReturnsLazily(x => (int)buffer.Position);
+            A.CallTo(() => reader.Length)
+                .ReturnsLazily(x => (int)buffer.Length);
 
-            A.CallTo(() => reader.ReadBytes(writtenLength))
-                .Returns(writtenBuffer);
+            return new DeserializationContext(null) { StreamReader = reader };
+        }
 
-            var copy = (J<List<int>>)J<object>.Deserialize(value.GetType(), readerContext);
+        private static SerializationContext CreateWriter(MemoryStream buffer)
+        {
+            var writer = A.Fake<IBinaryTokenStreamWriter>();
 
-            Assert.Equal(value.Value, copy.Value);
-            Assert.NotSame(value.Value, copy.Value);
+            A.CallTo(() => writer.Write(A<byte[]>.Ignored, A<int>.Ignored, A<int>.Ignored))
+                .Invokes(new Action<byte[], int, int>(buffer.Write));
+            A.CallTo(() => writer.CurrentOffset)
+                .ReturnsLazily(x => (int)buffer.Position);
+
+            return new SerializationContext(null) { StreamWriter = writer };
+        }
+
+        private List<int> ArrayOfLength(int length)
+        {
+            var result = new List<int>();
+
+            for (var i = 0; i < length; i++)
+            {
+                result.Add(i);
+            }
+
+            return result;
         }
     }
 }

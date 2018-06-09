@@ -26,9 +26,24 @@ namespace Squidex.Domain.Apps.Entities.MongoDb.Contents
             return data.GetReferencedIds(schema).ToList();
         }
 
-        public static NamedContentData ToData(this IdContentData idData, Schema schema, List<Guid> deletedIds)
+        public static NamedContentData FromMongoModel(this IdContentData result, Schema schema, List<Guid> deletedIds)
         {
-            return idData.ToCleanedReferences(schema, new HashSet<Guid>(deletedIds)).ToNameModel(schema, true);
+            return result.ConvertId2Name(schema,
+                FieldConverters.ForValues(
+                    ValueConverters.DecodeJson(),
+                    ValueReferencesConverter.CleanReferences(deletedIds)),
+                FieldConverters.ForNestedId2Name(
+                    ValueConverters.DecodeJson(),
+                    ValueReferencesConverter.CleanReferences(deletedIds)));
+        }
+
+        public static IdContentData ToMongoModel(this NamedContentData result, Schema schema)
+        {
+            return result.ConvertName2Id(schema,
+                FieldConverters.ForValues(
+                    ValueConverters.EncodeJson()),
+                FieldConverters.ForNestedName2Id(
+                    ValueConverters.EncodeJson()));
         }
 
         public static string ToFullText<T>(this ContentData<T> data)
@@ -43,7 +58,11 @@ namespace Squidex.Domain.Apps.Entities.MongoDb.Contents
 
                     if (value.Length < 1000)
                     {
-                        stringBuilder.Append(" ");
+                        if (stringBuilder.Length > 0)
+                        {
+                            stringBuilder.Append(" ");
+                        }
+
                         stringBuilder.Append(text);
                     }
                 }

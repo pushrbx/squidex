@@ -6,11 +6,11 @@
 // ==========================================================================
 
 using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Squidex.Domain.Apps.Entities.Apps.Services;
+using Squidex.Infrastructure;
 using Squidex.Infrastructure.Log;
 using Squidex.Infrastructure.UsageTracking;
 
@@ -48,7 +48,7 @@ namespace Squidex.Pipeline
 
             if (appFeature?.App != null && FilterDefinition.Weight > 0)
             {
-                using (Profile.Key("CheckUsage"))
+                using (Profiler.Trace("CheckUsage"))
                 {
                     var plan = appPlanProvider.GetPlanForApp(appFeature.App);
 
@@ -61,7 +61,7 @@ namespace Squidex.Pipeline
                     }
                 }
 
-                var stopWatch = Stopwatch.StartNew();
+                var watch = ValueStopwatch.StartNew();
 
                 try
                 {
@@ -69,9 +69,9 @@ namespace Squidex.Pipeline
                 }
                 finally
                 {
-                    stopWatch.Stop();
+                    var elapsedMs = watch.Stop();
 
-                    await usageTracker.TrackAsync(appFeature.App.Id.ToString(), FilterDefinition.Weight, stopWatch.ElapsedMilliseconds);
+                    await usageTracker.TrackAsync(appFeature.App.Id.ToString(), FilterDefinition.Weight, elapsedMs);
                 }
             }
             else

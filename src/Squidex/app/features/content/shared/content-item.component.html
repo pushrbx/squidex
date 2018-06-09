@@ -6,7 +6,7 @@
 </td>
 
 <td class="cell-auto" *ngFor="let field of schema.listFields; let i = index" (click)="shouldStop($event)">
-    <div *ngIf="field.properties['inlineEditable'] && !isReadOnly" [formGroup]="patchForm.form" (click)="$event.stopPropagation()">
+    <div *ngIf="field.isInlineEditable && !isReadOnly" [formGroup]="patchForm.form" (click)="$event.stopPropagation()">
         <div [ngSwitch]="field.properties.fieldType">
             <div *ngSwitchCase="'Number'">
                 <div [ngSwitch]="field.properties['editor']">
@@ -51,26 +51,17 @@
             </div>
         </div>
     </div>
-    <div *ngIf="!field.properties['inlineEditable'] || isReadOnly" class="truncate">
+    <div *ngIf="!field.isInlineEditable || isReadOnly" class="truncate">
         {{values[i]}}
     </div>
 </td>
 <td class="cell-time" (click)="shouldStop($event)">
-    <ng-container *ngIf="!content.scheduledTo">
-        <span class="content-status content-status-{{content.status | lowercase}}" #statusIcon>
-            <i class="icon-circle"></i>
-        </span>
-    
-        <sqx-tooltip [target]="statusIcon">{{content.status}}</sqx-tooltip>
-    </ng-container>
-
-    <ng-container *ngIf="content.scheduledTo">
-        <span class="content-status content-status-{{content.scheduledTo | lowercase}}" #statusIcon>
-            <i class="icon-clock"></i>
-        </span>
-    
-        <sqx-tooltip [target]="statusIcon">Will be set to '{{content.scheduledTo}}' at {{content.scheduledAt | sqxFullDateTime}}</sqx-tooltip>
-    </ng-container>
+    <sqx-content-status 
+        [status]="content.status"
+        [scheduledTo]="content.scheduleJob?.status"
+        [scheduledAt]="content.scheduleJob?.dueTime"
+        [isPending]="content.isPending">
+    </sqx-content-status>
     
     <small class="item-modified">{{content.lastModified | sqxFromNow}}</small>
 </td>
@@ -108,6 +99,9 @@
             <a class="dropdown-item" (click)="restoring.emit(); $event.stopPropagation()" *ngIf="content.status === 'Archived'">
                 Restore
             </a>
+            
+            <div class="dropdown-divider"></div>
+
             <a class="dropdown-item dropdown-item-delete"
                 (sqxConfirmClick)="deleting.emit()"
                 confirmTitle="Delete content" 

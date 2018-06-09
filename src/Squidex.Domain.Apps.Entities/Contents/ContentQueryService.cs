@@ -8,25 +8,27 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.OData;
 using Microsoft.OData.UriParser;
 using Squidex.Domain.Apps.Core.Contents;
 using Squidex.Domain.Apps.Core.ConvertContent;
 using Squidex.Domain.Apps.Core.Scripting;
-using Squidex.Domain.Apps.Entities.Apps;
 using Squidex.Domain.Apps.Entities.Contents.Edm;
 using Squidex.Domain.Apps.Entities.Contents.Repositories;
 using Squidex.Domain.Apps.Entities.Schemas;
 using Squidex.Infrastructure;
+using Squidex.Infrastructure.Log;
 using Squidex.Infrastructure.Reflection;
-using Squidex.Infrastructure.Security;
 
 namespace Squidex.Domain.Apps.Entities.Contents
 {
     public sealed class ContentQueryService : IContentQueryService
     {
+        private static readonly Status[] StatusAll = { Status.Archived, Status.Draft, Status.Published };
+        private static readonly Status[] StatusArchived = { Status.Archived };
+        private static readonly Status[] StatusPublished = { Status.Published };
+        private static readonly Status[] StatusDraftOrPublished = { Status.Draft, Status.Published };
         private readonly IContentRepository contentRepository;
         private readonly IContentVersionLoader contentVersionLoader;
         private readonly IAppProvider appProvider;
@@ -40,181 +42,211 @@ namespace Squidex.Domain.Apps.Entities.Contents
             IScriptEngine scriptEngine,
             EdmModelBuilder modelBuilder)
         {
+            Guard.NotNull(appProvider, nameof(appProvider));
             Guard.NotNull(contentRepository, nameof(contentRepository));
             Guard.NotNull(contentVersionLoader, nameof(contentVersionLoader));
-            Guard.NotNull(scriptEngine, nameof(scriptEngine));
             Guard.NotNull(modelBuilder, nameof(modelBuilder));
-            Guard.NotNull(appProvider, nameof(appProvider));
+            Guard.NotNull(scriptEngine, nameof(scriptEngine));
 
+            this.appProvider = appProvider;
             this.contentRepository = contentRepository;
             this.contentVersionLoader = contentVersionLoader;
-            this.appProvider = appProvider;
-            this.scriptEngine = scriptEngine;
             this.modelBuilder = modelBuilder;
+            this.scriptEngine = scriptEngine;
         }
 
-        public Task ThrowIfSchemaNotExistsAsync(IAppEntity app, string schemaIdOrName)
+        public Task ThrowIfSchemaNotExistsAsync(QueryContext context)
         {
-            return GetSchemaAsync(app, schemaIdOrName);
+            return GetSchemaAsync(context);
         }
 
-        public async Task<IContentEntity> FindContentAsync(IAppEntity app, string schemaIdOrName, ClaimsPrincipal user, Guid id, long version = -1)
+        public async Task<IContentEntity> FindContentAsync(QueryContext context, Guid id, long version = -1)
         {
-            Guard.NotNull(app, nameof(app));
-            Guard.NotNull(user, nameof(user));
+            Guard.NotNull(context, nameof(context));
             Guard.NotEmpty(id, nameof(id));
-            Guard.NotNullOrEmpty(schemaIdOrName, nameof(schemaIdOrName));
 
-            var schema = await GetSchemaAsync(app, schemaIdOrName);
+            var schema = await GetSchemaAsync(context);
 
-            var isFrontendClient = IsFrontendClient(user);
-            var isVersioned = version > EtagVersion.Empty;
-
-            var content =
-                isVersioned ?
-                await FindContentByVersionAsync(id, version) :
-                await FindContentAsync(app, id, schema);
-
-            if (content == null || (content.Status != Status.Published && !isFrontendClient) || content.SchemaId.Id != schema.Id)
+            using (Profiler.TraceMethod<ContentQueryService>())
             {
-                throw new DomainObjectNotFoundException(id.ToString(), typeof(ISchemaEntity));
+                var isVersioned = version > EtagVersion.Empty;
+
+                var parsedStatus = context.IsFrontendClient ? StatusAll : StatusPublished;
+
+                var content =
+                    isVersioned ?
+                    await FindContentByVersionAsync(id, version) :
+                    await FindContentAsync(context, id, parsedStatus, schema);
+
+                if (content == null || (content.Status != Status.Published && !context.IsFrontendClient) || content.SchemaId.Id != schema.Id)
+                {
+                    throw new DomainObjectNotFoundException(id.ToString(), typeof(ISchemaEntity));
+                }
+
+                return TransformContent(context, schema, true, content);
             }
-
-            content = TransformContent(app, schema, user, Enumerable.Repeat(content, 1), isVersioned, isFrontendClient).FirstOrDefault();
-
-            return content;
         }
 
-        public async Task<IResultList<IContentEntity>> QueryAsync(IAppEntity app, string schemaIdOrName, ClaimsPrincipal user, bool archived, string query)
+        public async Task<IResultList<IContentEntity>> QueryAsync(QueryContext context, string query)
         {
-            Guard.NotNull(app, nameof(app));
-            Guard.NotNull(user, nameof(user));
-            Guard.NotNullOrEmpty(schemaIdOrName, nameof(schemaIdOrName));
+            Guard.NotNull(context, nameof(context));
 
-            var schema = await GetSchemaAsync(app, schemaIdOrName);
+            var schema = await GetSchemaAsync(context);
 
-            var isFrontendClient = IsFrontendClient(user);
+            using (Profiler.TraceMethod<ContentQueryService>("QueryAsyncByQuery"))
+            {
+                var parsedQuery = ParseQuery(context, query, schema);
+                var parsedStatus = ParseStatus(context);
 
-            var parsedQuery = ParseQuery(app, query, schema);
-            var parsedStatus = ParseStatus(isFrontendClient, archived);
+                var contents = await contentRepository.QueryAsync(context.App, schema, parsedStatus, parsedQuery);
 
-            var contents = await contentRepository.QueryAsync(app, schema, parsedStatus.ToArray(), parsedQuery);
-
-            return TransformContents(app, schema, user, contents, false, isFrontendClient);
+                return TransformContents(context, schema, true, contents);
+            }
         }
 
-        public async Task<IResultList<IContentEntity>> QueryAsync(IAppEntity app, string schemaIdOrName, ClaimsPrincipal user, bool archived, HashSet<Guid> ids)
+        public async Task<IResultList<IContentEntity>> QueryAsync(QueryContext context, HashSet<Guid> ids)
         {
+            Guard.NotNull(context, nameof(context));
             Guard.NotNull(ids, nameof(ids));
-            Guard.NotNull(app, nameof(app));
-            Guard.NotNull(user, nameof(user));
-            Guard.NotNullOrEmpty(schemaIdOrName, nameof(schemaIdOrName));
 
-            var schema = await GetSchemaAsync(app, schemaIdOrName);
+            var schema = await GetSchemaAsync(context);
 
-            var isFrontendClient = IsFrontendClient(user);
+            using (Profiler.TraceMethod<ContentQueryService>("QueryAsyncByIds"))
+            {
+                var parsedStatus = ParseStatus(context);
 
-            var parsedStatus = ParseStatus(isFrontendClient, archived);
+                var contents = await contentRepository.QueryAsync(context.App, schema, parsedStatus, ids);
 
-            var contents = await contentRepository.QueryAsync(app, schema, parsedStatus.ToArray(), ids);
-
-            return TransformContents(app, schema, user, contents, false, isFrontendClient);
+                return TransformContents(context, schema, false, contents);
+            }
         }
 
-        private IResultList<IContentEntity> TransformContents(IAppEntity app, ISchemaEntity schema, ClaimsPrincipal user,
-            IResultList<IContentEntity> contents,
-            bool isTypeChecking,
-            bool isFrontendClient)
+        private IContentEntity TransformContent(QueryContext context, ISchemaEntity schema, bool checkType, IContentEntity content)
         {
-            var transformed = TransformContent(app, schema, user, contents, isTypeChecking, isFrontendClient);
+            return TransformContents(context, schema, checkType, Enumerable.Repeat(content, 1)).FirstOrDefault();
+        }
+
+        private IResultList<IContentEntity> TransformContents(QueryContext context, ISchemaEntity schema, bool checkType, IResultList<IContentEntity> contents)
+        {
+            var transformed = TransformContents(context, schema, checkType, (IEnumerable<IContentEntity>)contents);
 
             return ResultList.Create(transformed, contents.Total);
         }
 
-        private IEnumerable<IContentEntity> TransformContent(IAppEntity app, ISchemaEntity schema, ClaimsPrincipal user,
-            IEnumerable<IContentEntity> contents,
-            bool isTypeChecking,
-            bool isFrontendClient)
+        private IEnumerable<IContentEntity> TransformContents(QueryContext context, ISchemaEntity schema, bool checkType, IEnumerable<IContentEntity> contents)
         {
-            var scriptText = schema.ScriptQuery;
-
-            var isScripting = !string.IsNullOrWhiteSpace(scriptText);
-
-            foreach (var content in contents)
+            using (Profiler.TraceMethod<ContentQueryService>())
             {
-                var result = SimpleMapper.Map(content, new ContentEntity());
+                var converters = GenerateConverters(context, checkType).ToArray();
 
-                if (!isFrontendClient && isScripting)
+                var scriptText = schema.ScriptQuery;
+
+                var isScripting = !string.IsNullOrWhiteSpace(scriptText);
+
+                foreach (var content in contents)
                 {
-                    result.Data = scriptEngine.Transform(new ScriptContext { User = user, Data = content.Data, ContentId = content.Id }, scriptText);
+                    var result = SimpleMapper.Map(content, new ContentEntity());
+
+                    if (result.Data != null)
+                    {
+                        if (!context.IsFrontendClient && isScripting)
+                        {
+                            result.Data = scriptEngine.Transform(new ScriptContext { User = context.User, Data = content.Data, ContentId = content.Id }, scriptText);
+                        }
+
+                        result.Data = result.Data.ConvertName2Name(schema.SchemaDef, converters);
+                    }
+
+                    if (result.DataDraft != null)
+                    {
+                        result.DataDraft = result.DataDraft.ConvertName2Name(schema.SchemaDef, converters);
+                    }
+
+                    yield return result;
                 }
-
-                result.Data = result.Data.ToApiModel(schema.SchemaDef, app.LanguagesConfig, isFrontendClient, isTypeChecking);
-
-                yield return result;
             }
         }
 
-        private ODataUriParser ParseQuery(IAppEntity app, string query, ISchemaEntity schema)
+        private IEnumerable<FieldConverter> GenerateConverters(QueryContext context, bool checkType)
         {
-            try
+            if (!context.IsFrontendClient)
             {
-                var model = modelBuilder.BuildEdmModel(schema, app);
-
-                return model.ParseQuery(query);
+                yield return FieldConverters.ExcludeHidden();
+                yield return FieldConverters.ForNestedName2Name(ValueConverters.ExcludeHidden());
             }
-            catch (ODataException ex)
+
+            if (checkType)
             {
-                throw new ValidationException($"Failed to parse query: {ex.Message}", ex);
+                yield return FieldConverters.ExcludeChangedTypes();
+                yield return FieldConverters.ForNestedName2Name(ValueConverters.ExcludeChangedTypes());
+            }
+
+            yield return FieldConverters.ResolveInvariant(context.App.LanguagesConfig);
+            yield return FieldConverters.ResolveLanguages(context.App.LanguagesConfig);
+
+            if (!context.IsFrontendClient)
+            {
+                yield return FieldConverters.ResolveFallbackLanguages(context.App.LanguagesConfig);
+
+                if (context.Languages?.Any() == true)
+                {
+                    yield return FieldConverters.FilterLanguages(context.App.LanguagesConfig, context.Languages);
+                }
             }
         }
 
-        public async Task<ISchemaEntity> GetSchemaAsync(IAppEntity app, string schemaIdOrName)
+        private ODataUriParser ParseQuery(QueryContext context, string query, ISchemaEntity schema)
         {
-            Guard.NotNull(app, nameof(app));
+            using (Profiler.TraceMethod<ContentQueryService>())
+            {
+                try
+                {
+                    var model = modelBuilder.BuildEdmModel(schema, context.App);
 
+                    return model.ParseQuery(query);
+                }
+                catch (ODataException ex)
+                {
+                    throw new ValidationException($"Failed to parse query: {ex.Message}", ex);
+                }
+            }
+        }
+
+        public async Task<ISchemaEntity> GetSchemaAsync(QueryContext context)
+        {
             ISchemaEntity schema = null;
 
-            if (Guid.TryParse(schemaIdOrName, out var id))
+            if (Guid.TryParse(context.SchemaIdOrName, out var id))
             {
-                schema = await appProvider.GetSchemaAsync(app.Id, id);
+                schema = await appProvider.GetSchemaAsync(context.App.Id, id);
             }
 
             if (schema == null)
             {
-                schema = await appProvider.GetSchemaAsync(app.Id, schemaIdOrName);
+                schema = await appProvider.GetSchemaAsync(context.App.Id, context.SchemaIdOrName);
             }
 
             if (schema == null)
             {
-                throw new DomainObjectNotFoundException(schemaIdOrName, typeof(ISchemaEntity));
+                throw new DomainObjectNotFoundException(context.SchemaIdOrName, typeof(ISchemaEntity));
             }
 
             return schema;
         }
 
-        private static List<Status> ParseStatus(bool isFrontendClient, bool archived)
+        private static Status[] ParseStatus(QueryContext context)
         {
-            var status = new List<Status>();
+            if (context.IsFrontendClient)
+            {
+                if (context.Archived)
+                {
+                    return StatusArchived;
+                }
 
-            if (isFrontendClient)
-            {
-                if (archived)
-                {
-                    status.Add(Status.Archived);
-                }
-                else
-                {
-                    status.Add(Status.Draft);
-                    status.Add(Status.Published);
-                }
-            }
-            else
-            {
-                status.Add(Status.Published);
+                return StatusDraftOrPublished;
             }
 
-            return status;
+            return StatusPublished;
         }
 
         private Task<IContentEntity> FindContentByVersionAsync(Guid id, long version)
@@ -222,14 +254,9 @@ namespace Squidex.Domain.Apps.Entities.Contents
             return contentVersionLoader.LoadAsync(id, version);
         }
 
-        private Task<IContentEntity> FindContentAsync(IAppEntity app, Guid id, ISchemaEntity schema)
+        private Task<IContentEntity> FindContentAsync(QueryContext context, Guid id, Status[] status, ISchemaEntity schema)
         {
-            return contentRepository.FindContentAsync(app, schema, id);
-        }
-
-        private static bool IsFrontendClient(ClaimsPrincipal user)
-        {
-            return user.IsInClient("squidex-frontend");
+            return contentRepository.FindContentAsync(context.App, schema, status, id);
         }
     }
 }

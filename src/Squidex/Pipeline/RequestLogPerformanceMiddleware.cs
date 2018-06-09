@@ -5,49 +5,44 @@
 //  All rights reserved. Licensed under the MIT license.
 // ==========================================================================
 
-using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Filters;
+using Squidex.Infrastructure;
 using Squidex.Infrastructure.Log;
 
 namespace Squidex.Pipeline
 {
-    public sealed class RequestLogPerformanceMiddleware : ActionFilterAttribute
+    public sealed class RequestLogPerformanceMiddleware : IMiddleware
     {
-        private readonly RequestLogProfilerSessionProvider requestSession;
-        private readonly RequestDelegate next;
+        private const int LongOperationsMs = 1000;
         private readonly ISemanticLog log;
 
-        public RequestLogPerformanceMiddleware(RequestLogProfilerSessionProvider requestSession, RequestDelegate next, ISemanticLog log)
+        public RequestLogPerformanceMiddleware(ISemanticLog log)
         {
-            this.requestSession = requestSession;
-            this.next = next;
             this.log = log;
         }
 
-        public async Task Invoke(HttpContext context)
+        public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
-            var stopWatch = Stopwatch.StartNew();
+            var watch = ValueStopwatch.StartNew();
 
-            var session = new ProfilerSession();
-
-            try
+            using (Profiler.StartSession())
             {
-                requestSession.Start(context, session);
-
-                await next(context);
-            }
-            finally
-            {
-                stopWatch.Stop();
-
-                log.LogInformation(w =>
+                try
                 {
-                    session.Write(w);
+                    await next(context);
+                }
+                finally
+                {
+                    var elapsedMs = watch.Stop();
 
-                    w.WriteProperty("elapsedRequestMs", stopWatch.ElapsedMilliseconds);
-                });
+                    log.LogInformation(w =>
+                    {
+                        Profiler.Session?.Write(w);
+
+                        w.WriteProperty("elapsedRequestMs", elapsedMs);
+                    });
+                }
             }
         }
     }
