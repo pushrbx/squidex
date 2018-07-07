@@ -27,3 +27,5 @@ node_modules/
 /src/Squidex/Properties/launchSettings.json
 
 /global.json
+.idea/
+.idea/**/*.*

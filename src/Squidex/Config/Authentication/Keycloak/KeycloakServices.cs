@@ -26,19 +26,27 @@ namespace Squidex.Config.Authentication.Keycloak
             var keycloakSection = configuration.GetSection("keycloak");
             var keycloakOptions = keycloakSection.Get<KeycloakOptions>();
             if (!keycloakOptions.Enabled)
+            {
                 return;
+            }
 
             if (string.IsNullOrEmpty(keycloakOptions.AdminUserName))
+            {
                 throw new ConfigurationException(
                     "Invalid keycloak configuration: Keycloak authentication is enabled, but the admin user name was empty or null.");
+            }
 
             if (string.IsNullOrEmpty(keycloakOptions.AdminPassword))
+            {
                 throw new ConfigurationException(
                     "Invalid keycloak configuration: Keycloak authentication is enabled, but the admin password was empty or null.");
+            }
 
             if (string.IsNullOrEmpty(keycloakOptions.ClientNameForAdminFrontend))
+            {
                 throw new ConfigurationException(
                     "Invalid keycloak configuration: Keycloak authentication is enabled, but the client name for the squidex admin frontend was empty or null.");
+            }
 
             services.Configure<KeycloakOptions>(keycloakSection);
             services.AddSingletonAs<KeycloakUserResolver>()

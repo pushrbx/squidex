@@ -233,7 +233,9 @@ namespace Squidex.Areas.IdentityServer.Controllers.Account
                 return RedirectToAction(nameof(Login));
             }
 
-            var result = await signInManager.ExternalLoginSignInAsync(externalLogin.LoginProvider, externalLogin.ProviderKey, true);
+            var result =
+                await signInManager.ExternalLoginSignInAsync(externalLogin.LoginProvider, externalLogin.ProviderKey,
+                    true);
 
             if (!result.Succeeded && result.IsLockedOut)
             {
@@ -304,7 +306,9 @@ namespace Squidex.Areas.IdentityServer.Controllers.Account
 
         private async Task<bool> LoginAsync(UserLoginInfo externalLogin)
         {
-            var result = await signInManager.ExternalLoginSignInAsync(externalLogin.LoginProvider, externalLogin.ProviderKey, true);
+            var result =
+                await signInManager.ExternalLoginSignInAsync(externalLogin.LoginProvider, externalLogin.ProviderKey,
+                    true);
 
             return result.Succeeded;
         }
@@ -316,7 +320,8 @@ namespace Squidex.Areas.IdentityServer.Controllers.Account
                 return TaskHelper.True;
             }
 
-            return MakeIdentityOperation(() => userManager.SetLockoutEndDateAsync(user, DateTimeOffset.UtcNow.AddYears(100)));
+            return MakeIdentityOperation(() =>
+                userManager.SetLockoutEndDateAsync(user, DateTimeOffset.UtcNow.AddYears(100)));
         }
 
         private Task<bool> MakeAdminAsync(IUser user, bool isFirst)
@@ -375,7 +380,8 @@ namespace Squidex.Areas.IdentityServer.Controllers.Account
             }
         }
 
-        private async Task<bool> MakeIdentityOperation(Func<Task<IdentityResult>> action, [CallerMemberName] string operationName = null)
+        private async Task<bool> MakeIdentityOperation(Func<Task<IdentityResult>> action,
+            [CallerMemberName] string operationName = null)
         {
             try
             {
@@ -413,7 +419,9 @@ namespace Squidex.Areas.IdentityServer.Controllers.Account
         private void PreventIfExternalIdentityProviderIsEnabled()
         {
             if (identityOptions.Value.UseExternalIdentityProvider)
+            {
                 throw new SecurityException("Not allowed.");
+            }
         }
     }
 }

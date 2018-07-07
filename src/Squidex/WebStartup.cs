@@ -35,6 +35,7 @@ namespace Squidex
             services.AddOrleansSilo();
             services.AddOrleansClient();
             services.AddAppServices(configuration);
+            services.ConfigureCustomFrontend();
 
             return services.BuildServiceProvider();
         }
@@ -56,6 +57,7 @@ namespace Squidex
             app.ConfigureOrleansDashboard();
             app.ConfigureIdentityServer();
             app.ConfigureFrontend();
+            app.ConfigureCustomFrontend();
         }
     }
 }
